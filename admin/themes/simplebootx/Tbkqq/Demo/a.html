@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+	</head>
+	<body>
+		<form>
+			<input type="text" name="id" id="a"/>
+			<input type="button" value="测试" id="b"/>
+			<div id="c"></div>
+		</form>
+		<script>
+			$("#b").click(function(){
+				$.ajax({
+					type:'post',
+					url:'?g=tbkqq&m=demo&a=getmes',
+					data:{"id":$("#a").val()},
+					success:function(e){$("#c").html(e)}
+				})
+			})
+		</script>
+		<foreach name="tao" item="tao">
+			<div>{$tao}</div>
+		</foreach>
+	</body>
+</html>

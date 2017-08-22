@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="www.2690.cn">
+<meta name="description" content="www.2690.cn">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+
+
+<title>www.2690.cn</title>
+<link href="css/all.css" rel="stylesheet" type="text/css" />
+<link href="css/layer.css" rel="stylesheet" type="text/css" />
+<link href="css/quan_common.css" rel="stylesheet" type="text/css" />
+<link href="css/slide.css" rel="stylesheet" type="text/css" />
+<link href="css/quan_index.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body,td,th {
+	font-family: Simsun;
+}
+</style>
+</head>
+<body><script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script>
+	function is_exit(url, words) {
+		if (confirm(words))
+			window.location = url;
+	}
+</script>
+<script src="js/top.js"></script>
+<a href="#" onclick="gotoTop();return false;" class="totop" title="返回顶部"></a>
+<!--网站头部----开始-->
+
+<div class="dtk-head clearfix">
+<div class="head-top">
+<div class="head-top-main">
+<div class="head-top-left clearfix">
+<span class="dtk-info fl">专注单品，极致转化！</span>
+<div id="header_login" class="fl"> 
+<div class="login-register">
+<a href="/login" class="login">登录</a>
+<a href="/login/?user=reg" class="register">注册</a>
+</div>
+<!--<div class="login-in ">
+<span class="login-line">|</span>
+<div class="login-profile">
+<span>个人中心<i></i></span>
+<div class="login-option">
+<a href="/ucenter/favorites_quan.asp" target="_blank">我的推广</a>
+<a href="/cms" target="_blank">CMS网站设置</a>
+</div>
+</div>
+</div>-->
+</div>
+<script>
+					$.ajax({
+						type: "get",
+						url: "/header",
+						dataType: "text",
+                        cache:false,
+						success: function (ret) {
+							$('#header_login').html(ret);
+						}
+					})
+				</script>
+</div>
+<div class="head-top-right">
+<a href="#" target="_blank">商家合作</a>|
+<a href="#" target="_blank">使用帮助</a>|
+<a href="#" target="_blank">加入微信群</a>
+</div>
+</div>
+</div>
+<div class="head-search">
+<div class="logo fl"><a href="#"><span></span></a></div>
+<div class="search fl">
+<div class="select-area">
+<span class="sear-select">
+标题 <i></i>
+</span>
+<div id="xuan" class="hide sear-option">
+<span class="cur" data-value="keyword">标题</span>
+<span data-value="keyword_miaoshu">标题和文案</span>
+<span data-value="spid">商品ID</span>
+</div>
+</div>
+<div class="search-input" style="padding-left: 63px;">
+<input id="keywords" name="keywords" placeholder="请输入搜索内容" value="" onkeydown="FSubmit(event.keyCode||event.which);" type="text">
+</div>
+<a id="search_a_tag" href="" class="search-submit fr" onclick="if($.trim(document.getElementById('keywords').value) == ''){return false;}this.href='/search/'+'?keywords='+encodeURIComponent(document.getElementById('keywords').value)+'&amp;xuan='+$('#xuan .cur').data('value');"><span></span></a>
+</div>
+<div class="head-search-right fr"></div>
+</div>
+
+<!--导航----开始-->
+<div class="head-nav">
+<div class="nav-main">
+<div class="nav-list clearfix">
+<ul>
+<li class="no-border"><a href="/">主页</a></li>
+<li class="cur">
+<a href="?a=qlist">领券直播</a>
+</li>
+<li>
+<a href="?a=qlist_ctgy">村淘高佣</a>
+</li>
+<li>
+<a href="{:U('top_tui')}">2690琅琊榜</a>
+</li>
+<li>
+<a href="?a=Video">视频商品</a>
+</li>
+</ul>
+</div>
+<div class="nav-right">
+<input id="get_cate_url" value="/getCate/?type=index" type="hidden">
+<input id="save_qing" value="/syncDTK" type="hidden">
+<input id="reset_url" value="/reset" type="hidden">
+<input id="jude_login_url" value="/online" type="hidden">
+</div>
+</div>
+</div>
+<!--导航----结束-->
+
+</div>
+
+<!--网站头部----结束-->
+
+
+
+
+<!--广告位----开始-->
+
+<div class="banner-attention">
+<a href="#" target="_blank"><img src="images/TB2Ve2jf3xlpuFjSszbXXcSVpXa_!!97012073.jpg" alt=""> </a>
+</div>
+
+<!--广告位----结束-->
+
+<!--内容区----开始-->
+
+<div class="main">
+<div class="main-top">
+<div class="goods-choice" style="display:none;">
+<span class="main-top-tit">已选条件&nbsp;&gt;&nbsp;</span>
+<div class="goods-choice-main clearfix">
+<div class="choice-item">
+<span class="choice-num">找到 <b>21456</b> 款商品</span>
+</div>
+<div class="choice-right ">
+<a class="clear-choice" href="#" onclick="remove_choice_item(&quot;all&quot;);return false;"><i></i>清除所有条件</a>
+</div>
+</div>
+</div>
+
+<!-----需要内容筛选分类调用-------->
+
+
+<div class="goods-type-filter ">
+<div class="goods-type">
+<span class="main-top-tit">商品分类：</span>
+<div class="goods-type-main">
+<span class="cur "><a href="/qlist/?cid=0">全部<b> (21443) </b></a></span><span class=""><a href="/qlist/?cid=1">女装<b> (2877) </b></a></span><span class=""><a href="/qlist/?cid=9">男装<b> (838) </b></a></span><span class=""><a href="/qlist/?cid=10">内衣<b> (1129) </b></a></span><span class=""><a href="/qlist/?cid=2">母婴<b> (2435) </b></a></span><span class=""><a href="/qlist/?cid=3">化妆品<b> (1312) </b></a></span><span class=""><a href="/qlist/?cid=4">居家<b> (4549) </b></a></span><span class=""><a href="/qlist/?cid=5">鞋包配饰<b> (3007) </b></a></span><span class=""><a href="/qlist/?cid=6">美食<b> (2102) </b></a></span><span class=""><a href="/qlist/?cid=7">文体车品<b> (1953) </b></a></span><span class=""><a href="/qlist/?cid=8">数码家电<b> (1241) </b></a></span><span class=" herald"><i></i><a href="/qlist/?y=1&amp;num=207&amp;new=new">预告<b> (207) </b></a></span>
+</div>
+</div>
+<div class="goods-filter">
+<form id="search_goods_form">
+<input id="pxvalue" value="zh" name="px" type="hidden"> <span class="main-top-tit">高级筛选：</span>
+<div class="goods-filter-main clearfix">
+<div class="filter-tag">
+<input id="tqg_checkbox" name="tqg_jhs" value="rush" type="checkbox"><label id="tqg_checkbox_label" class="" onclick="click_group_checkbox_label(this);"><i></i>淘抢购</label>
+<input id="jhs_checkbox" name="tqg_jhs" value="calculate" type="checkbox"><label id="jhs_checkbox_label" class="" onclick="click_group_checkbox_label(this);"><i></i>聚划算</label>
+</div>
+<div class="filter-tag">
+<input id="tm_checkbox" name="tm_jpmj" value="tm" type="checkbox"><label id="tm_checkbox_label" class="" onclick="click_group_checkbox_label(this);"><i></i>天猫</label>
+<input id="jpmj_checkbox" name="tm_jpmj" value="jpmj" type="checkbox"><label id="jpmj_checkbox_label" class="" onclick="click_group_checkbox_label(this);"><i></i>金牌卖家</label>
+</div>
+<div class="filter-tag">
+<input id="yfx_checkbox" name="yfx" value="yfx" type="checkbox"><label id="yfx_checkbox_label" class="" onclick="click_group_checkbox_label(this);"><i></i>运费险</label>
+</div>
+<div class="filter-tag">
+<input id="haitao_checkbox" name="haitao" value="haitao" type="checkbox"><label id="haitao_checkbox_label" class="" onclick="click_group_checkbox_label(this);"><i></i>海淘</label>
+</div>
+<div class="goods-filter-main-right">
+<div class="price-area">
+价格 <input class="need_positive_float" id="jgqj1" name="jgqj1" placeholder="￥" value="" type="text">-<input class="need_positive_float" id="jgqj2" name="jgqj2" placeholder="￥" value="" type="text">
+</div>
+<div class="yj-area">
+佣金比例 ≥ <input class="need_positive_float" id="yjqj" placeholder="%" name="yjqj" value="" type="text">
+</div>
+<div class="sale-area">
+销量 ≥ <input class="need_positive_float" id="xlqj" name="xlqj" value="" type="text">
+</div>
+<button type="submit" class="filter-submit">筛选</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+<div class="goods-pages">
+<div class="goods-pages-fil">
+<span data-px="zh" class="pxclick cur"><a class="" href="javascript:void(0);">综合</a></span>
+<span data-px="zx" class="pxclick "><i class="sf_new"></i><a class="" href="javascript:void(0);">最新</a></span>
+<span data-px="sell" class="pxclick "><a class="" href="javascript:void(0);">销量</a></span>
+<span data-px="lql" class="pxclick "><a class="" href="javascript:void(0);">领券量</a></span>
+<span data-px="yjdown" class="pxclick "><a class="" href="javascript:void(0);">佣金比例</a></span>
+<span data-px="jgup" class="pxclick "><a class="" href="javascript:void(0);">价格</a></span>
+</div>
+<div class="goods-pages-page clearfix" style="">
+<span class="pagebtn disabled pre-page"></span> <span class="page-num"><b>1</b>/215</span>
+<span class="pagebtn next-page"><a href="/qlist/?page=2"></a></span> </div>
+</div>
+</div>
+<div class="wrapper">
+<div class="goods-list clearfix">
+
+<!--内容区商品列表--需要做参数调用------开始-->
+<volist name="lists['items']" id="vo" mod="5">
+                <div id="goods-items_{$vo.id}" data_goodsid="{$vo.num_iid}" class="goods-item ">
+                    <div class="goods-item-content">
+                        <div class="goods-img">
+                            <a href="https://cunlist.taobao.com/?q={$vo.num_iid}" target="_blank">
+                                <img class="lazy" src="http://p1static.dataoke.com/web/images/download.gif" data-original="{$vo.pic_url}_230x230.jpg">
+                            </a>
+<span id="quan_add_u_{$vo.id}" data-gid="{$vo.id}" class="fl quan_add_u go_info" onclick='return false;' data-page='quanPage'>
+<p></p><span></span>
+</span>
+                            <div class="goods-img-line"></div>
+                            <div class="copy_text fr">复制文案</div>
+                        </div>
+                        <div class="goods-info">
+<span class="goods-tit">
+<a href="https://cunlist.taobao.com/?q={$vo.num_iid}" target="_blank">
+    {$vo.title} </a>
+</span>
+                            <div class="goods-slider" title="优惠券已领取 {$vo.Quan_receive} 张">
+                                <span class="slider"><em data-width="72.89%"></em></span>
+                            </div>
+                            <div class="goods-qjy">
+                                <div class="goods-price"><span>券后价</span><p><b><i class="rmb-style">￥</i>{$vo.coupon_price}</b></p></div>
+                                <div class="goods-yj" title="">
+<span>
+ </span><p>村佣<b>未知</b></p>
+                                </div>
+                            </div>
+                            <div class="goods-sale clearfix">
+                                <div class="goods-quan fl"><p>券<b><i class="rmb-style">￥</i>{$vo.price}</b></p></div>
+                                <span class="fl">销量<b>{$vo.volume}</b></span> <div class="tag clearfix">
+                                <i class="tag-tmall"></i> </div>
+                            </div>
+                            <div class="type"><span class="margin-num">优惠券剩余：<b>{$vo.quan_surplus}</b>/{$vo['quan_surplus']+$vo['quan_receive']}</span></div>
+                            <div class="goods-author"><span></span><span class="goods_team_name"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </volist>
+
+
+<!--内容区商品列表----结束-->
+
+</div>
+<div class="pagination"><ul>{$lists['page']}</ul></div>
+
+<div class="quan_page" style="">
+<div class="quan_page_main" style="	margin: 0 auto;display: 	inline-block;	">
+<div class="page_total">共 <b>21456</b> 条</div>
+<span>首页</span><span><b>&lt; </b> 上一页</span> <span class="cur">1</span> <a href="/qlist/?page=2">2</a> <a href="/qlist/?page=3">3</a> <a href="/qlist/?page=4">4</a><a href="/qlist/?page=2">下一页 <b> &gt;</b></a><a href="/qlist/?page=215">尾页</a> <div class="page_ci">页次：<b><font>1</font>/215</b>页（<b>100</b>条/页）</div>
+<div class="page_jump">到</div>
+<input id="url" value="/qlist/?page=" type="hidden">
+<select name="page" size="1" onchange="javascript:window.location=document.getElementById('url').getAttribute('value')+this.options[this.selectedIndex].value;">
+<option value="1" selected="selected">第1页</option><option value="2">第2页</option><option value="3">第3页</option><option value="4">第4页</option><option value="5">第5页</option><option value="6">第6页</option><option value="7">第7页</option><option value="8">第8页</option><option value="9">第9页</option><option value="10">第10页</option><option value="11">第11页</option><option value="12">第12页</option><option value="13">第13页</option><option value="14">第14页</option><option value="15">第15页</option><option value="16">第16页</option><option value="17">第17页</option><option value="18">第18页</option><option value="19">第19页</option><option value="20">第20页</option><option value="21">第21页</option><option value="22">第22页</option><option value="23">第23页</option><option value="24">第24页</option><option value="25">第25页</option><option value="26">第26页</option><option value="27">第27页</option><option value="28">第28页</option><option value="29">第29页</option><option value="30">第30页</option><option value="31">第31页</option><option value="32">第32页</option><option value="33">第33页</option><option value="34">第34页</option><option value="35">第35页</option><option value="36">第36页</option><option value="37">第37页</option><option value="38">第38页</option><option value="39">第39页</option><option value="40">第40页</option><option value="41">第41页</option><option value="42">第42页</option><option value="43">第43页</option><option value="44">第44页</option><option value="45">第45页</option><option value="46">第46页</option><option value="47">第47页</option><option value="48">第48页</option><option value="49">第49页</option><option value="50">第50页</option><option value="51">第51页</option><option value="52">第52页</option><option value="53">第53页</option><option value="54">第54页</option><option value="55">第55页</option><option value="56">第56页</option><option value="57">第57页</option><option value="58">第58页</option><option value="59">第59页</option><option value="60">第60页</option><option value="61">第61页</option><option value="62">第62页</option><option value="63">第63页</option><option value="64">第64页</option><option value="65">第65页</option><option value="66">第66页</option><option value="67">第67页</option><option value="68">第68页</option><option value="69">第69页</option><option value="70">第70页</option><option value="71">第71页</option><option value="72">第72页</option><option value="73">第73页</option><option value="74">第74页</option><option value="75">第75页</option><option value="76">第76页</option><option value="77">第77页</option><option value="78">第78页</option><option value="79">第79页</option><option value="80">第80页</option><option value="81">第81页</option><option value="82">第82页</option><option value="83">第83页</option><option value="84">第84页</option><option value="85">第85页</option><option value="86">第86页</option><option value="87">第87页</option><option value="88">第88页</option><option value="89">第89页</option><option value="90">第90页</option><option value="91">第91页</option><option value="92">第92页</option><option value="93">第93页</option><option value="94">第94页</option><option value="95">第95页</option><option value="96">第96页</option><option value="97">第97页</option><option value="98">第98页</option><option value="99">第99页</option><option value="100">第100页</option><option value="101">第101页</option><option value="102">第102页</option><option value="103">第103页</option><option value="104">第104页</option><option value="105">第105页</option><option value="106">第106页</option><option value="107">第107页</option><option value="108">第108页</option><option value="109">第109页</option><option value="110">第110页</option><option value="111">第111页</option><option value="112">第112页</option><option value="113">第113页</option><option value="114">第114页</option><option value="115">第115页</option><option value="116">第116页</option><option value="117">第117页</option><option value="118">第118页</option><option value="119">第119页</option><option value="120">第120页</option><option value="121">第121页</option><option value="122">第122页</option><option value="123">第123页</option><option value="124">第124页</option><option value="125">第125页</option><option value="126">第126页</option><option value="127">第127页</option><option value="128">第128页</option><option value="129">第129页</option><option value="130">第130页</option><option value="131">第131页</option><option value="132">第132页</option><option value="133">第133页</option><option value="134">第134页</option><option value="135">第135页</option><option value="136">第136页</option><option value="137">第137页</option><option value="138">第138页</option><option value="139">第139页</option><option value="140">第140页</option><option value="141">第141页</option><option value="142">第142页</option><option value="143">第143页</option><option value="144">第144页</option><option value="145">第145页</option><option value="146">第146页</option><option value="147">第147页</option><option value="148">第148页</option><option value="149">第149页</option><option value="150">第150页</option><option value="151">第151页</option><option value="152">第152页</option><option value="153">第153页</option><option value="154">第154页</option><option value="155">第155页</option><option value="156">第156页</option><option value="157">第157页</option><option value="158">第158页</option><option value="159">第159页</option><option value="160">第160页</option><option value="161">第161页</option><option value="162">第162页</option><option value="163">第163页</option><option value="164">第164页</option><option value="165">第165页</option><option value="166">第166页</option><option value="167">第167页</option><option value="168">第168页</option><option value="169">第169页</option><option value="170">第170页</option><option value="171">第171页</option><option value="172">第172页</option><option value="173">第173页</option><option value="174">第174页</option><option value="175">第175页</option><option value="176">第176页</option><option value="177">第177页</option><option value="178">第178页</option><option value="179">第179页</option><option value="180">第180页</option><option value="181">第181页</option><option value="182">第182页</option><option value="183">第183页</option><option value="184">第184页</option><option value="185">第185页</option><option value="186">第186页</option><option value="187">第187页</option><option value="188">第188页</option><option value="189">第189页</option><option value="190">第190页</option><option value="191">第191页</option><option value="192">第192页</option><option value="193">第193页</option><option value="194">第194页</option><option value="195">第195页</option><option value="196">第196页</option><option value="197">第197页</option><option value="198">第198页</option><option value="199">第199页</option><option value="200">第200页</option><option value="201">第201页</option><option value="202">第202页</option><option value="203">第203页</option><option value="204">第204页</option><option value="205">第205页</option><option value="206">第206页</option><option value="207">第207页</option><option value="208">第208页</option><option value="209">第209页</option><option value="210">第210页</option><option value="211">第211页</option><option value="212">第212页</option><option value="213">第213页</option><option value="214">第214页</option><option value="215">第215页</option> </select>
+</div>
+</div>
+</div>
+</div>
+
+<!--内容区----结束-->
+
+<script>
+var page_type = 'index';
+</script>
+<div class="side-bar" style="left: 1300px;">
+<div class="side-bar-list">
+<div class="side-bar-herald side-bar-item">
+<a href="/help/?id=5&amp;cid=397" target="_blank"><i></i><em>客服中心</em></a>
+</div>
+<div class="side-bar-feedback side-bar-item">
+<a href="#" target="_blank"><i></i><em>意见反馈</em></a>
+</div>
+<div class="side-bar-favorite side-bar-item">
+<a href="#" target="_blank"><i></i><em>我的收藏</em></a>
+</div>
+<div class="side-bar-top side-bar-item">
+<a href="javascript:void(0)" class="scrollTop"><i></i><em>返回顶部</em></a>
+</div>
+</div>
+</div>
+<div class="footer">
+<div style="width:1200px; overflow:hidden;  margin: 10px auto 0;padding-top:10px;">
+<!-- div style="1074px; height:82px; background:url(images/bottom_say.png) no-repeat right; margin-top:20px;"></div -->
+<div class="bottome_last">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261869629'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261869629%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1257179126"><a href="http://www.cnzz.com/stat/website.php?web_id=1257179126" target="_blank" title="站长统计"><img src="http://icon.cnzz.com/img/pic1.gif" hspace="0" border="0" vspace="0"></a></span><script src=" http://s95.cnzz.com/z_stat.php?id=1257179126&amp;show=pic1" type="text/javascript"></script><script src="http://c.cnzz.com/core.php?web_id=1257179126&amp;show=pic1&amp;t=z" charset="utf-8" type="text/javascript"></script>&nbsp;&nbsp;© CopyRight 2011-2017&nbsp; www.2690.cn &nbsp; 闽ICP备16037554号-1
+<a href="#" target="_blank" class="link_tong" style="color:#FFFFCC; margin-left:20px;"></a>
+</div>
+</div>
+</div>
+<div style="left: 0px; top: 0px; position: absolute; width: 29px; height: 27px; border: medium none; margin: 0px; padding: 0px; z-index: 2147483647; display: none;" class="sbi_search" id="sbi_camera_button"></div>
+<script src="js/lazyload.js"></script>
+<script type="text/javascript" charset="utf-8">
+	$(function() {
+		$("img.lazy").lazyload();
+	});
+</script>
+<script src="js/dtk_head.js"></script>
+<script type="text/javascript" src="js/get_team_name.js"></script>
+<script type="text/javascript" src="js/goods_page.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script type="text/javascript" src="js/u_func.js"></script>
+<script type="text/javascript" src="js/istui.js"></script>
+<script type="text/javascript" src="js/count_qlist.js"></script>
+<script type="text/javascript" src="js/clipboard.min.js"></script>
+
+
+</body>

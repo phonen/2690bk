@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0033)http://www.dataoke.com/help/?id=2 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<link href="css/quan_common.css" rel="stylesheet" type="text/css">
+		<link href="css/all.css" rel="stylesheet" type="text/css">
+		<title>村淘圈—www.2690.cn</title>
+		<meta name="keywords" content="2690,村淘,村小二,招商淘客,淘宝客推广,淘客放单平台,高佣商品,佣金查询,免费领券,村淘合伙人">
+		<meta name="description" content="2690——村小二的推广工具！可在线查看佣金，支持淘宝客、村淘商家放单以及分享村淘纯干货，为广大村小二提供农村淘宝的高佣产品，实时推广，实现高转化！">
+		<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<script src="js/bootstrap.min.js"></script>
+		<!--[if lt IE 9]>
+		   <script src="js/html5shiv.js"></script>
+		   <script src="js/respond.min.js"></script>
+		<![endif]-->
+		<style type="text/css">
+			body,
+			td,
+			th {
+				font-family: Simsun;
+			}
+			html{font-size:10px}
+			@media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+			@media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+			@media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+			@media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+			@media screen and (min-width:720px) and (max-width:749px){html{font-size:22.5px}}
+			@media screen and (min-width:750px) and (max-width:799px){html{font-size:23.5px}}
+			@media screen and (min-width:800px){html{font-size:25px}}
+			.cssshadow 
+			{
+			    -moz-box-shadow: 8px 7px 30px #555;
+			    -webkit-box-shadow: 8px 7px 30px #555;
+			    box-shadow: 8px 7px 30px #555;
+			    /* For IE 8 */
+			    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=30, Direction=135, Color='#555')";
+			    /* For IE 5.5 - 7 */
+			    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=30, Direction=135, Color='#555');
+			        margin: 2rem auto;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<script>
+			function is_exit(url, words) {
+				if(confirm(words))
+					window.location = url;
+			}
+		</script>
+		<div style="height: 4rem;background: darkseagreen;text-align: center;font-size: 2rem;color: white;margin: 0 -1rem 1rem 0;padding-top: 1rem;">
+							村淘圈
+						</div>
+		<div class="contain">
+
+			<div class="row">
+				<div class="col-xs-1"></div>
+				<div class="col-xs-10">
+					
+					<div style="font-size: 1rem;">
+						
+						<php>
+							$lists = sp_sql_posts_paged("cid:$cat_id;order:post_date DESC;",10);
+						</php>
+						<volist name="lists['posts']" id="vo">
+							<php>
+								$smeta=json_decode($vo['smeta'], true); // print_r($smeta);
+							</php>
+							<a href="{:leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']))}" target="_blank">
+							<dl style="border: 1px solid #999;height: 13rem;">
+								
+								<dt style="float: left;width: 13rem;margin: 2rem 1rem;">
+				<img src="/data/upload/
+				<php>
+				echo $smeta['thumb'];
+				</php>" style='width: 13rem;height:9rem'/>
+				</dt>
+								<dd style="float: left;width: 55%;margin-top: 1rem;">
+									<h2 style="font-size: 1.2rem;color: black;">{$vo.post_title}</h2>
+									<span style="font-size: 0.8rem;color: #999;">更新：{$vo.post_date}</span>
+									<p style="color: black;margin-top: 1rem;">{$vo.post_excerpt|msubstr=0,50}</p>
+								</dd>
+							</dl>
+							</a>
+						</volist>
+						
+					</div>
+			<div class="pagination" style="width: 100%;padding-left: 30%;">
+				<ul>{$lists['page']}</ul>
+			</div>
+					<!--页脚-->
+					<div class="bottome_last" style="font-size: 1.6rem;">
+						<script type="text/javascript">
+							var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+							document.write(unescape("%3Cspan id='cnzz_stat_icon_1261869629'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261869629%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+						</script>
+						© CopyRight 2011-2017&nbsp; www.2690.cn &nbsp; 闽ICP备16037554号-1
+					</div>
+				</div>
+				<div class="col-xs-1"></div>
+			</div>
+		</div>
+		
+		
+	</body>
+<script src="js/dtk_head.js"></script>
+</html>

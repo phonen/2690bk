@@ -1,0 +1,36 @@
+<admintpl file="header" />
+<div>
+	<input type="text" id="a"/>
+	<input type="button" id="b" value="检测"/>
+	<p></p>
+	<textarea id="c" style="height:500px;width:700px;">
+		
+	</textarea>
+	<div id="php"></div>
+	<input type="button" id="d" value="提交代码">
+	<script>
+		$("#b").click(function(){
+			var a = {'id':$("#a").val()};
+			$.ajax({
+				data:a,
+				url:"?g=tbkqq&m=demo&a=check",
+				type:'post',
+				success:function(e){
+					$("p").html(e);
+				}
+			});
+		})
+		$("#d").click(function(){
+			var a = {'id':$("#c").val()};
+			$.ajax({
+				data:a,
+				url:"?g=tbkqq&m=demo&a=operation_php",
+				type:'post',
+				success:function(e){
+					$("#php").html(e);
+				}
+			});
+		})
+
+	</script>
+</div>

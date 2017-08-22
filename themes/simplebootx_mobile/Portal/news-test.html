@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0033)http://www.dataoke.com/help/?id=2 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+		<link href="css/quan_common.css" rel="stylesheet" type="text/css">
+		<link href="css/all.css" rel="stylesheet" type="text/css">
+		<script src="js/jquery.min.js"></script>
+		<title>村淘村-{$post_title}</title>
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<script src="js/bootstrap.min.js"></script>
+		<!--[if lt IE 9]>
+   <script src="js/html5shiv.js"></script>
+   <script src="js/respond.min.js"></script>
+<![endif]-->
+<style>
+	html{font-size:10px}
+@media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+@media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+@media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+@media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+@media screen and (min-width:720px) and (max-width:749px){html{font-size:22.5px}}
+@media screen and (min-width:750px) and (max-width:799px){html{font-size:23.5px}}
+@media screen and (min-width:800px){html{font-size:25px}}
+.cssshadow 
+   {
+    -moz-box-shadow: 8px 7px 30px #555;
+    -webkit-box-shadow: 8px 7px 30px #555;
+    box-shadow: 8px 7px 30px #555;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=30, Direction=135, Color='#555')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=30, Direction=135, Color='#555');
+        margin: 2rem auto;
+   }
+</style>
+	</head>
+
+	<body>
+		<script>
+			function is_exit(url, words) {
+				if(confirm(words))
+					window.location = url;
+			}
+		</script>
+
+		<div class="contain">
+
+			<div class="row">
+				<div class="col-xs-1"></div>
+				<div class="col-xs-10">
+					<h1 style="text-align: center;margin: 3rem auto 2rem;font-size: 2.6rem;">{$post_title}</h1>
+					<h4 style="color: #999;font-size: 1.5rem;">{$post_date} 作者 {$user_login|default=$user_nicename} <a href="?m=List&a=news&id=1"> 村淘圈</a></h4>
+					<div id="post_content" style="margin-top: 2rem;font-size: 1.7rem;">
+						{$post_content}
+					</div>
+					<script>
+						$(function(){
+							$('#post_content').children().children().css('line-height','3rem');
+							$('#post_content').children().children().children().css('line-height','3rem');
+							$('#post_content img').addClass('cssshadow');
+							$('#post_content').children().children().css('font-size','1.7rem');
+							$('#post_content').children().children().children().css('font-size','1.7rem');
+							$('section').children().css('line-height','3rem');
+							$('section').children().css('font-size','1.7rem');
+							$('section').children().children().css('line-height','3rem');
+							$('section').children().children().css('font-size','1.7rem');
+							$('section').children().children().children().css('line-height','3rem');
+							$('section').children().children().children().css('font-size','1.7rem');
+							$('strong').css('line-height','3rem');
+							$('strong').css('font-size','1.7rem');
+							$('p').css('line-height','3rem');
+							$('p').css('font-size','1.7rem');
+							$('p').children().children().children().css('line-height','3rem');
+							$('p').children().children().children().css('font-size','1.7rem');
+							$('blockquote').css('min-height','5rem');
+							$('blockquote').children().css('min-height','4rem');
+							$('blockquote').children().children().css('min-height','4rem');
+							$('blockquote').children().children().children().eq(0).css({'min-height':'3rem','width':'2.5rem'});
+						})
+					</script>
+					<div>
+						<div style="height: 8rem;margin-top: 2rem;">
+							<if condition="!empty($prev)">
+								<a style="font-size: 1rem;margin-bottom: 1rem;" href="{:leuu('article/index',array('id'=>$prev['tid'],'cid'=>$prev['term_id']))}" class="btn btn-primary pull-left">上一篇：{$prev.post_title}</a>
+							</if>
+							<if condition="!empty($next)">
+								<a style="font-size: 1rem;" href="{:leuu('article/index',array('id'=>$next['tid'],'cid'=>$next['term_id']))}" class="btn btn-warning pull-left" style="float:right;">下一篇：{$next.post_title}</a>
+							</if>
+						</div>
+						<div>
+							<p style="color: red;font-size: 1.3rem;text-align: center;">扫描下面的二维码</p>
+							<p style="color: red;font-size: 1.3rem;text-align: center;">一起加入我们吧</p>
+						</div>
+						<div id="qrcode" style="width: 25rem;margin: 2rem auto;">
+							<img src="http://www.2690.cn/images/news_weixin.jpg" width="100%" height="100%" />
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<!--页脚-->
+					<div class="bottome_last" style="font-size: 1.6rem;">
+						<script type="text/javascript">
+							var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+							document.write(unescape("%3Cspan id='cnzz_stat_icon_1261869629'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261869629%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+						</script>
+						© CopyRight 2011-2017&nbsp; www.2690.cn &nbsp; 闽ICP备16037554号-1
+					</div>
+				</div>
+				<div class="col-xs-1"></div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

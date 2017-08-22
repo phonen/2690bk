@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0031)http://www.dataoke.com/open/sj/ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<title>www.2690.cn</title>
+		<meta name="keywords" content="www.2690.cn">
+		<meta name="description" content="www.2690.cn">
+		<script src="js/jquery.min.js"></script>
+		<link href="css/quan_common.css" rel="stylesheet" type="text/css">
+		<link href="css/all.css" rel="stylesheet" type="text/css">
+		<style type="text/css">
+			.open_tk_username {
+				font-size: 17px;
+				color: #DE563C;
+				text-align: left;
+			}
+			
+			.open_tk_sc {
+				margin-top: 3px;
+				font-size: 14px;
+				color: #8C8C8C;
+				width: 220px;
+				overflow: hidden;
+				text-align: left;
+			}
+			
+			.zs_user_list {
+				border: solid #C4D8E4 1px;
+				padding-bottom: 20px;
+				margin-bottom: 30px;
+				height: 260px;
+			}
+			
+			.zs_user_list:hover {
+				border: solid #6F9BB5 1px;
+			}
+		</style>
+		<link rel="stylesheet" href="css/layer.css" id="layui_layer_skinlayercss">
+		<style type="text/css">
+			body,
+			td,
+			th {
+				font-family: Simsun;
+			}
+		</style>
+		<link rel="shortcut icon" href="favicon.ico">
+	</head>
+
+	<body>
+
+		<script>
+			function is_exit(url, words) {
+				if(confirm(words))
+					window.location = url;
+			}
+		</script>
+		<!--微信二维码-->
+		<div id="WeChat-code-bg">
+			<div>
+				<img style="margin-top:5%;height: 512px" src="images/WeChat-code1.gif" />
+				<img id="WeChat-code-close" src="images/close.png" />
+			</div>
+		</div>
+		<div class="dtk-head clearfix">
+			<div class="head-top">
+				<div class="head-top-main">
+					<div class="head-top-left clearfix">
+						<span class="dtk-info fl">专注单品，极致转化！</span>
+						<div id="header_login" class="fl">
+							<div class="login-register">
+								<if condition="$user.user_login eq ''">
+									<a href="?a=login" class="login">登录</a> |
+									<a href="?a=login_reg" class="register">注册</a>
+									<else /> {$user.user_login}
+									<a href="?a=changepwd" class="login">个人中心</a> |
+									<a href="?g=user&m=login&a=logout" class="register">退出</a>
+								</if>
+							</div>
+						</div>
+						<div class="topday" id="ip_count">日访客人数：<span style="color:#07840a;"></span>人</div>
+
+						<script>
+							$.ajax({
+								type: "get",
+								url: "/header",
+								dataType: "text",
+								async: false,
+								cache: false,
+								success: function(ret) {
+									$('#header_login').html(ret);
+								}
+							})
+						</script>
+					</div>
+					<div class="head-top-right">
+						<a href="/?a=about" target="_blank">关于我们</a>|
+						<a href="?a=help_test" target="_blank">使用帮助</a>|
+						<a class="WeChat-code" style="cursor: pointer;">加入微信</a>
+					</div>
+				</div>
+			</div>
+			<div class="head-search">
+				<div class="logo fl">
+					<a href="http://www.2690.cn/">
+						<span></span>
+					</a>
+				</div>
+				<div class="search fl">
+					<div class="select-area">
+						<span class="sear-select">
+标题
+<i></i>
+</span>
+						<div id="xuan" class="hide sear-option">
+							<span class="cur" data-value="keyword">标题</span>
+							<span data-value="keyword_miaoshu">标题和文案</span>
+							<span data-value="spid">商品ID</span>
+						</div>
+					</div>
+					<div class="search-input" style="padding-left: 63px;">
+						<input id="keywords" type="text" name="keywords" placeholder="请输入搜索内容" value="" onkeydown="FSubmit(event.keyCode||event.which);">
+					</div>
+					<a id="search_a_tag" href="" class="search-submit fr" onclick="if($.trim(document.getElementById(&#39;keywords&#39;).value) == &#39;&#39;){return false;}this.href=&#39;/search/&#39;+&#39;?keywords=&#39;+document.getElementById(&#39;keywords&#39;).value+&#39;&amp;xuan=&#39;+$(&#39;#xuan .cur&#39;).data(&#39;value&#39;);"><span></span></a>
+				</div>
+				<div class="head-search-right fr"></div>
+			</div>
+			<div class="head-nav">
+				<div class="nav-main">
+					<div class="nav-list clearfix">
+						<ul>
+							<!--<li class="no-border"><a href="/">主页</a></li>-->
+							<li>
+								<a href="?a=qlist_ctgy">村淘高佣</a>
+							</li>
+							<li>
+								<a href="?a=qlist">领券直播</a>
+							</li>
+							<!--<li>
+<a href="{:U('top_tui')}">2690琅琊榜</a>
+</li>
+<li>
+<a href="{:U('Video')}">视频商品</a>
+</li>-->
+							<li>
+								<a href="?m=List&a=news&id=1">村淘圈</a>
+							</li>
+							<li>
+								<a href="?a=pic">一键制图</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="side-bar" style="bottom: 30%;width: 100px;">
+			<div class="side-bar-list">
+				<!--意见反馈-->
+				<a href="?a=feedback" style="cursor: pointer;">
+					<div class="side-bar-feedback side-bar-item" style="width: 36px;right: -64px;">
+						<img title="意见反馈" src="images/label-right-email.png" />
+						<p class="p-dis" style="display:none;">意见反馈</p>
+					</div>
+				</a>
+				<!--QQ联系-->
+				<!--<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=800808199&site=qq&menu=yes">
+					<div class="side-bar-herald side-bar-item" style="width: 36px;right: -64px;">
+						<img style='display: inline-block;' title="点击QQ联系" src="images/label-right-qq.png" />
+						<p class="p-dis" style="display:none;">QQ交谈</p>
+					</div>
+				</a>-->
+				<!--微信二维码-->
+				<a style="cursor: pointer;">
+					<div class="side-bar-favorite side-bar-item WeChat-code" style="width: 36px;right: -64px;">
+						<img title="点击扫描微信" src="images/label-right-wechat.png" />
+						<p class="p-dis" style="display:none;">扫描微信</p>
+					</div>
+				</a>
+				<!--返回顶部-->
+				<a href="javascript:void(0)" class="scrollTop">
+					<div class="side-bar-top side-bar-item" style="width: 36px;right: -64px;">
+						<img title="返回顶部" src="images/label-right-returntop.png" />
+						<p class="p-dis" style="display:none;">返回顶部</p>
+					</div>
+				</a>
+			</div>
+		</div>
+
+		<div style="background:#fff;">
+			<div style="width:1200px; margin:auto; padding-top:20px; overflow:hidden;font-size:14px;">
+				<div align="center" style="position:relative;"><img src="images/weinxintp.jpg"><img src="images/erwei.jpg" style="position:absolute;left:220px;width:210px;z-index:2;top:89px;" /></div>
+			</div>
+		</div>
+		<footer>
+			<div>
+				<!--微信二维码-->
+				<div style="display: inline-block;width: 300px;float: left;">
+					<div style="display: inline-block;width: 120px;">
+						<img style="margin-bottom: 8px;" src="images/WeChat-code1.png" />
+						<p>村淘优惠券公众号</p>
+					</div>
+					<div style="display: inline-block;width: 120px;">
+						<img style="margin-bottom: 8px;" src="images/WeChat-code2.jpg" />
+						<p>村淘圈公众号</p>
+					</div>
+				</div>
+				<!--帮助、链接-->
+				<div style="display: inline-block;">
+					<div class="link-a">
+						<a href="?a=help_test" class="sty-hover">使用帮助</a><span>|</span>
+						<a href="?a=business_cooperation" class="sty-hover">商家合作</a><span>|</span>
+						<a href="?a=feedback" class="sty-hover">问题反馈</a><span>|</span>
+						<a class="sty-hover">友情链接</a>
+					</div>
+					<div class="link-span">
+						<script type="text/javascript">
+							var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+							document.write(unescape("%3Cspan id='cnzz_stat_icon_1261869629'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261869629%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+						</script>
+						<span>© CopyRight 2011-2017 www.2690.cn 闽ICP备16037554号-1 </span><span>|</span>
+						<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=35010302000312" target="_blank" class="sty-hover"><img src="images/beianbgs.png" width="24" height="24" /> 闽公网安备 35010302000312号</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+	<script src="js/dtk_head.js"></script>
+
+</html>

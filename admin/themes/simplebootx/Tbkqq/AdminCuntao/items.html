@@ -1,0 +1,248 @@
+<admintpl file="header" />
+</head>
+<body>
+<style>
+	.table-actions{
+		position: relative;
+	}
+	#search_a_tag{
+		width: 50px;
+	    height: 30px;
+	    cursor: pointer;
+	    line-height: 30px;
+	    background: #2fa4e7;
+	    outline: none;
+	    text-align: center;
+	    color: white;
+	    text-decoration: none;
+	    border-radius: 0 5px 5px 0;
+	    font-size: 15px;
+	    position: absolute;
+	    left: 216px;
+	}
+	.table-bordered{
+		border:none
+	}
+	.table-bordered th, .table-bordered td{
+		border-left: none;
+	}
+	table tr th,table tr td{
+		text-align: center !important
+	}
+	table tr td p{
+		margin-bottom: 6px;
+	}
+	html {
+		font-size: 10px
+	}
+	table tr td{
+			font-size: 1.2rem !important;
+		}
+	@media (min-width: 1024px) {
+		body {
+			font-size: 15px
+		}
+		table tr td{
+			font-size: 1.5rem !important;
+		}
+	}
+	
+	@media (min-width: 1440px) {
+		body {
+			font-size: 20px !important;
+		}
+		table tr td{
+			font-size: 2rem !important;
+		}
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="js/clipboard.min.js"></script>
+<script>
+			$(function(){
+			//获取图片
+				function getpic(iid,fun){
+					$.ajax({
+						type:'get',
+						url:'?a=gettpl&id='+iid,
+						success:function(res){
+							fun(res);
+						},
+						errer:function(e){
+						console.log(e);
+						}
+					});
+				}
+				//设置一键复制
+				var copyFunction = function(copy){
+					var clipboard = new Clipboard('.copy_text_btn', {
+						target: function() {
+							return copy;
+						}
+					});
+
+					clipboard.on('success', function(e) {
+						//console.log(e);
+						console.log('版本成功');
+						e.clearSelection();
+					});
+
+					clipboard.on('error', function(e) {
+						console.log('版本低');
+						e.clearSelection();
+					});
+
+				}
+				$('.copy_text').click(function(e){
+						
+					
+					if(!$(this).hasClass('copy_text_btn')){
+						$(this).addClass('copy_text_btn');
+					}
+					var copy = $(this).siblings('.copyContent')[0];	
+					copyFunction(copy);
+						
+				});
+
+			})
+		</script>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="{:U('AdminCuntao/items')}">商品列表</a></li>
+    </ul>
+	<form method="post" action="{:U('AdminCuntao/items')}" class="well form-search" id="form">
+		分类:
+		<select class="select_2" name="source" id="source">
+			<option value="0">全站</option>
+			<option value="2690">本站上传</option>
+			<option value="haodanku">好单库</option>
+			<option value="shihuizhu">实惠猪</option>
+			<option value="taoyingke">淘银客</option>
+		</select>
+		<div style="display:inline-block;">
+		搜索目标:
+			<select class="select_2" name="kwkey" id="kwkey">
+				<option value="item">商品</option>
+				<option value="user">上传人</option>
+			</select>
+			<input type="text" name="kw" class="top_button" style="width:200px;margin-right:-10px;" value="{$post.kw}" placeholder="请输入关键字"/>
+			<input type="submit" value="搜索" class="btn btn-primary top_button"/>
+		</div>
+		
+	</form>
+	<script>
+		$("#source>option[value='{$post.source}']").attr("selected","selected");
+		$("#kwkey>option[value='{$post.kwkey}']").attr("selected","selected");
+	</script>
+
+        <div class="table-actions">
+			<if condition="(0)">
+            <button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminCuntao/item_delete')}" data-subcheck="true" data-msg="你确定删除商品吗？">删除</button>
+			</if>
+     </div>
+        <table class="table table-hover table-bordered table-list">
+            <thead>
+            <tr>
+                <th width="16"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+
+                <th width="70">ID</th>
+                <th width="70">商品图片</th>
+                <th width="70">商品链接</th>
+                <th width="160">商品名称</th>
+                
+
+                <th width="50">券后价</th>
+                <th>活动类型</th>
+
+                <th width="100">上传时间</th>
+                <th width="100">上传人</th>
+                <th width="50">状态</th>
+                <th width="80">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <foreach name="items" item="vo">
+                <tr>
+                    <td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.id}"></td>
+                    <td>{$vo.id}</td>
+                    <td><a href="{$vo.pic_url}" target="_blank"><img src="{$vo.pic_url}_250x250.jpg"></a></td>
+                    <td><a href="https://item.taobao.com/item.htm?id={$vo.num_iid}" target="_blank">{$vo.num_iid}</a></td>
+                    <td><a href="{:U('AdminCuntao/item_edit',array('id'=>$vo['num_iid']))}" target="_blank">
+                    <if condition="($vo['dtitle'])">
+                    	{$vo.dtitle}
+                    	<else/>
+                    	{$vo.title}
+                    </if>
+                    </a></td>
+                    
+
+                    <td style="color: red;">{$vo.coupon_price}</td>
+                    <td>
+                    	<php>
+                    		 $pre_status = 0;
+                           
+                            foreach($pre_type as $vals){
+                                if($vals['pre_name'] == $pre_type){
+                                    echo $pre_type[array_search($vo.preferential_type,$vals)]['pre_cname'];
+                                    $pre_status = 1;
+                                    break;
+                                }
+                            }
+                             if($pre_status == 0){
+                                echo "无活动";
+                            }
+                    	</php>
+                    </td>
+
+                    <td>{$vo.add_time|date="Y-m-d H:i:s",###}</td>
+                    <td>{$vo.uname}</td>
+                    <php>$status=array("underway"=>"审核通过","0"=>"待审核","-1"=>"审核不通过","2"=>"待审核");</php>
+                    <td>{$status[$vo['status']]}</td>
+                    <td>
+                        <p> <a href="{:U('AdminCuntao/item_edit',array('id'=>$vo['num_iid']))}">编辑</a> </p>
+                        <p> <a href="{:U('AdminCuntao/item_delete',array('id'=>$vo['num_iid']))}" class="js-ajax-dialog-btn" data-msg="你确定执行该操作吗？" class="js-ajax-delete">删除</a> </p>
+						<p class="copy_text"> <a style="cursor:hand" data="{$vo.num_iid}">复制文案</a></p>
+						<div class="copyContent" style="position:absolute;top:-10000px;">
+							<php>
+								$dataoke_model = M('CunItems');
+								$item = $dataoke_model->where(array("id"=>$vo['id']))->find();
+								if($item){
+									echo "<img src=\"http://cunimg.2690.cn/qr/" .$item['num_iid'] .".jpg\">";
+								}
+							</php>
+							<div>
+							【天猫】{$vo.dtitle}<br>
+							【价格】原价{$vo.price}元  券后{$vo.coupon_price}元包邮<br>
+							【推荐理由】{$vo.intro}<br>
+							------------分割线-----------<br>
+							长按复制这条信息 {$vo.token} ,打开【手机淘宝乡村版】即可领券并下单
+							
+							</div>
+						</div>
+						<if condition="0">						
+						echo "优惠券{$vo['quan_surplus']+$vo['quan_receive']}张";
+						 </if>
+						
+					</td>
+                </tr>
+            </foreach>
+            </tbody>
+
+        </table>
+        <div class="pagination">{$Page}</div>
+</div>
+<script src="__PUBLIC__/js/common.js"></script>
+<script>
+	
+	$('.pagination a').click(function(){ 
+                    
+            var tmpHref = $(this).attr('href');
+            tmpHref = tmpHref.replace(/\/selCon\//,"");
+            $("#form").attr("action", tmpHref);
+            $("#form").submit();
+                    
+            return false; 
+        });
+</script>
+</body>
+</html>

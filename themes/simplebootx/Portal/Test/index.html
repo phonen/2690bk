@@ -1,0 +1,17 @@
+
+<div>
+<php>echo count($fee);</php>
+<script src="js/jquery.js"></script>
+	<foreach name="fee" item="fee">
+		<div><a href="{$fee.url}" target="_blank"><span class="haha" >{$fee.id}</span></a></div>
+	</foreach>
+	<foreach name="ac" item="ac">
+		{$ac}<br>
+	</foreach>
+
+</div>
+<script>
+	$(function(){
+		$(".haha").trigger("click");
+	})
+</script>

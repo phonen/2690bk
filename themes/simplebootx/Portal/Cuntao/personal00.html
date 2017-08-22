@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://www.2690.cn/login -->
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="Keywords" content="www.2690.cn">
+		<meta name="Description" content="www.2690.cn">
+		<title>www.2690.cn</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="css/quan_common.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/log.css">
+		<link rel="stylesheet" type="text/css" href="css/account-manage.css">
+		<link rel="stylesheet" type="text/css" href="css/admin_login.css">
+		<script src="js/jquery.js"></script>
+		<script src="js/dtk_head.js"></script>
+		<style>
+			#login_btn_wraper {
+				text-align: center;
+			}
+			
+			#login_btn_wraper .tips_success {
+				color: #fff;
+			}
+			
+			#login_btn_wraper .tips_error {
+				color: #DFC05D;
+			}
+			
+			#login_btn_wraper button:focus {
+				outline: none;
+			}
+		</style>
+		<script>
+			if(window.parent !== window.self) {
+				document.write = '';
+				window.parent.location.href = window.self.location.href;
+				setTimeout(function() {
+					document.body.innerHTML = '';
+				}, 0);
+			}
+		</script>
+		<script type="text/javascript" src="js/ajaxForm.js"></script>
+		<script type="text/javascript" src="js/artDialog.js"></script>
+		<script src="js/dtk_head.js"></script>
+
+		<script>
+			var viewHost = window.location.href.split(".")[1];
+		</script>
+		<link rel="stylesheet" href="css/layer.css" id="layui_layer_skinlayercss">
+
+	</head>
+
+	<body>
+		<!--微信二维码-->
+		<div id="WeChat-code-bg">
+			<div>
+				<img id="WeChat-code-img" style="display: none;" src="images/WeChat-code1.gif" />
+				<img id="WeChat-code-close" style="display: none;" src="images/close.png" />
+			</div>
+		</div>
+		<div class="dtk-head clearfix">
+			<div class="head-top">
+				<div class="head-top-main">
+					<div class="head-top-left clearfix">
+						<span class="dtk-info fl">专注单品，极致转化！</span>
+						<div id="header_login" class="fl">
+							<div class="login-register">
+								<if condition="$user.user_login eq ''">
+								<a href="?a=login" class="login">登录</a> |
+								<a href="?a=login_reg" class="register">注册</a>
+								<else /> {$user.user_login}
+								<a href="?a=changepwd" class="login">个人中心</a> |
+								<a href="?g=user&m=login&a=logout" class="register">退出</a>
+							</if>
+							</div>
+
+						</div>
+						<script>
+							$.ajax({
+								type: "get",
+								url: "/header",
+								dataType: "text",
+								async: false,
+								cache: false,
+								success: function(ret) {
+									$('#header_login').html(ret);
+								}
+							})
+						</script>
+					</div>
+					<div class="head-top-right">
+						<a href="/?a=about" target="_blank">关于我们</a>|
+						<a href="?a=help_test" target="_blank">使用帮助</a>|
+						<a class="WeChat-code" style="cursor: pointer;">加入微信</a>
+					</div>
+				</div>
+			</div>
+			<div class="head-search">
+				<div class="logo fl">
+					<a href="http://www.2690.cn"><span></span></a>
+				</div>
+				<div class="search fl">
+					<div class="select-area">
+						<span class="sear-select">
+标题 <i></i>
+</span>
+						<div id="xuan" class="hide sear-option">
+							<span class="cur" data-value="keyword">标题</span>
+							<span data-value="keyword_miaoshu">标题和文案</span>
+							<span data-value="spid">商品ID</span>
+						</div>
+					</div>
+					<div class="search-input" style="padding-left: 63px;">
+						<input id="keywords" name="keywords" placeholder="请输入搜索内容" value="" onkeydown="FSubmit(event.keyCode||event.which);" type="text">
+					</div>
+					<a id="search_a_tag" href="" class="search-submit fr" onclick="if($.trim(document.getElementById('keywords').value) == ''){return false;}this.href='/search/'+'?keywords='+encodeURIComponent(document.getElementById('keywords').value)+'&amp;xuan='+$('#xuan .cur').data('value');"><span></span></a>
+				</div>
+				<div class="head-search-right fr"></div>
+			</div>
+
+			<!--导航----开始-->
+			<div class="head-nav">
+				<div class="nav-main">
+					<div class="nav-list clearfix">
+						<ul>
+							<li>
+								<a href="?a=qlist_ctgy">村淘高佣</a>
+							</li>
+							<li>
+								<a href="?a=qlist">领券直播</a>
+							</li>
+							<li>
+								<a href="?m=List&a=news&id=1">村淘圈</a>
+							</li>
+							<li>
+								<a href="?a=pic">一键制图</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+			<!--导航----结束-->
+
+		</div>
+		<div class="count_main">
+			<table width="1198" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="dfe7eb" style="margin-top:40px;font-family:&#39;微软雅黑&#39;;">
+				<tbody>
+					<tr>
+						<td width="190" bgcolor="#FFFFFF" style="color:#797979; font-size:14px;" valign="top">
+							<div class="left_user_index">
+								<a href="?a=personal">个人首页</a>
+							</div>
+							<div class="left_title_link">
+								<a class="u_left_type" href="" style="color:#348EC6; display:none">高佣精选</a>
+							</div>
+							<div class="ucenter_left_title">
+								<a href="?a=personal_data">资料设置</a>
+							</div>
+							<div class="ucenter_left_title">
+								<a href="?a=personal_password">修改密码</a>
+							</div>
+							<div class="ucenter_left_title">
+								<a href="?a=personal_put">放单中心</a>
+							</div>
+							<div class="ucenter_left_title">
+								<a href="?a=personal_pid">PID管理</a>
+							</div>
+						</td>
+						<td bgcolor="#FFFFFF" valign="top">
+							<div style="font-size:21px; text-align:center;color:#737373; margin-top:20px;">欢迎你，{$user.user_login}</div>
+							<div style="width:560px; margin:auto; margin-top:45px;border-top:solid #d5dfe5 1px; padding:35px;">
+								<div style="font-size:17px; text-align:left; line-height:40px; color:#3b8dc0;">
+									用户名：{$user.user_login} <br/> 邮箱地址：{$user.user_email} <br/> 注册时间：{$user.create_time} <br/> 手机号： {$user.mobile} <br/>
+									<if condition="($user['qq'])">QQ：{$user.qq} <br/></if>
+
+									<php>
+										if($user['earn']){ $num = $user['earn'] - 1; echo "目前收入：".$type['earn'][$num]['earn_name']."<br>"; } if($user['team_type']){ $num = $user['team_type'] - 1; echo "团队类型：".$type['team'][$num]['team_name']."<br>"; } if($user['work_type']){ $num = $user['work_type'] - 1; echo "工作状态：".$type['work'][$num]['work_name']."<br>"; }
+									</php>
+
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="notify-login" style="width: 0;height: 0"></div>
+		<div style="background:#fff;" class="footer">
+			<div style="width:1200px; overflow:hidden; margin:auto;padding-top:10px;background:#fff">
+				<div class="bottome_last">
+					<script type="text/javascript">
+						var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+						document.write(unescape("%3Cspan id='cnzz_stat_icon_1261869629'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261869629%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+					</script>
+					© CopyRight 2011-2017&nbsp; www.2690.cn &nbsp; 闽ICP备16037554号-1
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

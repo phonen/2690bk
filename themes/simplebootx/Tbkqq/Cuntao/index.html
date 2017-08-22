@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="css/slide.css">
+
+<link href="css/quan_common.css" rel="stylesheet" type="text/css">
+
+<link href="css/all.css" rel="stylesheet" type="text/css">
+<script src="js/jquery.min.js"></script>
+<title>2690联盟（Dataoke.com）- 做2690，享大数据！</title>
+<meta name="keywords" content="2690联盟,2690,淘宝客,淘宝客推广,淘宝客运营,淘宝客数据,淘客联盟,鹊桥商品,领券下单,淘宝客干货,淘大客">
+<meta name="description" content="2690联盟dataoke.com专注优质商品内容打造，为广大淘宝客提供精选商品，节省时间及人力成本！联盟本着专注单品、极致转化的使命，提供业务包括领券优惠精选、鹊桥精选，以及淘宝客运营干货，帮助大家实现利益最大化，同时帮助淘宝卖家打造爆款，带动销售！">
+<link rel="stylesheet" href="css/layer.css" id="layui_layer_skinlayercss" style="">
+<style type="text/css">
+body,td,th {
+	font-family: Simsun;
+}
+</style>
+<link href="css/quan_detail.css" rel="stylesheet" type="text/css" />
+<link href="css/quan_index.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<script>
+ function is_exit(url,words)
+{
+if (confirm(words))
+window.location = url ;
+}
+</script>
+<!--头部----开始-->
+<div class="dtk-head clearfix">
+<div class="head-top">
+<div class="head-top-main">
+<div class="head-top-left clearfix">
+<span class="dtk-info fl">专注单品，极致转化！</span>
+<div id="header_login" class="fl"> 
+<div class="login-register">
+<a href="/login" class="login">登录</a>
+<a href="/login/?user=reg" class="register">注册</a>
+</div>
+<div class="login-in ">
+<span class="login-line">|</span>
+<div class="login-profile">
+<span>个人中心<i></i></span>
+<div class="login-option">
+<a href="/ucenter/favorites_quan.asp" target="_blank">我的推广</a>
+<a href="/cms" target="_blank">CMS网站设置</a>
+</div>
+</div>
+</div>
+</div>
+<script>
+					$.ajax({
+						type: "get",
+						url: "/header",
+						dataType: "text",
+						async: false,
+						cache: false,
+						success: function (ret) {
+							$('#header_login').html(ret);
+						}
+					})
+				</script>
+</div>
+<div class="head-top-right">
+<a href="http://www.dataoke.com/hz_tk/" target="_blank">招商合作入驻</a>|
+<a href="http://www.dataoke.com/open/sj/" target="_blank">商家合作</a>|
+<a href="http://www.dataoke.com/help/?id=1" target="_blank">使用帮助</a>|
+<a href="http://www.dataoke.com/info/?id=5" target="_blank">加入2690QQ群</a>
+</div>
+</div>
+</div>
+<div class="head-search">
+<div class="logo fl">
+<a href="#">
+<span></span>
+</a>
+</div>
+<div class="search fl">
+<div class="select-area">
+<span class="sear-select">
+标题
+<i></i>
+</span>
+<div id="xuan" class="hide sear-option">
+<span class="cur" data-value="keyword">标题</span>
+<span data-value="keyword_miaoshu">标题和文案</span>
+<span data-value="spid">商品ID</span>
+</div>
+</div>
+<div class="search-input" style="padding-left: 63px;">
+<input id="keywords" name="keywords" placeholder="请输入搜索内容" value="" onkeydown="FSubmit(event.keyCode||event.which);" type="text">
+</div>
+<a id="search_a_tag" href="" class="search-submit fr" onclick="if($.trim(document.getElementById('keywords').value) == ''){return false;}this.href='/search/'+'?keywords='+document.getElementById('keywords').value+'&amp;xuan='+$('#xuan .cur').data('value');"><span></span></a>
+</div>
+<div class="head-search-right fr"></div>
+</div>
+
+
+<!--导航----开始-->
+<div class="head-nav">
+<div class="nav-main">
+<div class="nav-list clearfix">
+<ul>
+<li class="no-border cur">
+<a href="index.html/">主页</a>
+</li>
+<li>
+<a href="qlist.html">领券直播</a>
+</li>
+<li>
+<a href="qlist_ctgy.html">村淘高佣</a>
+</li>
+<li>
+<a href="/shoufa">首发<i class="sf_new"></i></a>
+</li>
+<li>
+<a href="http://www.dataoke.com/cms">CMS网站下载</a>
+</li>
+<li>
+<a href="/zhushou">转链助手</a>
+</li>
+</ul>
+</div>
+<div class="nav-right">
+<input id="get_cate_url" value="/getCate/?type=index" type="hidden">
+<input id="save_qing" value="/syncDTK" type="hidden">
+<input id="reset_url" value="/reset" type="hidden">
+<input id="jude_login_url" value="/online" type="hidden">
+</div>
+</div>
+</div>
+<!--导航----结束-->
+
+</div>
+
+<!--头部----结束-->
+
+
+
+<!--右侧开始导航----开始-->
+<div class="side-bar" style="left: 1300px;">
+<div class="side-bar-list">
+<div class="side-bar-herald side-bar-item">
+<a href="/help/?id=5&amp;cid=397" target="_blank">
+<i></i>
+<em>客服中心</em>
+</a>
+</div>
+<div class="side-bar-feedback side-bar-item">
+<a href="http://www.dataoke.com/fk/?type=1" target="_blank">
+<i></i>
+<em>意见反馈</em>
+</a>
+</div>
+<div class="side-bar-favorite side-bar-item">
+<a href="/ucenter/favorites_quan.asp?spm=dtk" target="_blank">
+<i></i>
+<em>我的收藏</em>
+</a>
+</div>
+<div class="side-bar-top side-bar-item">
+<a href="javascript:void(0)" class="scrollTop">
+<i></i>
+<em>返回顶部</em>
+</a>
+</div>
+</div>
+</div>
+<!--右侧开始导航----结束-->
+
+
+<script src="js/dtk_head.js"></script>
+
+<!--内容区----开始-->
+<div style="background:#d3e2e5;">
+<div style=" height:391px;background:url(images/TB2.jpg) center no-repeat; display:block;"></div>
+<div style=" height:481px;background:url(images/TB1.jpg) center no-repeat; display:block;"></div>
+<div style=" height:328px;background:url(images/TB3.jpg) center no-repeat; display:block;"></div>
+
+</div>
+<!--内容区----结束-->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/layer.js"></script>
+<script src="js/u_func.js"></script>
+
+<!--网站底部----开始-->
+<div style="background:#59a4d1;overflow:hidden; font-family:'微软雅黑';">
+<div style="width:1200px; overflow:hidden; margin-top:10px; margin:auto;">
+<div style="1074px; height:82px; background: url(images/bottom_say.png)no-repeat right; margin-top:20px;"></div>
+<div class="bottome_last ">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257179126'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257179126%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1257179126"><a href="http://www.cnzz.com/stat/website.php?web_id=1257179126" target="_blank" title="站长统计"><img src="http://icon.cnzz.com/img/pic1.gif" vspace="0" hspace="0" border="0"></a></span><script src=" http://s95.cnzz.com/z_stat.php?id=1257179126&amp;show=pic1" type="text/javascript"></script><script src="http://c.cnzz.com/core.php?web_id=1257179126&amp;show=pic1&amp;t=z" charset="GB2312" type="text/javascript"></script>&nbsp;&copy; CopyRight 2011-2017&nbsp; 2690联盟&nbsp;dataoke.com &nbsp; 蜀ICP备15025833号 <a href="#" target="_blank" class="link_tong" style="color:#FFFFCC; margin-left:20px;">开放数据API接口</a>
+</div>
+</div>
+</div>
+<!--网站底部----结束-->
+
+</body>
+</html>

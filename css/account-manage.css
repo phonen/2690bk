@@ -1,0 +1,137 @@
+/* var */
+/* share */
+.pointer {
+  cursor: pointer;
+}
+.breakTxt {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+body {
+  background: none;
+}
+button.get-phone-verify {
+  border: 1px solid #cdcdcd;
+  background-color: #f7f7f7;
+  height: 40px;
+  line-height: 40px;
+  float: right;
+  width: 125px;
+  border-radius: 2px;
+  color: #666;
+  cursor: pointer;
+  outline: none;
+}
+button.get-phone-verify img {
+  width: 100%;
+}
+button.get-phone-verify-fn:hover {
+  border-color: #209f3a;
+  background-color: #209f3a;
+  color: #fff;
+}
+button.get-phone-verify-fn:active {
+  border-color: #2c90bf;
+  background-color: #2c90bf;
+  color: #fff;
+}
+.account-main {
+  width: 100%;
+  min-height: 653px;
+  overflow: hidden;
+  border-top: 1px solid #c0c0c0;
+  background: #f2ecec;
+  margin-bottom: -20px;
+  padding-top: 10px;
+}
+.account-main .content-box {
+  height: 599px;
+  position: relative;
+}
+.account-main .content-box .log-left-bigimg {
+  position: absolute;
+  top:172px;
+  left:92px;
+  width: 600px;
+  height:466px;
+  background: url(../images/left-big.png) center no-repeat;
+}
+.account-main .log-reg-wrapper {
+  box-shadow: 0 4px 15px rgba(14, 57, 77, 0.17);
+}
+.register-form .form-input {
+  margin-bottom: 20px;
+}
+.register-form .form-input > input {
+  width: 295px;
+  padding: 9px 20px;
+  border-color: #e1e1e1;
+}
+.register-form .form-input > input:focus {
+  border-color: #209f3a;
+}
+.register-form .form-input > label {
+  left: 25px;
+}
+.register-form .verify input,
+.register-form .verify label {
+  width: 156px;
+}
+.forget-pwd .get-phone-area {
+  display: none;
+}
+.forget-pwd .get-phone-verify {
+  width: 160px;
+  height: 50px;
+  line-height: 50px;
+}
+.forget-pwd .form-input .test-tips {
+  top: 55px;
+}
+footer .footer-content {
+  background-color: #fff;
+}
+footer .footer-content .wrapper p {
+  color: #a2a2a2;
+}
+footer .footer-content .wrapper p a {
+  color: #575757;
+  transition: color .3s;
+}
+footer .footer-content .wrapper p a:hover {
+  color: #209f3a;
+}
+.footer-box p {
+  color: #777;
+}
+
+
+
+.count_main {
+  width: 100%;
+  min-height: 653px;
+  overflow: hidden;
+  border-top: 1px solid #c0c0c0;
+  background: #fff;
+  margin-bottom: -20px;
+  padding-top: 10px;
+  text-align:center;
+}
+
+ .left_user_index a{ color:#888787;}
+ .left_user_index{width:100%; height:45px; border-bottom:solid #dfe7eb 1px; line-height:45px; text-align:center; }
+  .left_user_index a:hover{ text-decoration:underline;}
+ .u_left_type{ float:left; width:70px; color:#888787; font-size:12px; text-align:left; padding:15px 0px 15px 20px;}
+ .ucenter_left_title{ overflow:hidden;width:100%; height:45px; border-bottom:solid #dfe7eb 1px; line-height:45px; text-align:center; background:#f1f5f7;}
+ .ucenter_left_title a{ color:#888787;}
+.u_content_title {
+    float: left;	 
+    font-size: 16px;
+    color: #3C99D3;
+    border-left: solid #3C99D3 4px;
+    padding-left: 10px;
+
+
+

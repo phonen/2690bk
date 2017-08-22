@@ -1,0 +1,86 @@
+<admintpl file="header" />
+<style>
+	li {
+		display:list-item;
+		list-style-type:circle;
+		font-size: 18px;
+	}
+</style>
+<script>
+	$(function() {
+		$('#asd').click(function() {
+			$(this).html('asd')
+		})
+	})
+</script>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+	<div style="margin: 10px 20px;padding: 0px 30px 30px 30px;border: 1px solid #337ab7;border-radius: 6px;">
+		<h3 style="color: #485dcb;">操作规则：</h3>
+		<ol>
+			<li>初步设置村淘的商品，须在cun.taobao.com中查询到商品ID</li>
+			<li>设置过的商品，后续更改佣金，即时生效</li>
+			<li>天猫商家无需申报村淘，大部分商品都可以走村淘渠道；淘宝商家需申报村淘后才可以放单（不满一个钻，或是开店时长不满一年，无法申报村淘）</li>
+		</ol>
+	</div>
+	<div style="margin: 10px 20px;padding: 0px 30px 30px 30px;border: 1px solid #337ab7;border-radius: 6px;">
+		<h3 style="color: #485dcb;"><img src="./images/backstage-trumpet.png"/>最新消息：</h3>
+		<p style="font-size: 18px;">
+			2690平台全新升级，即日起放单商品只有在通过审核后才能展示在前端商品页面，请认真填写商品信息确认佣金无误后再提交，我们也会加快审核速度，保证大家提交的商品都能及时上线！
+		</p>
+	</div>
+	<div class="row" style="margin: 10px 20px;padding: 0px 30px 30px 30px;border: 1px solid #337ab7;border-radius: 6px;padding-top: 25px;">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+			<div style="height:100px;border-radius: 50px;border: 1px solid #bbb;text-align: center;width: 100px;">
+				<div style="height:90px;border-radius: 45px;overflow: hidden;text-align: center;width: 90px;margin: 4px 0 0 4px;">
+					<img style="height: 100px;width: 100px;" src="./images/admin_login_bg.png" />
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+			<p>欢迎您，{$user.user_login}！</p>
+			<p>
+				<span class="label label-primary">ID：{$user.id}</span>
+			</p>
+			<p>最后登录时间：{$user.last_login_time} / 最后登录IP：{$user.last_login_ip}</p>
+		</div>
+
+	</div>
+	<div class="row" style="margin:auto 10px;">
+		<div class="col-lg-6 col-md-6 col-sm-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">个人信息专区</h3>
+				</div>
+				<div class="panel-body">
+					<p>账户：<span>{$user.mobile}</span></p>
+					<p>QQ号：<span>{$user.qq}</span></p>
+					<p>注册时间：<span>{$user.create_time}</span></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">产品信息专区</h3>
+				</div>
+				<div class="panel-body">
+					<p>产品发布量：<span>{$fabu}</span></p>
+					<p>审核中数量：<span>{$shenhe}</span></p>
+					<p>已通过数量：<span class="pass_num"></span></p>
+				</div>
+				<script>
+					$(function() {
+						$('.pass_num').html(parseInt({$fabu} + '-' + {$shenhe}));
+					})
+				</script>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

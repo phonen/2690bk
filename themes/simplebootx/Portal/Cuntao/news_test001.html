@@ -1,0 +1,546 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0033)http://www.dataoke.com/help/?id=2 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link href="css/quan_common.css" rel="stylesheet" type="text/css">
+<link href="css/all.css" rel="stylesheet" type="text/css">
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/lrtk.js"></script>
+<title>村淘村-www.2690.cn</title>
+<style type="text/css">
+.caidan a:link{  color:#333333; text-decoration:none;}
+.caidan a:visited{  color:#333333;}
+.caidan a:hover{  color:#DC492D; text-decoration:underline;}
+
+.xianshi a:link{ color:#3399FF;text-decoration:none;}
+.xianshi a:visited{  color:#3399FF;}
+.xianshi a:hover{  color:#0777B0; text-decoration:underline;}
+
+.fl_bg{width:100%; height:60px; border-bottom:dotted #CCCCCC 1px; line-height:60px; text-align:center;}
+.fl_bg_on{width:100%; height:60px; border-bottom:dotted #CCCCCC 1px; line-height:60px; text-align:center;}
+.help_info p{ margin-top:20px;}
+</style><link rel="stylesheet" href="js/layer.css" id="layui_layer_skinlayercss">
+<style type="text/css">
+body,td,th {
+	font-family: Simsun;
+}
+</style>
+</head>
+<body>
+<script>
+ function is_exit(url,words)
+{
+if (confirm(words))
+window.location = url ;
+}
+</script>
+<!--微信二维码-->
+	<div id="WeChat-code-bg">
+		<div>
+			<img style="margin-top:5%;height: 512px" src="images/WeChat-code1.gif"/>
+			<img id="WeChat-code-close" src="images/close.png"/>
+		</div>
+	</div>
+<div class="dtk-head clearfix">
+<div class="head-top">
+<div class="head-top-main">
+<div class="head-top-left clearfix">
+<span class="dtk-info fl">专注单品，极致转化！</span>
+<div id="header_login" class="fl"> 
+<div class="login-register">
+<if condition="$user.user_login eq ''">
+<a href="?a=login" class="login">登录</a>   |
+<a href="?a=login_reg" class="register">注册</a>
+<else /> {$user.user_login} <a href="?a=changepwd" class="login">个人中心</a>    | <a href="?g=user&m=login&a=logout" class="register">登出</a>  </if>
+
+</div>
+
+</div>
+<!--div class="topday">日访客人数：<span>(1235)</span>人</div -->
+<script>
+					$.ajax({
+						type: "get",
+						url: "/header",
+						dataType: "text",
+						async: false,
+						cache: false,
+						success: function (ret) {
+							$('#header_login').html(ret);
+						}
+					})
+				</script>
+</div>
+<div class="head-top-right">
+<a href="?a=about" target="_blank">关于我们</a>|
+<a href="?a=help_test" target="_blank">使用帮助</a>|
+<a class="WeChat-code" style="cursor: pointer;">加入微信</a>
+</div>
+</div>
+</div>
+<div class="head-search">
+<div class="logo fl">
+<a href="http://www.2690.cn/">
+<span></span>
+</a>
+</div>
+<div class="search fl">
+<div class="select-area">
+<span class="sear-select">
+标题
+<i></i>
+</span>
+<div id="xuan" class="hide sear-option">
+<span class="cur" data-value="keyword">标题</span>
+<span data-value="keyword_miaoshu">标题和文案</span>
+<span data-value="spid">商品ID</span>
+</div>
+</div>
+<div class="search-input" style="padding-left: 63px;">
+<input id="keywords" type="text" name="keywords" placeholder="请输入搜索内容" value="" onkeydown="FSubmit(event.keyCode||event.which);">
+</div>
+<a id="search_a_tag" href="" class="search-submit fr" onclick="if($.trim(document.getElementById(&#39;keywords&#39;).value) == &#39;&#39;){return false;}this.href=&#39;/search/&#39;+&#39;?keywords=&#39;+document.getElementById(&#39;keywords&#39;).value+&#39;&amp;xuan=&#39;+$(&#39;#xuan .cur&#39;).data(&#39;value&#39;);"><span></span></a>
+</div>
+<div class="head-search-right fr"></div>
+</div>
+<div class="head-nav">
+<div class="nav-main">
+<div class="nav-list clearfix">
+<ul>
+<li>
+<a href="?a=qlist_ctgy">村淘高佣</a>
+</li>
+<li>
+<a href="?a=qlist">领券直播</a>
+</li>
+<!--<li>
+<a href="?a=top_tui">2690琅琊榜</a>
+</li>
+<li>
+<a href="?a=video">视频商品</a>
+</li>-->
+<li>
+<a href="?m=List&a=news&id=1">村淘圈</a>
+</li>
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+<div class="side-bar" style="bottom: 30%;width: 100px;">
+			<div class="side-bar-list">
+				<!--意见反馈-->
+				<a href="?a=feedback" style="cursor: pointer;">
+					<div class="side-bar-feedback side-bar-item" style="width: 36px;right: -64px;">
+						<img title="意见反馈" src="images/label-right-email.png" />
+						<p class="p-dis" style="display:none;">意见反馈</p>
+					</div>
+				</a>
+				<!--QQ联系-->
+				<!--<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=800808199&site=qq&menu=yes">
+					<div class="side-bar-herald side-bar-item" style="width: 36px;right: -64px;">
+						<img style='display: inline-block;' title="点击QQ联系" src="images/label-right-qq.png" />
+						<p class="p-dis" style="display:none;">QQ交谈</p>
+					</div>
+				</a>-->
+				<!--微信二维码-->
+				<a style="cursor: pointer;">
+					<div class="side-bar-favorite side-bar-item WeChat-code" style="width: 36px;right: -64px;">
+						<img title="点击扫描微信" src="images/label-right-wechat.png" />
+						<p class="p-dis" style="display:none;">扫描微信</p>
+					</div>
+				</a>
+				<!--返回顶部-->
+				<a href="javascript:void(0)" class="scrollTop">
+					<div class="side-bar-top side-bar-item" style="width: 36px;right: -64px;">
+						<img title="返回顶部" src="images/label-right-returntop.png" />
+						<p class="p-dis" style="display:none;">返回顶部</p>
+					</div>
+				</a>
+			</div>
+		</div>
+<div id="playBox">
+    <div class="pre"></div>
+    <div class="next"></div>
+    <div class="smalltitle">
+      <ul>
+        <li class="thistitle"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <ul class="oUlplay">
+       <li><img src="images/1.jpg" /></li>
+       <li><img src="images/2.jpg" /></li>
+       <li><img src="images/3.jpg"/></li>
+       <li><img src="images/4.jpg"/></li> 
+       <li><img src="images/5.jpg"/></li>
+       <li><img src="images/6.jpg"/></li>
+    </ul>
+  </div>
+<div class="helpnews">
+  <div class="helpnews_txt">  
+    <div class="helpnews_txt_top">
+      <h1>全网村淘高佣的2690平台，村小二最喜欢的推广工具</h1>
+    2017-04-15  来源：本站 责任编辑：2690  阅读(153) </div>
+    <div class="helpnews_txt_cont">
+    <p>   
+        &nbsp;&nbsp;&nbsp;&nbsp;现在随着一些大型导购网站或转型电商，或垂直布局，一方面导购市场竞争日渐焦灼，但是另一方面，给原本处于第二梯队的中小型网站带来了新机遇，被称为最有效的村小二推广工具2690平台就紧抓机遇开启了新的篇章。<br/>
+
+  &nbsp;&nbsp;&nbsp;&nbsp;在导购平台集体转型或升级的大趋势里，普冠博尔2690平台并不着急转型，而是坚持“口碑模式”，整合全网资源，提供优质服务。但2690并不固守成规，毅然选择在定位上进行强势升级，通过和商家、招商淘客合作，经过严格的质检、选择，把控产品质量，最终让平台上的商家和村小二都能获取长期利益，建立长久合作。<br/>
+ <h2> 数据积淀，选货发力</h2>
+&nbsp;&nbsp;&nbsp;&nbsp;专注单品，极致转化，是2690平台的目标。在谈到和其他同类型网站的最大差异时，2690平台的回答是“选品与对象”。2690平台希望用品质为更多的村小二服务，从而建立平台口碑。所以对于商品的把握，一方面，网站通过抽检验货对入驻商家的商品进行质量把关。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp;2690平台现在能留住大批的村淘商家，获得商家的支持，很大的原因是2690会站在他们的角度考虑问题，根据店铺运营数据给出相应的指导，使他们能更好的配合2690平台的专题活动，从而让整体销售数据有一个更好的提升和转化。<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;所以秉承着扶持商家店铺，专注村小二推广服务的理念，2690平台不仅和村淘商家建立了长期合作的关系，还和村小二保持着亲密的联系。如今，平台日趋成熟，普冠博尔团队正在围绕如何做好平台推广，做好平台口碑等方式，来为更多的村淘商家与村小二提供优质服务，以谋求2690平台更长远的发展。<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/QQ035.jpg" width="507" height="265" /><br/>
+      
+    </p>
+   </div>
+   </div>
+  <div class="helpnews_feilei">
+     上一篇：<a href="#"></a>
+   <br/>下一篇：<a href="#"></a> </div>
+   <div style="padding-left:50px; line-height:40px;height:80px;" id="ckepop">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_weixin">微信</a> 
+<a href="http://www.jiathis.com/share"  class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a> </div>
+   <div class="liuyan">
+      <div class="liuyan_txt">
+       <div id="mysteve">
+           <h2>2690琅琊榜mysteve</h2>
+           <span>打造实时销量榜、全天销量榜，助力于村小二抓住热点趋势打造实时销量榜、全天销量榜，助力于村小二抓住热点趋势</span>
+            <br /><i> 1小时前</i>
+            <div id="add">
+              <div class="add_txt1">
+                   <ol>
+                  <form method="POST" enctype="multipart/form-data" action="upload.php">
+                  <input style="border:none; background:none; margin-left:-20px; margin-top:-5px;" type="button" id="submit" onclick="add();add1();button();" value="回复"/>
+                  <div id="te"> </div>
+                  <div id="bu" style="margin-left:150px; margin-top:10px;"> </div>
+                  </form>
+                  </ol>
+                  
+                 <script type="text/javascript">
+				function add()
+				{
+				 //包含所有文件域的DIV
+				 var div = document.getElementById('te');
+				  
+				 //文件域
+				 var input = document.createElement("textarea");
+				 //input.id = 'input';
+				 input.rows = 5 ;
+				 input.cols = 50 ;
+				 //添加
+				 div.appendChild(input);
+				 }
+				  
+				 function add1()
+				 {
+				var div = document.getElementById('bu');
+				var input = document.createElement("input");
+				input.type='submit';
+				input.value='发表';
+				//添加
+				  div.appendChild(input);
+				 }
+				  function button()
+				  {
+				document.getElementById("submit").style.display="none";
+				//这里按钮隐藏起来
+				  }
+				</script>
+                  <script>
+    window.onload = function(){
+        var ms = document.getElementById("mysteve");
+        var add = document.getElementById("add");
+        ms.onmouseover = function(){
+            add.style.display = "block";
+        };
+        ms.onmouseout = function(){
+            add.style.display = "none";
+        };
+    };
+</script>
+              </div>
+              <div class="add_txt2"><a href="http://www.baidu.com" target="_blank">点赞</a></div>
+              <div class="add_txt3"><a href="http://www.baidu.com" target="_blank">举报</a></div>
+              </div>
+              <div class="add_txtd">10 赞</div>
+      </div>
+</div>
+      <div class="liuyan_txt">
+       <div id="mysteve">
+           <h2>2690琅琊榜mysteve</h2>
+           <span>打造实时销量榜、全天销量榜，助力于村小二抓住热点趋势打造实时销量榜、全天销量榜，助力于村小二抓住热点趋势</span>
+            <br /><i> 1小时前</i>
+            <div id="add">
+              <div class="add_txt1">
+                   <ol>
+                  <form method="POST" enctype="multipart/form-data" action="upload.php">
+                  <input style="border:none; background:none; margin-left:-20px; margin-top:-5px;" type="button" id="submit" onclick="add();add1();button();" value="回复"/>
+                  <div id="te"> </div>
+                  <div id="bu" style="margin-left:150px; margin-top:10px;"> </div>
+                  </form>
+                  </ol>
+                  
+                 <script type="text/javascript">
+				function add()
+				{
+				 //包含所有文件域的DIV
+				 var div = document.getElementById('te');
+				  
+				 //文件域
+				 var input = document.createElement("textarea");
+				 //input.id = 'input';
+				 input.rows = 5 ;
+				 input.cols = 50 ;
+				 //添加
+				 div.appendChild(input);
+				 }
+				  
+				 function add1()
+				 {
+				var div = document.getElementById('bu');
+				var input = document.createElement("input");
+				input.type='submit';
+				input.value='发表';
+				//添加
+				  div.appendChild(input);
+				 }
+				  function button()
+				  {
+				document.getElementById("submit").style.display="none";
+				//这里按钮隐藏起来
+				  }
+				</script>
+                  <script>
+    window.onload = function(){
+        var ms = document.getElementById("mysteve");
+        var add = document.getElementById("add");
+        ms.onmouseover = function(){
+            add.style.display = "block";
+        };
+        ms.onmouseout = function(){
+            add.style.display = "none";
+        };
+    };
+</script>
+              </div>
+              <div class="add_txt2"><a href="http://www.baidu.com" target="_blank">点赞</a></div>
+              <div class="add_txt3"><a href="http://www.baidu.com" target="_blank">举报</a></div>
+              </div>
+              <div class="add_txtd">10 赞</div>
+      </div>
+</div>
+      <div class="liuyan_txt">
+           <div id="mysteve">
+               <h2>2690琅琊榜mysteve</h2>
+               <span>打造实时销量榜、全天销量榜，助力于村小二抓住热点趋势打造实时销量榜、全天销量榜，助力于村小二抓住热点趋势</span>
+                <br /><i> 1小时前</i>
+                <div id="add">
+                  <div class="add_txt1">
+                       <ol>
+                      <form method="POST" enctype="multipart/form-data" action="upload.php">
+                      <input style="border:none; background:none; margin-left:-20px; margin-top:-5px;" type="button" id="submit" onclick="add();add1();button();" value="回复"/>
+                      <div id="te"> </div>
+                      <div id="bu" style="margin-left:150px; margin-top:10px;"> </div>
+                      </form>
+                      </ol>
+                      
+                     <script type="text/javascript">
+                    function add()
+                    {
+                     //包含所有文件域的DIV
+                     var div = document.getElementById('te');
+                      
+                     //文件域
+                     var input = document.createElement("textarea");
+                     //input.id = 'input';
+                     input.rows = 5 ;
+                     input.cols = 50 ;
+                     //添加
+                     div.appendChild(input);
+                     }
+                      
+                     function add1()
+                     {
+                    var div = document.getElementById('bu');
+                    var input = document.createElement("input");
+                    input.type='submit';
+                    input.value='发表';
+                    //添加
+                      div.appendChild(input);
+                     }
+                      function button()
+                      {
+                    document.getElementById("submit").style.display="none";
+                    //这里按钮隐藏起来
+                      }
+                    </script>
+                      
+                  </div>
+                  <div class="add_txt2"><a href="http://www.baidu.com" target="_blank">点赞</a></div>
+                  <div class="add_txt3"><a href="http://www.baidu.com" target="_blank">举报</a></div>
+                  </div>
+                  <div class="add_txtd">10 赞</div>
+          </div>
+    </div>
+      <div class="liuyan_txt">
+           <div id="mysteve">
+               <h2>2690琅琊榜mysteve</h2>
+               <span>打造实时销量榜、全天销量榜，助力于村小二抓住热点趋势打造实时销量榜、全天销量榜，助力于村小二抓住热点趋势</span>
+                <br /><i> 1小时前</i>
+                <div id="add">
+                  <div class="add_txt1">
+                       <ol>
+                      <form method="POST" enctype="multipart/form-data" action="upload.php">
+                      <input style="border:none; background:none; margin-left:-20px; margin-top:-5px;" type="button" id="submit" onclick="add();add1();button();" value="回复"/>
+                      <div id="te"> </div>
+                      <div id="bu" style="margin-left:150px; margin-top:10px;"> </div>
+                      </form>
+                      </ol>
+                      
+                     <script type="text/javascript">
+                    function add()
+                    {
+                     //包含所有文件域的DIV
+                     var div = document.getElementById('te');
+                      
+                     //文件域
+                     var input = document.createElement("textarea");
+                     //input.id = 'input';
+                     input.rows = 5 ;
+                     input.cols = 50 ;
+                     //添加
+                     div.appendChild(input);
+                     }
+                      
+                     function add1()
+                     {
+                    var div = document.getElementById('bu');
+                    var input = document.createElement("input");
+                    input.type='submit';
+                    input.value='发表';
+                    //添加
+                      div.appendChild(input);
+                     }
+                      function button()
+                      {
+                    document.getElementById("submit").style.display="none";
+                    //这里按钮隐藏起来
+                      }
+                    </script>
+                      
+                  </div>
+                  <div class="add_txt2"><a href="http://www.baidu.com" target="_blank">点赞</a></div>
+                  <div class="add_txt3"><a href="http://www.baidu.com" target="_blank">举报</a></div>
+                  </div>
+                  <div class="add_txtd">10 赞</div>
+          </div>
+    </div>
+      <div class="liuyan_txt">
+           <div id="mysteve">
+               <h2>2690琅琊榜mysteve</h2>
+               <span>打造实时销量榜、全天销量榜，助力于村小二抓住热点趋势打造实时销量榜、全天销量榜，助力于村小二抓住热点趋势</span>
+                <br /><i> 1小时前</i>
+                <div id="add">
+                  <div class="add_txt1">
+                       <ol>
+                      <form method="POST" enctype="multipart/form-data" action="upload.php">
+                      <input style="border:none; background:none; margin-left:-20px; margin-top:-5px;" type="button" id="submit" onclick="add();add1();button();" value="回复"/>
+                      <div id="te"> </div>
+                      <div id="bu" style="margin-left:150px; margin-top:10px;"> </div>
+                      </form>
+                      </ol>
+                      
+                     <script type="text/javascript">
+                    function add()
+                    {
+                     //包含所有文件域的DIV
+                     var div = document.getElementById('te');
+                      
+                     //文件域
+                     var input = document.createElement("textarea");
+                     //input.id = 'input';
+                     input.rows = 5 ;
+                     input.cols = 50 ;
+                     //添加
+                     div.appendChild(input);
+                     }
+                      
+                     function add1()
+                     {
+                    var div = document.getElementById('bu');
+                    var input = document.createElement("input");
+                    input.type='submit';
+                    input.value='发表';
+                    //添加
+                      div.appendChild(input);
+                     }
+                      function button()
+                      {
+                    document.getElementById("submit").style.display="none";
+                    //这里按钮隐藏起来
+                      }
+                    </script>
+                      
+                  </div>
+                  <div class="add_txt2"><a href="http://www.baidu.com" target="_blank">点赞</a></div>
+                  <div class="add_txt3"><a href="http://www.baidu.com" target="_blank">举报</a></div>
+                  </div>
+                  <div class="add_txtd">10 赞</div>
+          </div>
+    </div>
+    
+    <div class="txt">
+       
+    <textarea style="width:1100px;" name="" id="text"  rows="10"></textarea><br/>
+    <input style=" float:right; margin-top:20px;" type="button" value="确认发布" id="btn"/>
+    </div>
+    
+
+   
+   </div>
+   
+   
+  <!-- JiaThis Button BEGIN --> 
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1" charset="utf-8"></script>
+</div> <!-- JiaThis Button END -->
+<footer>
+		<div>
+			<!--微信二维码-->
+			<div style="display: inline-block;width: 300px;float: left;">
+				<div style="display: inline-block;width: 120px;">
+					<img style="margin-bottom: 8px;" src="images/WeChat-code1.png" />
+					<p>村淘优惠券公众号</p>
+				</div>
+				<div style="display: inline-block;width: 120px;">
+					<img style="margin-bottom: 8px;" src="images/WeChat-code2.jpg" />
+					<p>村淘圈公众号</p>
+				</div>
+			</div>
+			<!--帮助、链接-->
+			<div style="display: inline-block;">
+				<div class="link-a">
+					<a href="?a=help_test" class="sty-hover">使用帮助</a><span>|</span>
+					<a href="?a=business_cooperation" class="sty-hover">商家合作</a><span>|</span>
+					<a href="?a=feedback" class="sty-hover">问题反馈</a><span>|</span>
+					<a class="sty-hover">友情链接</a>
+				</div>
+				<div class="link-span">
+					<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261869629'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261869629%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+					<span>© CopyRight 2011-2017 www.2690.cn 闽ICP备16037554号-1 </span><span>|</span>
+					<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=35010302000312" target="_blank" class="sty-hover"><img src="images/beianbgs.png" width="24" height="24" /> 闽公网安备 35010302000312号</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+<script src="js/dtk_head.js"></script>
+</html>

@@ -1,0 +1,27 @@
+<admintpl file="header" />
+</head>
+<body>	<div class="wrap js-check-wrap">注意，通过点击<span style="color:red;">商品券链接</span>查看商品的优惠券，选择商品前端的选择框在删除按钮删除商品，本次删除操作将会被<span style="color:red;">记录在后台</span></div>
+	<div class="wrap js-check-wrap">
+		<form class="well form-search" method="post" action="{:U('Demo/dsh')}">
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>						<th width="70">选择</th>					
+						<th width="70">商品id</th>
+						<th width="70">商品券链接</th>
+						<th width="70">商品佣金</th>
+						<!--<th width="70">商品图片</th>-->
+					</tr>
+				</thead>				
+				<foreach name="items" item="vo">				
+					<tr>
+						<td><input type="checkbox" class="js-check" name="id[]" value="{$vo.num_iid}"></td>
+						<td><a href="{:U('AdminCuntao/item_edit',array('id'=>$vo['num_iid']))}">{$vo.num_iid}</a></td>
+						<td><a href="{$vo.click_url}" target="_blank">{$vo.title}</a></td>
+						<td>{$vo.commission_rate}%</td>
+						<!--<td><img src="{$vo.pic_url}_150x150.jpg"/></td>-->
+					</tr>
+				</foreach>
+			</table>			<input type="submit" class="btn btn-primary" value="删除" id="search"/>		</form>
+	</div>
+	</body>
+</html>

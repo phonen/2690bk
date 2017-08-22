@@ -1,0 +1,486 @@
+<admintpl file="header" />
+<style>
+	.table tr th {
+		text-align: center;
+	}
+	.span_remind{
+		font-size: 14px;
+		color: red;
+	}
+</style>
+</head>
+
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('AdminHaozhu/index')}" target="_self">商品管理</a></li>
+
+			<li class="active"><a href="javascript:;">添加商品</a></li>
+			
+			<li><a href="{:U('AdminHaozhu/person')}" target="_self">个人信息</a></li>
+		</ul>
+		<div style="position: relative;font-size: 23px;font-weight: bold;margin-bottom: 20px;">
+						<span style="color: red;">注意！ </span> 带<span style="color: red;">*</span>为必填项，购买截图可以后补全。
+						
+		</div>
+		<form action="{:U('AdminHaozhu/add_post')}" method="post" class="form-horizontal js-ajax-forms" enctype="multipart/form-data">
+			<div class="row-fluid">
+				<div class="span12">
+					<table class="table table-bordered">
+						<tr>
+							<th><span style="color: red;">* </span>活动类型：</th>
+							<td>
+								<select name="item[active_type]" id="active_type" style="height: 30px;" required>
+									<option value="普通活动">普通活动</option>
+									<option value="淘抢购">淘抢购</option>
+									<option value="聚划算">聚划算</option>
+								</select>
+							</td>
+							<th><span style="color: red;">* </span>产品类型：</th>
+							<td>								
+								<select name="item[item_type]" required>
+									<volist name="type" id="vo">									
+										<option value="{$vo.type_id}" id="type_{$vo.type_id}">{$vo.type_name}</option>	
+									</volist>										
+								</select>								
+								<span class="form-required">如果找不到适合的分类请选择‘全部’选项</span>							
+							</td>
+						</tr>
+
+						<tr>
+							<th><span style="color: red;">* </span>产品链接：</th>
+							<td>
+								<input type="text" name="item[num_iid]" id="num_iid" value="" style="width:500px;" placeholder="请输入产品链接" required/>
+							</td>
+							<th>
+								<span style="color: red;">* </span>包邮
+							</th>
+							<td >
+								<select name="item[postage_status]">
+									<option value="2">是</option>
+									<option value="1">否</option>
+								</select>
+							</td>
+						</tr>
+
+						<tr>
+							<th><span style="color: red;">* </span>优惠券链接：</th>
+							<td>
+								<input type="text" name="item[quan_url]" id="quan_url" value="" style="width:500px;" placeholder="请输入优惠券链接" required/>
+							</td>
+							<th><span style="color: red;">* </span>券后价：</th>
+							<td>
+								<input type="text" name="item[quan_price]" id="quan_price" value="" placeholder="请输入券后价" title="请输入数字" required/>
+								<span class="form-required"></span>
+							</td>
+						</tr>
+						<tr>
+							<th><span style="color: red;">* </span>优惠券数量：</th>
+							<td colspan="3">
+								<input type="text" name="item[quan_count]" id="quan_count" value="" style="width:500px;" placeholder="请输入优惠券数量" title="请输入数字" required/>
+							</td>
+						</tr>
+						<tr>
+							<th><span style="color: red;">* </span>产品短标题：</th>
+							<td>
+								<input type="text" name="item[item_dtitle]" id="item_dtitle" value="" style="width:500px;" placeholder="请输入商品标题" required/>
+							</td>
+							<th><span style="color: red;">* </span>服务费：</th>
+							<td>
+								<input type="text" name="item[service_charge]" id="service_charge" value="" placeholder="请输入服务费" title="请输入数字" required/>
+							</td>
+						</tr>
+						<tr>
+							<th><span style="color: red;">* </span>商家名称：</th>
+							<td>
+								<input type="text" name="item[vendor_name]" id="vendor_name" value="" placeholder="请输入商家名称" required/>
+								<span class="form-required" style="padding:10px 20px;font-weight:700;">联系方式：</span>
+								<input type="text" name="item[vendor_contact]" id="vendor_contact" value="" placeholder="请输入商家联系方式"/>
+							</td>
+							<th><span style="color: red;">* </span>店铺级别：</th>
+							<td>
+								<select name="item[vendor_lever]" id="vendor_lever" style="height: 30px;" required>
+									<option value="1心">1心</option>
+									<option value="2心">2心</option>
+									<option value="3心">3心</option>
+									<option value="4心">4心</option>
+									<option value="5心">5心</option>
+									<option value="1钻">1钻</option>
+									<option value="2钻">2钻</option>
+									<option value="3钻">3钻</option>
+									<option value="4钻">4钻</option>
+									<option value="5钻">5钻</option>
+									<option value="1蓝冠">1蓝冠</option>
+									<option value="2蓝冠">2蓝冠</option>
+									<option value="3蓝冠">3蓝冠</option>
+									<option value="4蓝冠">4蓝冠</option>
+									<option value="5蓝冠">5蓝冠</option>
+									<option value="1金冠">1金冠</option>
+									<option value="2金冠">2金冠</option>
+									<option value="3金冠">3金冠</option>
+									<option value="4金冠">4金冠</option>
+									<option value="5金冠">5金冠</option>
+									<option value="天猫">天猫</option>
+									<option value="c店">c店</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th><span style="color: red;">* </span>优惠券面值：</th>
+							<td>
+								<input type="text" name="item[quan]" id="quan" value="" placeholder="请输入优惠券面值" title="请输入数字" required/>
+								<span class="form-required"></span>
+							</td>
+							<th>推广活动成交量：</th>
+							<td>
+								<input type="text" name="item[add_count]" id="add_count" value="" placeholder="请输入现提交量" title="请输入数字"/>
+							</td>
+						</tr>
+						<tr>
+							<th><span style="color: red;">* </span>淘客佣金：</th>
+							<td>
+								<input type="text" name="item[taoke_rate]" id="taoke_rate" value="" placeholder="请输入淘客佣金" title="请输入数字" required/>%
+								<span class="form-required"></span>
+							</td><!-- 
+							<th><span style="color: red;"></span>村淘佣金：</th>
+							<td>
+								<input type="text" name="item[commite_rate]" id="commite_rate" value="" placeholder="请输入村淘佣金" title="请输入数字"/>%
+								<span class="form-required"></span>
+							</td> -->
+							
+						</tr>
+						<tr>
+							<th><span style="color: red;">* </span>推广时间：</th>
+							<td colspan="3">
+								<input type="date" name="item[action_starttime]" id="action_starttime" value="" required/> 到
+								<input type="date" name="item[action_endtime]" id="action_endtime" value="" required/>
+							</td>
+						</tr>
+						<!-- <tr>
+							<th><span style="color: red;">* </span>阿里妈妈推广地址：</th>
+							<td colspan="3">
+								<input type="text" name="item[almm_url]" id="almm_url" value="" style="width:500px;" placeholder="请输入阿里妈妈推广地址" required/>
+							</td>
+						</tr> -->
+						<tr>
+							<th><span style="color: red;">* </span>文案描述</th>
+							<td>
+								<textarea name="item[info]" style="width:600px;height:100px;"></textarea>
+							</td>
+						</tr>
+								
+
+					</table>
+					<input data-toggle="modal" data-target="#myModal" type="button" class="btn btn-small btn-primary" value="注意事项！" style="font-size: 20px;font-weight: bold;margin-bottom: 20px;padding: 10px;">
+				</div>
+				<div class="span5">
+						<table class="table table-bordered">
+							<tr>
+									<th>截图图集：</th>
+								</tr>
+								<tr>
+									<th>
+										<b><span style="color: red;">* </span>店铺截图：</b>
+										<span class="span_remind"></span>
+									</th>
+								
+									<td>
+										<div style="text-align: center;">
+											<input type="hidden" name="item[vendor_pic]" id="vendor_pic" value="" required>
+											<a href="javascript:void(0);" onclick="flashupload('thumb_images', '店铺截图上传','vendor_pic',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+												<img src="__TMPL__Public/assets/images/default-thumbnail.png" id="vendor_pic_preview" width="135" style="cursor: hand" />
+											</a>
+											<input style="margin: 10px;" type="button" class="btn btn-small btn-primary" onclick="$('#vendor_pic_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#vendor_pic').val('');return false;" value="取消图片">
+										</div>
+									</td>
+								</tr>
+								<!-- <tr>
+									<th>
+										<b><span style="color: red;">* </span>淘客佣金截图：</b>
+										<span class="span_remind"></span>
+									</th>
+								
+									<td>
+										<div style="text-align: center;">
+											<input type="hidden" name="item[taoke_pic]" id="taoke_pic" value="" required>
+											<a href="javascript:void(0);" onclick="flashupload('thumb_images', '店铺截图上传','taoke_pic',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+												<img src="__TMPL__Public/assets/images/default-thumbnail.png" id="taoke_pic_preview" width="135" style="cursor: hand" />
+											</a>
+											<input style="margin: 10px;" type="button" class="btn btn-small btn-primary" onclick="$('#taoke_pic_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#taoke_pic').val('');return false;" value="取消图片">
+										</div>
+									</td>
+								</tr> -->
+								<tr>
+									<th>
+										<b><span style="color: red;">* </span>优惠券截图：</b>
+										<span class="span_remind"></span>
+									</th>
+								
+									<td>
+										<div style="text-align: center;">
+											<input type="hidden" name="item[quan_pic]" id="quan_pic" value="" required>
+											<a href="javascript:void(0);" onclick="flashupload('thumb_images', '店铺截图上传','quan_pic',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+												<img src="__TMPL__Public/assets/images/default-thumbnail.png" id="quan_pic_preview" width="135" style="cursor: hand" />
+											</a>
+											<input style="margin: 10px;" type="button" class="btn btn-small btn-primary" onclick="$('#quan_pic_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#quan_pic').val('');return false;" value="取消图片">
+										</div>
+									</td>
+								</tr>
+								<!-- <tr>
+									<th>
+										<b>村淘佣金截图：</b>
+									</th>
+								
+									<td>
+										<div style="text-align: center;">
+											<input type="hidden" name="item[commit_pic]" id="commit_pic" value="">
+											<a href="javascript:void(0);" onclick="flashupload('thumb_images', '店铺截图上传','commit_pic',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+												<img src="__TMPL__Public/assets/images/default-thumbnail.png" id="commit_pic_preview" width="135" style="cursor: hand" />
+											</a>
+											<input style="margin: 10px;" type="button" class="btn btn-small btn-primary" onclick="$('#commit_pic_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#commit_pic').val('');return false;" value="取消图片">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th><b>购买截图：</b></th>
+								
+									<td>
+										<div style="text-align: center;">
+											<input type="hidden" name="item[pay_pic]" id="pay_pic" value="">
+											<a href="javascript:void(0);" onclick="flashupload('thumb_images', '店铺截图上传','pay_pic',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+												<img src="__TMPL__Public/assets/images/default-thumbnail.png" id="pay_pic_preview" width="135" style="cursor: hand" />
+											</a>
+											<input style="margin: 10px;" type="button" class="btn btn-small btn-primary" onclick="$('#pay_pic_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#pay_pic').val('');return false;" value="取消图片">
+										</div>
+									</td>
+								</tr> -->
+						</table>
+					</div>
+			</div>
+			<div class="form-actions">
+				<button id="sub" class="btn btn-primary js-ajax-submit" type="submit">提交</button>
+				<a class="btn" href="{:U('AdminHaozhu/index')}">返回</a>
+			</div>
+		</form>
+	</div>
+	
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">备注</h4>
+				</div>
+				<div class="modal-body">
+					1，佣金计划用“公开免审核”，若果实聚划算或者淘抢购开“通用计划”
+					2，优惠券使用店铺通用券、单品券辉影响权重和官方活动价格审查，优惠券数量按照10%转化设置，比如要卖500件，至少要做5000张券，单天推广比较好的话，商家自行再原有的优惠券链接上增加数量（优惠券的有效期一般设置为7天）
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+	<script type="text/javascript">
+		//编辑器路径定义
+		var editorURL = GV.DIMAUB;
+	</script>
+	<script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.all.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#quan_count').blur(function(){
+				if(isNaN($(this).val())){
+					$(this).val('');
+				}
+			})
+			$('#quan').blur(function(){
+				if(isNaN($(this).val())){
+					$(this).val('');
+				}
+			})
+			$('#add_count').blur(function(){
+				if(isNaN($(this).val())){
+					$(this).val('');
+				}
+			})
+			$('#taoke_rate').blur(function(){
+				if(isNaN($(this).val())){
+					$(this).val('');
+				}
+			})
+			$('#service_charge').blur(function(){
+				if(isNaN($(this).val())){
+					$(this).val('');
+				}
+			})
+			$("#sub").click(function(){
+				if($('#vendor_pic').val()==''){
+					$('#vendor_pic').parent().parent().parent().children().eq(0).children().eq(1).html('请选择店铺图片截图');
+					return false;
+					
+				}if($('#quan_pic').val()==''){
+					$('#quan_pic').parent().parent().parent().children().eq(0).children().eq(1).html('请选择优惠券截图');
+					return false;
+					
+				}if($('#taoke_pic').val()==''){
+					$('#taoke_pic').parent().parent().parent().children().eq(0).children().eq(1).html('请选择村淘佣金截图');
+					return false;
+					
+				}else{
+					return true;
+				}
+			})
+			$('#vendor_pic_preview').click(function(){
+				$('.span_remind').html('');
+			})
+			$('#quan_pic_preview').click(function(){
+				$('.span_remind').html('');
+			})
+			$('#taoke_pic_preview').click(function(){
+				$('.span_remind').html('');
+			})
+			$(".js-ajax-close-btn").on('click', function(e) {
+				e.preventDefault();
+				Wind.use("artDialog", function() {
+					art.dialog({
+						id: "question",
+						icon: "question",
+						fixed: true,
+						lock: true,
+						background: "#CCCCCC",
+						opacity: 0,
+						content: "您确定需要关闭当前页面嘛？",
+						ok: function() {
+							setCookie("refersh_time", 1);
+							window.close();
+							return true;
+						}
+					});
+				});
+			});
+			/////---------------------
+			Wind.use('validate', 'ajaxForm', 'artDialog', function() {
+				//javascript
+
+				var form = $('form.js-ajax-forms');
+				//ie处理placeholder提交问题
+				if($.browser.msie) {
+					form.find('[placeholder]').each(function() {
+						var input = $(this);
+						if(input.val() == input.attr('placeholder')) {
+							input.val('');
+						}
+					});
+				}
+
+				var formloading = false;
+				//表单验证开始
+				form.validate({
+					//是否在获取焦点时验证
+					onfocusout: false,
+					//是否在敲击键盘时验证
+					onkeyup: false,
+					//当鼠标掉级时验证
+					onclick: false,
+					//验证错误
+					showErrors: function(errorMap, errorArr) {
+						//errorMap {'name':'错误信息'}
+						//errorArr [{'message':'错误信息',element:({})}]
+						try {
+							$(errorArr[0].element).focus();
+							art.dialog({
+								id: 'error',
+								icon: 'error',
+								lock: true,
+								fixed: true,
+								background: "#CCCCCC",
+								opacity: 0,
+								content: errorArr[0].message,
+								cancelVal: '确定',
+								cancel: function() {
+									$(errorArr[0].element).focus();
+								}
+							});
+						} catch(err) {}
+					},
+					//验证规则
+					rules: {
+						'item[itemurl]': {
+							required: 1
+						},
+						'item[memo]': {
+							editorcontent: true
+						}
+					},
+					//验证未通过提示消息
+					messages: {
+						'item[num_iid]': {
+							required: '请输入商品id'
+						},
+						'item[intro]': {
+							editorcontent: '内容不能为空'
+						}
+					},
+					//给未通过验证的元素加效果,闪烁等
+					highlight: false,
+					//是否在获取焦点时验证
+					onfocusout: false,
+					
+					
+					//验证通过，提交表单
+					submitHandler: function(forms) {
+						if(formloading)
+							return;
+						$(forms).ajaxSubmit({
+							url: form.attr('action'), //按钮上是否自定义提交地址(多按钮情况)
+							dataType: 'json',
+							beforeSubmit: function(arr, $form, options) {
+								formloading = true;
+							},
+							success: function(data, statusText, xhr, $form) {
+								formloading = false;
+								if(data.status) {
+									setCookie("refersh_time", 1);
+									//添加成功
+									Wind.use("artDialog", function() {
+										art.dialog({
+											id: "succeed",
+											icon: "succeed",
+											fixed: true,
+											lock: true,
+											background: "#CCCCCC",
+											opacity: 0,
+											content: data.info,
+											button: [{
+												name: '继续添加？',
+												callback: function() {
+													reloadPage(window);
+													return true;
+												},
+												focus: true
+											}, {
+												name: '返回列表页',
+												callback: function() {
+													location = "{:U('AdminHaozhu/index')}";
+													return true;
+												}
+											}]
+										});
+									});
+								} else {
+									isalert(data.info);
+								}
+							}
+						});
+					}
+				});
+			});
+			////-------------------------
+		});
+	</script>
+</body>
+
+</html>

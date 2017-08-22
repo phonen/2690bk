@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://www.2690.cn/login -->
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="Keywords" content="www.2690.cn">
+		<meta name="Description" content="www.2690.cn">
+		<title>www.2690.cn</title>
+		<script src="js/jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/front_log.css">
+		<script>
+			if(window.parent !== window.self) {
+				document.write = '';
+				window.parent.location.href = window.self.location.href;
+				setTimeout(function() {
+					document.body.innerHTML = '';
+				}, 0);
+			}
+		</script>
+		<script type="text/javascript" src="js/ajaxForm.js"></script>
+		<script type="text/javascript" src="js/artDialog.js"></script>
+		<script>
+			var viewHost = window.location.href.split(".")[1];
+		</script>
+		<link rel="shortcut icon" href="favicon.ico">
+	</head>
+	<body>
+		<div class="returnHomeNav">
+			<a href="?a=qlist_ctgy"><span></span></a>
+		</div>
+		<div class="fullscreen-bg"> 
+			<div class="log-reg-wrapper parent-form">
+				<h2 class="h2_title">登录</h2>
+				<form method="post" name="login" action="{:U('user/login/dologin')}" autoComplete="off" class="js-ajax-form">
+					<div class="login">
+						<div style="position: relative;">
+							<img class="front_login_img" src="./images/front_login_user.png"/>
+							<input class="input" id="js-admin-name" required name="username" type="text" placeholder="{:L('USERNAME_OR_EMAIL')}" title="{:L('USERNAME_OR_EMAIL')}" value="{$_COOKIE['admin_username']}" />
+						</div>
+						<div style="position: relative;">
+							<img class="front_login_img" src="./images/front_login_password.png"/>
+							<input class="input" id="admin_pwd" type="password" required name="password" placeholder="{:L('PASSWORD')}" title="{:L('PASSWORD')}" />
+						</div>
+						<div style="position: relative;" class="verifycode-wrapper">
+							<input class="single_input" type="text" name="verify" placeholder="{:L('ENTER_VERIFY_CODE')}" />
+							{:sp_verifycode_img('length=4&font_size=20&width=150&height=40&use_noise=1&use_curve=0','title="点击获取"')}
+						</div>
+						<div id="login_btn_wraper">
+							<button type="submit" class="submit" name="submit" class="btn js-ajax-submit" data-loadingmsg="{:L('LOADING')}">{:L('LOGIN')}</button>
+						</div>
+						<div class="remind_login">
+							<input name="avoid_login" type="checkbox" value="avoid_login"/>30天免登录 
+							<span>还没有帐号 </span>
+							<a href="?a=login_reg"> 立即注册</a>	
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<footer>
+			<div>
+				<div class="link-a">
+					<a target="_blank" href="?a=help_test"><p>使用帮助</p></a>
+					<a target="_blank" href="?a=business_cooperation"><p>商家合作</p></a>
+					<a target="_blank" href="?a=feedback"><p>问题反馈</p></a>
+					<a><p style="margin-right: 0;">友情链接</p></a>
+				</div>
+				<div class="link-span">
+					<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261869629'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261869629%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+					<span>© CopyRight 2011-2017 www.2690.cn 闽ICP备16037554号-1 </span><span>|</span>
+					<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=35010302000312" target="_blank"><img src="images/beianbgs.png" width="24" height="24" /> 闽公网安备 35010302000312号</a>
+				</div>
+			</div>
+		</footer>
+		<div id="notify-login" style="width: 0;height: 0"></div>
+	</body>
+	<script>
+		var GV = {
+			DIMAUB: "",
+			JS_ROOT: "/public/js/", //js版本号
+			TOKEN: '' //token ajax全局
+		};
+		(function() {
+			document.getElementById('js-admin-name').focus();
+		})();
+		$(function(){
+			//获取当前时间
+			$date=new Date();
+			if($date.getHours()>19||$date.getHours()<7){
+				//晚上登录背景	
+				$('.fullscreen-bg').css({'background-image':'url(./images/front_login_bg_night.png)'})
+				$('.log-reg-wrapper').css({'background-color':'rgba(255,255,255,0.2)'})
+			}else{
+				//早上登录背景	
+				$('.fullscreen-bg').css({'background-image':'url(./images/front_login_bg.png)'})
+				$('.log-reg-wrapper').css({'background-color':'rgba(0,0,0,0.5)'})
+			}
+			
+		})		
+	</script>
+	<script src="js/wind.js"></script>
+	<script src="js/common.js"></script>
+</html>

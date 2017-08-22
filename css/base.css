@@ -1,0 +1,174 @@
+/* var */
+.font-number {
+  font-family: Arial;
+}
+/* reset */
+* {
+}
+body {
+  width: 100%;
+  min-width: 1240px;
+  max-width: 1920px;
+  margin: 0 auto;
+  color: #595959;
+  background-color: #FFF;
+  font: 14px "Microsoft YaHei", Helvetica, Arial, sans-serif;
+}
+input,
+textarea {
+  border: 0 none;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+}
+img {
+  display: block;
+  border: 0;
+}
+a {
+  text-decoration: none;
+}
+/*p,
+div {
+  word-wrap: break-word;
+  word-break: break-all;
+}*/
+ul,
+li {
+  list-style: none;
+}
+b,
+i {
+  font-style: normal;
+  font-weight: normal;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: normal;
+}
+input,
+textarea {
+  border: 0 none;
+}
+input:focus,
+textarea:focus {
+  outline: 0 none;
+}
+/* base */
+.content-box {
+  width: 1200px;
+  margin: 0 auto;
+}
+.clearfix {
+  *height: 1%;
+}
+.clearfix:after {
+  display: block;
+  content: " ";
+  height: 0;
+  line-height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.ml-0 {
+  margin-left: 0 !important;
+}
+.mt-0 {
+  margin-top: 0 !important;
+}
+.yahei {
+  font-family: "Microsoft YaHei";
+}
+/* header */
+.header {
+  width: 100%;
+}
+.header-box {
+  height: 70px;
+  padding: 20px 0;
+}
+.header-box .logo {
+  float: left;
+  width: 130px;
+  height: 70px;
+}
+.header-box .header-ad {
+  float: right;
+  width: 110px;
+  margin-left: 20px;
+  text-align: center;
+}
+.header-box .header-ad i {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 4px auto 6px;
+  background-image: url(../images/log.png);
+  background-repeat: no-repeat;
+}
+.header-box .header-ad b {
+  line-height: 20px;
+  font-size: 14px;
+  color: #717171;
+}
+.header-box .ad-1 i {
+  background-position: 0 -80px;
+}
+.header-box .ad-2 i {
+  background-position: -40px -80px;
+}
+.header-box .ad-3 i {
+  background-position: -80px -80px;
+}
+/* footer */
+.footer {
+	text-align:center;
+  width: 100%;
+}
+.footer-box {
+  padding: 40px 0;
+}
+.footer-box ul {
+  width: 100%;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.footer-box ul li {
+  display: inline-block;
+  height: 12px;
+  line-height: 12px;
+  vertical-align: middle;
+  border-left: 1px solid #A2A2A2;
+}
+.footer-box ul li a {
+  margin: 0 15px;
+  color: #595959;
+  transition: color .3s;
+}
+.footer-box ul li a:hover {
+  color: #FF6C00;
+}
+.footer-box ul li:first-child {
+  border-left: 0;
+}
+.footer-box p {
+  text-align: center;
+  color: #777;
+}
+.footer-box p a {
+  color: inherit;
+  transition: color .3s;
+}
+.footer-box p a:hover {
+  color: #FF6C00;
+}
+/* main */
+.main {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

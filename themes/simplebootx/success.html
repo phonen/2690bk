@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>2690跳转提示</title>
+		<tc_include file="Public/head" />
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			body {
+				background: #fff;
+				font-family: '微软雅黑';
+				color: #333;
+				font-size: 16px;
+				margin-top: -2px;
+			}
+			
+			.system-message {
+				text-align: center;
+			}
+			
+			.system-message h1 {
+				font-size: 100px;
+				font-weight: normal;
+				line-height: 120px;
+				margin-bottom: 12px;
+				text-align: center;
+			}
+			
+			.system-message .jump {
+				padding-top: 10px;
+				letter-spacing: 6px;
+			    font-size: 20px;
+			    line-height: 30px;
+			}
+			
+			.system-message .success,
+			.system-message .error {
+				line-height: 1.8em;
+				font-size: 36px;
+				height: 15%;
+			}
+			
+			.system-message .detail {
+				font-size: 12px;
+				line-height: 20px;
+				margin-top: 12px;
+			}
+			
+			.mes {
+				background-image: url(images/mes/success.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 30%;
+			}
+		</style>
+	</head>
+
+	<body style="padding-top: 0px;">
+		<div class="system-message">
+			<p class="detail"></p>
+			<present name="message">
+				<p class="success">
+					<?php echo($message); ?>
+				</p>
+				<else/>
+				<p class="error">
+					<?php echo($error); ?>
+				</p>
+			</present>
+			
+			<p class="jump">
+				<b id="wait"><?php echo($waitSecond); ?></b>秒后自动跳转<br /> 若无反应，请点击此处跳转：
+				<a id="href" href="<?php echo($jumpUrl); ?>">跳转</a>
+			</p>
+		</div>
+		<script type="text/javascript">
+			(function() {
+				href = document.getElementById('href').href;
+				location.href = href;
+			})();
+		</script>
+<script>
+		$(function(){
+			$('div[class="system-message"]').css('height',parseInt($(window).height())-10);
+			$("body").addClass("mes");
+		})
+	</script>
+	</body>
+
+</html>

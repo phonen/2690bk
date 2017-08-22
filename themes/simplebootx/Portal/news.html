@@ -1,0 +1,43 @@
+﻿<tc_include file="public_head_file" />
+<title>村淘圈—www.2690.cn</title>
+<script>
+	function is_exit(url, words) {
+		if(confirm(words))
+			window.location = url;
+	}
+	//导航选中高亮
+	$('.nav-list ul').children().eq(2).addClass('cur');
+</script>
+
+<div class="helpnews">
+
+	<div class="helpnews_test">
+		<php>
+			$lists = sp_sql_posts_paged("cid:$cat_id;order:post_date DESC;",10);
+		</php>
+		<volist name="lists['posts']" id="vo">
+			<php>
+				$smeta=json_decode($vo['smeta'], true); // print_r($smeta);
+			</php>
+			<dl>
+				<dt><a href="{:leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']))}" target="_blank">
+		<img src="/data/upload/
+		<php>
+		echo $smeta['thumb'];
+		</php>
+		" width="619" height="619" />
+		</a> </dt>
+				<dd>
+					<h2><span>更新：{$vo.post_date}</span><a href="{:leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']))}" target="_blank">{$vo.post_title}</a></h2>{$vo.post_excerpt|msubstr=0,256}
+					<a href="{:leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']))}" target="_blank" style="font-family:宋体;">[查看更多]</a>
+				</dd>
+			</dl>
+		</volist>
+	</div>
+	<div class="pagination">
+		<ul>{$lists['page']}</ul>
+	</div>
+</div>
+<script src="js/dtk_head.js"></script>
+<script src="js/visit_num.js"></script>
+<tc_include file="public_foot_file"/>

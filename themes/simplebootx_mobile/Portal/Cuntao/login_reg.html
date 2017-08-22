@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<script src="js/jquery.js"></script>
+		<style>
+			html {
+				font-size: 10px
+			}
+			
+			@media screen and (min-width:321px) and (max-width:375px) {
+				html {
+					font-size: 11px
+				}
+			}
+			
+			@media screen and (min-width:376px) and (max-width:414px) {
+				html {
+					font-size: 12px
+				}
+			}
+			
+			@media screen and (min-width:415px) and (max-width:639px) {
+				html {
+					font-size: 15px
+				}
+			}
+			
+			@media screen and (min-width:640px) and (max-width:719px) {
+				html {
+					font-size: 20px
+				}
+			}
+			
+			@media screen and (min-width:720px) and (max-width:749px) {
+				html {
+					font-size: 22.5px
+				}
+			}
+			
+			@media screen and (min-width:750px) and (max-width:799px) {
+				html {
+					font-size: 23.5px
+				}
+			}
+			
+			@media screen and (min-width:800px) {
+				html {
+					font-size: 25px
+				}
+			}
+			
+			.area {
+				margin: 20px auto 0px auto;
+			}
+			
+			.mui-input-group:first-child {
+				margin-top: 20px;
+			}
+			
+			.mui-input-group label {
+				width: 22%;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+			}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			
+			.mui-content-padded {
+				margin: 1rem 0rem 1rem 1rem;
+				text-align: center;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+			}
+			#form_update{
+				margin: 0rem;
+				padding: 2rem 2rem 1rem 1rem;
+			}
+			.label_img{
+				width: 1.5rem;
+			}
+			label{
+				text-align: center;
+			}
+			.mui-input-row .input_bottom{
+				border-bottom: 1px solid #03da08;
+			}
+			.mui-input-group:before,.mui-input-group:after,.mui-input-group .mui-input-row:after{
+				background-color: white;
+			}
+			.mui-input-group .mui-input-row{
+				height: 5rem;
+			}
+		</style>
+	</head>
+
+	<body style="background-color: #efeff4;">
+		<div id="error_bg" style="display:none;margin:40% 10%;border-radius:2rem;position:fixed;width:80%;height: 10rem;line-height: 10rem;z-index:10;text-align:center;overflow:hidden;background:rgba(0,0,0,0.5);">
+			<p id="error_p" style="font-size: 2rem;color: orangered;">
+			</p>
+		</div>
+		<div id="show_mes" style="display: none;position:fixed;width: 100%;height: 100%;background: rbga(100,100,100,0.7);z-index: 100;text-align: center;">
+			<p style="position: relative;">
+				<p id="error_mes" style="margin-top: 4rem;"></p>
+			</p>
+		</div>
+		<header class="mui-bar mui-bar-nav" style="background:#01a705;height: 4rem;">
+			<a href="?a=qlist_ctgy" class="mui-action-back mui-pull-left"><img style="width: 2rem;margin-top: 1rem;" src="./images/register-images/return-arrow.png"/></a>
+			<h1 class="mui-title" style="color: white;font-size: 1.8rem;">注册</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group" method="post" id="form_update">
+				<div class="mui-input-row">
+					<label><img class="label_img" src="./images/register-images/register-user.png"/></label>
+					<input id='name' type="text" name="user_login" class="mui-input-clear mui-input input_bottom" placeholder="请输入用户名(不能为纯数字)">
+				</div>
+				<div class="mui-input-row">
+					<label><img class="label_img" src="./images/register-images/register-lock.png"/></label>
+					<input id='password' type="password" name="password" class="mui-input-clear mui-input input_bottom" placeholder="请输入密码">
+				</div>
+				<div class="mui-input-row">
+					<label></label>
+					<input id='password-confirm' type="password" name="repassword" class="mui-input-clear mui-input input_bottom" placeholder="请确认密码">
+				</div>
+				<div class="mui-input-row">
+					<label><img style="margin-top: -0.5rem;" class="label_img" src="./images/register-images/register-phone.png"/></label>
+					<input id='phone' type="text" name="mobile" class="mui-input-clear mui-input input_bottom" placeholder="请输入手机号">
+				</div>
+				<div class="mui-input-row">
+					<label><img class="label_img" src="./images/register-images/register-email.png"/></label>
+					<input id='email' type="email" name="email" class="mui-input-clear mui-input input_bottom" placeholder="请输入邮箱">
+				</div>
+				<div class="mui-input-row">
+					<label id="verification_code" style="margin-top: -1rem;padding: 0;padding-top: 1rem;margin-left: 2rem;">{:sp_verifycode_img('length=4&font_size=16&width=120&height=40&charset=1234567890&use_noise=1&use_curve=0')}</label>
+					<input id='erwei' type="text" tabindex="2" name="verify" class="mui-input-clear mui-input input_bottom" placeholder="请输入验证码" style="width: 48%;padding-left: 1rem;">
+				</div>
+				<div class="mui-content-padded">
+					<button id='sub' type="button" class="mui-btn mui-btn-block mui-btn-primary" style="background:#1ca347;color: white;border-color: #03da08;">注册</button>
+				</div>
+				<div class="mui-content-padded">
+					<div class="link-area">
+						<a id='reg' href="?a=login">登录</a>
+					</div>
+				</div>
+			</form>
+
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script>
+			function show_mes(mes) {
+				$("#show_mes").css(
+					'display', 'block'
+				);
+				$("#error_mes").text(mes).css('color', 'red');
+			}
+			$("#show_mes").click(function() {
+				$(this).css('display', 'none');
+			});
+			//验证表单格式
+			function checkform() {
+				reg = /^\d+$/;
+				if(reg.test($('#name').val())) {
+					show_mes('用户名不能纯数字');
+					return false;
+				}
+				if($('#name').val() == '') {
+					show_mes('请填写用户名');
+					return false;
+				}
+				if($('#name').val().length <= 1) {
+					show_mes('用户名大于1个字符串');
+					return false;
+				}
+				reg = /^\w{3,}@\w+(\.\w+)+$/;
+				if(!reg.test($('#email').val())) {
+					show_mes('邮箱格式有误');
+					return false;
+				}
+				reg = /^(\+\d{2,3}\-)?\d{11}$/;
+				if(!reg.test($('#phone').val())) {
+					show_mes('填写11位手机号');
+					return false;
+				}
+				if($('#password').val() == '') {
+					show_mes('请填写密码');
+					return false;
+				}
+				if($('#password').val().length < 6) {
+					show_mes('密码长度不少于6');
+					return false;
+				}
+				if($('#password-confirm').val() == '' || $('#password-confirm').val() != $('#password').val()) {
+					show_mes('确认密码填写错误');
+					return false;
+				}
+				return true;
+			}
+//			$('#form_update').css('height',parseInt($(window).height()));
+			//表单变化验证
+			/*	$('#reg_form').change(function(){
+					checkform();
+				})
+				*/
+			//表单提交
+			$('#sub').click(function() {
+				//前端格式不满足要求
+				console.log('test');
+				if(!checkform()) {
+					return false;
+					console.log('error');
+				} else {
+
+					$user_login = $('input[name="user_login"]').val();
+					$password = $('input[name="password"]').val();
+					$repassword = $('input[name="repassword"]').val();
+					$mobile = $('input[name="mobile"]').val();
+					$email = $('input[name="email"]').val();
+					$verify = $('input[name="verify"]').val();
+					$.ajax({
+						type: "post",
+						url: "{:U('user/register/ajax_do_admin_register')}",
+						data: {
+							'user_login': $user_login,
+							'password': $password,
+							'repassword': $repassword,
+							'mobile': $mobile,
+							'email': $email,
+							'verify': $verify
+						},
+						async: true,
+						dataType: "text",
+						success: function(res) {
+							var  json  =  JSON.parse(res);
+							console.log(json);
+							if(json.status == 1) {
+								$("#error_bg").css('display', 'block');
+								$("#error_p").css('color','white');
+								$("#error_p").html('注册成功');
+								$("#error_bg").fadeOut(2500);
+								setTimeout("window.location.href='?a=qlist_ctgy'", 700);
+							} else {
+								$("#error_bg").css('display', 'block');
+								$("#error_bg").fadeOut(3000);
+								$("#error_p").html(json.mes);
+								$('.verify_img').click();
+							}
+						}
+					});
+				}
+			})
+		</script>
+	</body>
+
+</html>

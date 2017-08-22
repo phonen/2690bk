@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<script src="js/jquery.js"></script>
+		<style>
+		html {
+				font-size: 10px
+			}
+			
+			@media screen and (min-width:321px) and (max-width:375px) {
+				html {
+					font-size: 11px
+				}
+			}
+			
+			@media screen and (min-width:376px) and (max-width:414px) {
+				html {
+					font-size: 12px
+				}
+			}
+			
+			@media screen and (min-width:415px) and (max-width:639px) {
+				html {
+					font-size: 15px
+				}
+			}
+			
+			@media screen and (min-width:640px) and (max-width:719px) {
+				html {
+					font-size: 20px
+				}
+			}
+			
+			@media screen and (min-width:720px) and (max-width:749px) {
+				html {
+					font-size: 22.5px
+				}
+			}
+			
+			@media screen and (min-width:750px) and (max-width:799px) {
+				html {
+					font-size: 23.5px
+				}
+			}
+			
+			@media screen and (min-width:800px) {
+				html {
+					font-size: 25px
+				}
+			}
+			.area {
+				margin: 20px auto 0px auto;
+			}
+			
+			.mui-input-group {
+				margin-top: 10px;
+			}
+			
+			.mui-input-group:first-child {
+				margin-top: 20px;
+			}
+			
+			.mui-input-group label {
+				width: 22%;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+			}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			
+			.mui-content-padded {
+				margin: 1rem 0rem 1rem 1rem;
+				text-align: center;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+			}
+			
+			.link-area {
+				display: block;
+				margin-top: 25px;
+				text-align: center;
+			}
+			
+			.spliter {
+				color: #bbb;
+				padding: 0px 8px;
+			}
+			
+			.oauth-area {
+				position: absolute;
+				bottom: 20px;
+				left: 0px;
+				text-align: center;
+				width: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			.oauth-area .oauth-btn {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background-size: 30px 30px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				margin: 0px 20px;
+				/*-webkit-filter: grayscale(100%); */
+				border: solid 1px #ddd;
+				border-radius: 25px;
+			}
+			
+			.oauth-area .oauth-btn:active {
+				border: solid 1px #aaa;
+			}
+			
+			.oauth-area .oauth-btn.disabled {
+				background-color: #ddd;
+			}
+			#login-form{
+				margin: 0rem;
+				padding: 2rem 2rem 1rem 1rem;
+			}
+			.label_img{
+				width: 1.5rem;
+			}
+			label{
+				text-align: center;
+			}
+			.mui-input-row .input_bottom{
+				border-bottom: 1px solid #03da08;
+			}
+			.mui-input-group:before,.mui-input-group:after,.mui-input-group .mui-input-row:after{
+				background-color: white;
+			}
+			.mui-input-group .mui-input-row{
+				height: 5rem;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div id="error_bg" style="display:none;margin:40% 10%;border-radius:2rem;position:fixed;width:80%;height: 10rem;line-height: 10rem;z-index:10;text-align:center;overflow:hidden;background:rgba(0,0,0,0.5);">
+			<p id="error_p" style="font-size: 2rem;color: orangered;">
+			</p>
+		</div>
+		<header class="mui-bar mui-bar-nav" style="background:#01a705;height: 4rem;">
+			<a href="?a=qlist_ctgy" class="mui-action-back mui-pull-left" style="color: white;">
+				<img style="width: 2rem;margin-top: 1rem;" src="./images/register-images/return-arrow.png"/>
+			</a>
+			<h1 class="mui-title" style="color: white;font-size: 1.8rem;">登录</h1>
+		</header>
+		<div class="mui-content">
+			<form id='login-form' method="post" name="login" action="" autoComplete="off" class="mui-input-group">
+				<div class="mui-input-row">
+					<label><img class="label_img" src="./images/register-images/register-user.png"/></label>
+					<input id='account' name="username" type="text" class="mui-input-clear mui-input input_bottom" placeholder="请输入用户名">
+				</div>
+				<div class="mui-input-row">
+					<label><img class="label_img" src="./images/register-images/register-lock.png"/></label>
+					<input id='password' name="password" type="password" class="mui-input-clear mui-input input_bottom" placeholder="请输入密码">
+				</div>
+				<div class="mui-input-row">
+					<label style="margin-top: -1rem;padding: 0;padding-top: 1rem;margin-left: 2rem;">{:sp_verifycode_img('length=4&font_size=16&width=120&height=42&use_noise=1&use_curve=0')}</label>
+					<input name="verify" type="text" class="mui-input-clear mui-input input_bottom" placeholder="请输入验证码" style="width: 48%;padding-left: 1rem;">
+				</div>
+				<div style="height: 3rem;width: 100%;padding-left: 2rem;margin-top: 1rem;">
+					
+					<input name="avoid_login" type="checkbox" value="avoid_login"/><label>30天免登录</label>
+				</div>
+				<div class="mui-content-padded">
+					<button id='login' type="button" class="mui-btn mui-btn-block mui-btn-primary" style="background:#1ca347;color: white;border-color: #03da08;">登录</button>
+				</div>
+			</form>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.enterfocus.js"></script>
+		<script>
+		$(function(){
+			$('#login').click(function() {
+					$username = $('input[name="username"]').val();
+					$password = $('input[name="password"]').val();
+					$verify = $('input[name="verify"]').val();
+					$avoid_login = $('input[name="avoid_login"]').val();
+					$.ajax({
+						type: "post",
+						url: "{:U('User/Login/ajax_do_login')}",
+						data: {
+							'username': $username,
+							'password': $password,
+							'verify': $verify,
+							'avoid_login': $avoid_login
+						},
+						async: true,
+						dataType: "text",
+						success: function(res) {
+							var  json  =  JSON.parse(res);
+							if(json.status == 1) {
+								$("#error_bg").css('display', 'block');
+								$("#error_p").css('color','white');
+								$("#error_p").html('登录成功');
+								$("#error_bg").fadeOut(2500);
+								setTimeout("window.location.href='?a=official_accounts'", 700);
+							} else {
+								$("#error_bg").css('display', 'block');
+								$("#error_bg").fadeOut(3000);
+								$("#error_p").html(json.mes);
+								$('.verify_img').click();
+							}
+						}
+					});
+			})
+		})
+		</script>
+		</body>
+
+</html>

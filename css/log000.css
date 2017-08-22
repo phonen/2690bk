@@ -1,0 +1,379 @@
+/* var */
+.font-number {
+  font-family: Arial;
+}
+/* login&register */
+.log-reg-box {
+  position: relative;
+}
+.log-reg {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: url(../images/log-bg.png) no-repeat left center #FFF;
+  box-shadow: 0 0 2px 1px #f4f4f4;
+  z-index: 2;
+}
+.shadow-div {
+  position: absolute;
+  top: 5%;
+  width: 20px;
+  height: 90%;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 2px #dedede;
+  background-color: #DEDEDE;
+  z-index: 1;
+}
+.shadow-l {
+  left: -2px;
+}
+.shadow-r {
+  right: -2px;
+}
+.log-reg-wrapper {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 337px;
+  padding: 30px 20px;
+  border: 1px solid #e3f6ff;
+  border-radius: 5px;
+  background-color: #FFF;
+}
+.wrapper-title {
+  float: left;
+  height: 24px;
+  line-height: 24px;
+  color: #209f3a;
+  font-size: 20px;
+}
+.wrapper-link {
+  float: right;
+  height: 18px;
+  line-height: 18px;
+  margin-top: 6px;
+  font-size: 14px;
+  color: #8A8A8A;
+}
+.wrapper-link a {
+  color: #209f3a;
+}
+.wrapper-link a:hover {
+  text-decoration: underline;
+}
+.wrapper-form {
+  width: 100%;
+  margin-top: 40px;
+}
+.form-input {
+  position: relative;
+  margin-bottom:15px;
+}
+.form-input input {
+  position: relative;
+  width: 295px;
+  padding: 9px 20px;
+  height: 20px;
+  line-height: 20px;
+  color: #777;
+  border: 1px solid #e1e1e1;
+  border-radius: 1px;
+  background-color: transparent;
+  z-index: 3;
+  transition: border-color 0.3s;
+}
+
+.verify input,
+.verify label {
+  width: 295px;
+}
+.form-input input:focus {
+  border-color: #209f3a;
+}
+.form-input input.test-error {
+  border-color: #006d17;
+}
+.form-input label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 21px;
+  line-height: 40px;
+  color: #CDCDCD;
+}
+.form-input i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-image: url(../images/log.png);
+  background-repeat: no-repeat;
+}
+.form-input .test-tips {
+  display: none;
+  height: auto;
+  z-index: 1000;
+  background-color: #fff;
+  position: absolute;
+  top: 40px;
+  bottom: auto;
+  left: 21px;
+  font-size: 12px;
+  color: #d9534f;
+}
+.form-input.email i {
+  background-position: 0 0;
+}
+.form-input.pwd i,
+.form-input.repwd i {
+  background-position: -40px 0;
+}
+.form-input.reset-email i {
+  background-position: -80px 0;
+}
+.form-input.reset-code i {
+  background-position: -120px 0;
+}
+.form-input.reset-pwd i,
+.form-input.reset-repwd i {
+  background-position: -160px 0;
+}
+.retrieve {
+  height: 20px;
+  line-height: 20px;
+  margin-top:10px;
+  text-align: left;
+}
+.retrieve-btn {
+  color: #8A8A8A;
+  font-size: 14px;
+  transition: color .3s;
+}
+.retrieve-btn:hover {
+  color: #209f3a;
+}
+.submit-btn {
+  display: block;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: .1em;
+  color: #FFF;
+  border-radius: 4px;
+  background-color: #209f3a;
+  transition: background-color 0.3s;
+}
+.submit-btn:hover {
+  background-color: #006d17;
+}
+.submit-btn.disabled {
+  background-color: #E5E5E5;
+  cursor: default;
+}
+/* retrieve */
+.retrieve-title {
+  height: 20px;
+  line-height: 20px;
+  padding-left: 10px;
+  margin-bottom: 60px;
+  color: #595959;
+  border-left: 3px solid #209f3a;
+}
+.retrieve-title a {
+  color: #595959;
+  transition: color .3s;
+}
+.retrieve-title a:hover {
+  color: #209f3a;
+}
+.retrieve-steps {
+  position: relative;
+  margin: 0 70px 100px;
+  text-align: center;
+}
+.retrieve-steps .retrieve-step + .retrieve-step {
+  margin-left: 220px;
+}
+.retrieve-steps .step-line {
+  position: absolute;
+  top: 13px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #CDCDCD;
+}
+.retrieve-step {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  z-index: 2;
+}
+.retrieve-step i {
+  font-family: Arial;
+  display: block;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  color: #FFF;
+  border-radius: 100%;
+  background-color: #CDCDCD;
+}
+.retrieve-step span {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  width: 200px;
+  line-height: 20px;
+  text-align: center;
+  margin-left: -100px;
+  font-size: 16px;
+  color: #595959;
+}
+.retrieve-step.on i {
+  background-color: #209f3a;
+}
+.retrieve-step.on span {
+  color: #209f3a;
+}
+.retrieve-box {
+  width: 100%;
+}
+.retrieve-box input {
+  width: 390px;
+  height: 30px;
+  line-height: 30px;
+}
+.retrieve-box i {
+  margin-top: 5px;
+}
+.retrieve-box label {
+  line-height: 50px;
+}
+.retrieve-box .submit-btn {
+  font-size: 16px;
+}
+.form-step-1 {
+  width: 432px;
+  margin: 0 auto;
+}
+.form-input-double .form-input {
+  float: left;
+}
+.form-input-double .form-input input {
+  width: 210px;
+}
+.form-input-double .form-code {
+  float: right;
+  width: 142px;
+  height: 40px;
+  line-height: 40px;
+  padding: 5px 8px;
+  color: #777;
+  border: 1px solid #CDCDCD;
+  border-radius: 1px;
+}
+.form-input-double .form-code .code-img {
+  width: 142px;
+  height: 40px;
+  background-color: #EFEFEF;
+}
+.form-step-2 {
+  width: 432px;
+  text-align: center;
+  margin: 0 auto;
+}
+.form-step-2 .send-status {
+  margin-bottom: 15px;
+  min-height: 28px;
+  line-height: 28px;
+  font-size: 18px;
+  color: #209f3a;
+}
+.form-step-2 .send-tips {
+  min-height: 48px;
+  line-height: 24px;
+  color: #777;
+}
+.form-step-2 .send-tips a {
+  margin: 0 5px;
+  color: #0088CC;
+}
+.form-step-2 .send-tips a:hover {
+  text-decoration: underline;
+}
+.form-step-2 .step2-btn {
+  width: 150px;
+  margin: 20px auto 0;
+}
+.form-step-2 .step2-btn i {
+  font-family: Arial;
+}
+.form-step-3 {
+  width: 432px;
+  margin: 0 auto;
+}
+.pwd-strength {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0;
+  height: 3px;
+  background-color: #FFF;
+  transition: width 0.3s, background-color 0.3s;
+  z-index: 3;
+}
+.pwd-strength.str-1 {
+  width: 33%;
+  background-color: #F09191;
+}
+.pwd-strength.str-2 {
+  width: 66%;
+  background-color: #209f3a;
+}
+.pwd-strength.str-3 {
+  width: 100%;
+  background-color: #4EC847;
+}
+.form-step-4 .success-status {
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  background: url(../images/log.png) no-repeat -200px 0;
+}
+.form-step-4 p {
+  margin: 35px 0 60px;
+  text-align: center;
+  font-size: 16px;
+  color: #595959;
+}
+.form-step-4 .relogin-btn {
+  display: block;
+  width: 130px;
+  height: 42px;
+  line-height: 42px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+  color: #FFF;
+  border-radius: 4px;
+  background-color: #209f3a;
+}
+.bottome_last {
+  text-align:center;
+  margin-top: 20px;
+  border-top: solid #07840a 2px;
+  padding-top: 15px;
+  color: #333;
+  font-size: 14px;
+  padding-bottom: 30px;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.www.2690.cn/login?user=reg -->
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="Keywords" content="www.2690.cn">
+		<meta name="Description" content="www.2690.cn">
+		<title>www.2690.cn</title>
+		<link rel="stylesheet" type="text/css" href="css/admin_login.css">
+		<link rel="stylesheet" type="text/css" href="css/log.css">
+		<link rel="stylesheet" type="text/css" href="css/front_log.css">
+		<link rel="stylesheet" type="text/css" href="css/account-manage.css">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<script>
+			var viewHost = window.location.href.split(".")[1];
+		</script>
+		<link rel="stylesheet" href="css/layer.css" id="layui_layer_skinlayercss">
+	</head>
+
+	<body>
+		<div class="log-wrapper log-reg-wrapper parent-form">
+			<h2 class="h2_title">注册</h2>
+			<form id="register-form" method="POST" action="{:U('user/register/doregisteradm')}" role="form" style="display: block;" class="login" novalidate>
+				<div class="login">
+					<input type="hidden" name="_token" value="H9egBZ5Xe5rpxeft5Zql7PA3eNypfVMeR3R3K63S">
+					<div style="position: relative;">
+						<input type="text" name="user_login" class="input" id="name" tabindex="1" class="form-control" placeholder="用户名(2个字以上中文)" value="">
+						<label></label>
+					</div>
+					<div style="position: relative;">
+						<input type="email" name="email" class="input" id="email" tabindex="1" class="form-control empty" placeholder="邮箱地址" value="" required aria-required="true">
+						<label></label>
+					</div>
+
+					<div style="position: relative;">
+						<input type="text" name="mobile" class="input" id="phone" tabindex="1" class="form-control empty" placeholder="手机号码" value="" required aria-required="true">
+						<label></label>
+					</div>
+					<div style="position: relative;">
+						<input type="password" name="password" class="input" id="password" tabindex="2" class="form-control" placeholder="登录密码" required aria-required="true">
+						<label></label>
+					</div>
+					<div style="position: relative;">
+						<input type="password" name="repassword" class="input" id="password-confirm" tabindex="2" class="form-control" placeholder="确认密码" required aria-required="true">
+						<label></label>
+					</div>
+					<div style="position: relative;">
+						<input type="text" name="verify" class="single_input" placeholder="验证码" tabindex="2" class="form-control" required aria-required="true">
+						{:sp_verifycode_img('length=4&font_size=20&width=150&height=40&charset=1234567890&use_noise=1&use_curve=0')}
+						<label></label> 
+					</div>
+					<div>
+						<div id="login_btn_wraper">
+							<input type="submit" class="submit" name="submit" tabindex="4" class="form-control btn btn-register" id="sub" value="马上注册">
+						</div>
+					</div>
+					<div class="remind_login">
+						已有账号 
+						<a href="?a=login">点此登录</a>
+					</div>
+				</div>
+			</form>
+		</div>
+		<footer class="hidden">
+			<script type="text/javascript">
+				var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+				document.write(unescape("%3Cspan id='cnzz_stat_icon_1261869629'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261869629%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+			</script>
+		</footer>
+		<div class="fullscreen-bg" style="background-image: url(./images/front_login_bg.png);"> </div>
+		<script src="js/jquery.js"></script>
+		<script src="js/form-test.js"></script>
+		<script src="js/fn.js"></script>
+		<script src="js/count-down.js"></script>
+		<script src="js/to-mail.js"></script>
+		<script type="text/javascript" src="js/fn(1).js"></script>
+		<script type="text/javascript" src="js/account-manage.js"></script>
+		<script>
+			//验证表单格式
+			function checkform() {
+				reg = /^[\u4e00-\u9fa5]$/;
+				if(reg.test($('#name').val())) {
+					$('#name').siblings().text('请输入中文字符').css('color', 'red');
+					return false;
+				}
+				if($('#name').val() == '') {
+					$('#name').siblings().text('请填写用户名').css('color', 'red');
+					return false;
+				}
+				if($('#name').val().length <= 1) {
+					$('#name').siblings().text('用户名大于1个字符串').css('color', 'red');
+					return false;
+				}
+				reg = /^\w{3,}@\w+(\.\w+)+$/;
+				if(!reg.test($('#email').val())) {
+					$('#email').siblings().text('邮箱格式有误').css('color', 'red');
+					return false;
+				}
+				reg = /^(\+\d{2,3}\-)?\d{11}$/;
+				if(!reg.test($('#phone').val())) {
+					$('#phone').siblings().text('填写11位手机号').css('color', 'red');
+					return false;
+				}
+				if($('#password').val() == '') {
+					$('#password').siblings().text('请填写密码').css('color', 'red');
+					return false;
+				}
+				if($('#password').val().length < 6) {
+					$('#password').siblings().text('密码长度不少于6').css('color', 'red');
+					return false;
+				}
+				if($('#password-confirm').val() == '' || $('#password-confirm').val() != $('#password').val()) {
+					$('#password-confirm').siblings().text('确认密码填写错误').css('color', 'red');
+					return false;
+				}
+				return true;
+			}
+			//表单变化验证
+			/*	$('#reg_form').change(function(){
+					checkform();
+				})
+				*/
+			//表单提交
+			$('#sub').click(function() {
+				//前端格式不满足要求
+				if(!checkform()) {
+					return false;
+				}
+			})
+			$(function(){
+				//获取当前时间
+				$date=new Date();
+				if($date.getHours()>19||$date.getHours()<7){
+					//晚上登录背景	
+					$('.fullscreen-bg').css({'background-image':'url(./images/front_login_bg_night.png)'})
+					$('.log-reg-wrapper').css({'background-color':'rgba(255,255,255,0.2)'})
+				}else{
+					//早上登录背景	
+					$('.fullscreen-bg').css({'background-image':'url(./images/front_login_bg.png)'})
+					$('.log-reg-wrapper').css({'background-color':'rgba(0,0,0,0.5)'})
+				}
+				
+			})
+		</script>
+	</body>
+
+</html>

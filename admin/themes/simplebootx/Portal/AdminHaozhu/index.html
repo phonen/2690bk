@@ -1,0 +1,216 @@
+<admintpl file="header" />
+<style>
+	.top_button{
+		margin-top: 10px;
+	}
+	.table-bordered{
+		border:none
+	}
+	.table-bordered th, .table-bordered td{
+		border-left: none;
+	}
+	table tr th,table tr td{
+		text-align: center !important
+	}
+	table tr td p{
+		margin-bottom: 6px;
+	}
+	html {
+		font-size: 10px
+	}
+	table tr td{
+			font-size: 1.2rem !important;
+		}
+	@media (min-width: 1024px) {
+		body {
+			font-size: 15px
+		}
+		table tr td{
+			font-size: 1.5rem !important;
+		}
+	}
+	
+	@media (min-width: 1440px) {
+		body {
+			font-size: 20px !important;
+		}
+		table tr td{
+			font-size: 2rem !important;
+		}
+	}
+</style>
+</head>
+
+<body>
+
+	<div class="wrap js-check-wrap">
+
+		<ul class="nav nav-tabs">
+
+			<li class="active"><a href="javascript:;">商品管理</a></li>
+
+			<li><a href="{:U('AdminHaozhu/add')}" target="_self">添加商品</a></li>
+			
+			<li><a href="{:U('AdminHaozhu/person')}" target="_self">个人信息</a></li>
+
+		</ul>
+
+		<form class="well form-search" method="post" action="{:U('AdminHaozhu/index')}">
+
+			分类： 
+
+			<select class="select_2" name="status" id="status">
+
+				<option value='0'>全部</option>
+				<option value='1'>审核未通过</option>
+				<option value='2'>审核通过</option>
+			</select> &nbsp;&nbsp;
+			<select class="select_2" name="top_status" id="top_status">
+
+				<option value='0'>全部</option>
+				<option value='1'>未顶置</option>
+				<option value='2'>顶置</option>
+
+			</select> &nbsp;&nbsp;
+			<select class="select_2" name="server_status" id="server_status">
+
+				<option value='0'>全部</option>
+				<option value='1'>未结算服务费</option>
+				<option value='2'>已结算服务费</option>
+
+			</select> &nbsp;&nbsp;
+			<script>
+				$("#status>option[value='{$post.status}']").attr('selected','selected');
+				$("#top_status>option[value='{$post.top_status}']").attr('selected','selected');
+				$("#server_status>option[value='{$post.server_status}']").attr('selected','selected');
+			</script>
+
+<div style="display: inline-block;">
+	关键字： 
+
+			<input type="text" name="kw" class="top_button" style="width: 200px;margin-right: -10px;" value="{$formget.kw}" placeholder="请输入关键字...">
+
+			<input type="submit" class="btn btn-primary top_button" value="搜索" />
+
+</div>
+			
+		</form>
+
+		
+
+
+		<table class="table table-hover table-bordered table-list">
+
+			<thead>
+
+				<tr>
+
+					<th width="70">商品id</th>
+					
+					<th width="70">商品图片</th>
+
+					<th width="160">商品名称</th>
+
+					<th width="80">佣金%</th>
+
+					<th width="100">上传时间</th>
+
+					<th width="80">审核时间</th>
+
+					<th width="80">审核结果</th>
+
+					<th width="80">顶置</th>
+
+					<th width="80">结算佣金</th>
+
+					<th width="80">审核人</th>
+
+					<th width="70">操作</th>
+
+				</tr>
+
+			</thead>
+
+			<php>
+
+			$status=array("3"=>"审核通过","2"=>"审核未通过","1"=>"未审核");
+
+			$top_status=array("2"=>"已置顶","1"=>"未置顶");
+
+			$server_status=array("2"=>"已结算","1"=>"未结算");
+			</php>
+
+			<foreach name="posts" item="vo">
+			<php>
+				$vo['judge_right']=0;
+				if($vo['judge_name']){
+					$vo['judge_right'] = 1;
+				}
+			</php>
+
+			<tr>
+
+				<td><a href="{:U('portal/AdminHaozhu/edit',array('id'=>$vo['num_iid']))}" target="_blank"> <span>{$vo.num_iid}</span></a></td>
+
+				<td><img src="{$vo.pic_url}_150x150.jpg"/></td>
+				
+				<td>{$vo.item_dtitle}</td>
+
+				<td>{$vo.taoke_rate}</td>
+
+				<td>{$vo.time_add}</td>
+
+				<td><if condition="$vo['judge_right']">{$vo.judge_time}<else/><span style="color: red;">未审核</span></if></td>
+
+				<td><if condition="$vo['judge_right']">{$status[$vo['status']]}<else/><span style="color: red;">未审核</span></if></td>
+
+				<td>{$top_status[$vo['top_status']]}</td>
+
+				<td>{$server_status[$vo['server_status']]}</td>
+
+				<td><if condition="$vo['judge_right']">{$vo.judge_name}<else/><span style="color: red;">未审核</span></if></td>
+
+				<td>
+					<p><a href="{:U('portal/AdminHaozhu/edit',array('id'=>$vo['num_iid']))}" target='_self'>编辑</a></p>
+
+					<p><a href="{:U('portal/AdminHaozhu/dsh_post',array('id'=>$vo['num_iid']))}" class="js-ajax-dialog-btn" data-msg="确定删除吗？">删除</a></p>
+
+				</td>
+
+			</tr>
+
+			</foreach>
+
+			</table>
+
+		<div class="pagination">{$Page}</div>
+
+	</div>
+
+	<script src="__PUBLIC__/js/common.js"></script>
+
+	<script>
+
+		function refersh_window() {
+
+			var refersh_time = getCookie('refersh_time');
+
+			if (refersh_time == 1) {
+
+				window.location = "{:U('AdminHaozhu/index',$formget)}";
+
+			}
+
+		}
+
+		setInterval(function() {
+
+			refersh_window();
+
+		}, 60000);
+
+	</script>
+
+</body>
+
+</html>

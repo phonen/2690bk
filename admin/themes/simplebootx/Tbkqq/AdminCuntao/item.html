@@ -1,0 +1,109 @@
+<admintpl file="header" />
+</head>
+<body>
+	<style>
+	.table-actions{
+		position: relative;
+	}
+	.table-bordered{
+		border:none
+	}
+	.table-bordered th, .table-bordered td{
+		border-left: none;
+	}
+	table tr th,table tr td{
+		text-align: center !important
+	}
+	table tr td p{
+		margin-bottom: 6px;
+	}
+	html {
+		font-size: 10px
+	}
+	table tr td{
+			font-size: 1.2rem !important;
+		}
+	@media (min-width: 1024px) {
+		body {
+			font-size: 15px
+		}
+		table tr td{
+			font-size: 1.5rem !important;
+		}
+	}
+	
+	@media (min-width: 1440px) {
+		body {
+			font-size: 20px !important;
+		}
+		table tr td{
+			font-size: 2rem !important;
+		}
+	}
+</style>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="{:U('AdminCuntao/item')}">我的商品表</a></li>
+        <li><a href="{:U('AdminCuntao/item_add')}" target="_self">添加</a></li>
+    </ul>
+
+    <form method="post" class="js-ajax-form">
+        <div class="table-actions">
+            <button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminCuntao/item_delete')}" data-subcheck="true" data-msg="你确定删除商品吗？">删除</button>
+        </div>
+        <table class="table table-hover table-bordered table-list">
+            <thead>
+            <tr>
+                <th width="16"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+                <th width="70">ID</th>
+                <th width="70">商品图片</th>
+                <th width="160">商品短名称</th>
+                <th width="50">券后价</th>
+                <th>活动类型</th>
+                <th width="100">上传时间</th>
+                <th width="100">上传人</th>
+                <th width="50">状态</th>
+                <th width="80">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <foreach name="items" item="vo">
+                <tr>
+                    <td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.id}"></td>
+                    <td>{$vo.id}</td>
+                    <td><a href="{$vo.pic_url}" target="_blank"><img src="{$vo.pic_url}_250x250.jpg"></a></td>
+                    <td><a href="https://item.taobao.com/item.htm?id={$vo.num_iid}" target="_blank">{$vo.dtitle}</a></td>
+                    <td style="color: red;">{$vo.coupon_price}</td>
+                    <td>
+                        <php>
+                            $pre_status = 0;
+                           
+                            foreach($pre_type as $vals){
+                                if($vals['pre_name'] == $pre_type){
+                                    echo $pre_type[array_search($vo.preferential_type,$vals)]['pre_cname'];
+                                    $pre_status = 1;
+                                    break;
+                                }
+                            }
+                             if($pre_status == 0){
+                                echo "无活动";
+                            }
+                        </php>
+                    </td>
+                    <td>{$vo.add_time|date="Y-m-d H:i:s",###}</td>
+                    <td>{$vo.uname}</td>
+                    <php>$status=array("underway"=>"审核通过","0"=>"待审核","-1"=>"审核不通过","2"=>"待审核");</php>
+                    <td>{$status[$vo['status']]}</td>
+                    <td>
+                        <a href="{:U('AdminCuntao/item_edit',array('id'=>$vo['num_iid']))}">编辑</a> |
+                        <a href="{:U('AdminCuntao/item_delete',array('id'=>$vo['num_iid']))}" class="js-ajax-dialog-btn" data-msg="你确定执行该操作吗？" class="js-ajax-delete">删除</a></td></td>
+                </tr>
+            </foreach>
+            </tbody>
+        </table>
+        <div class="pagination">{$Page}</div>
+    </form>
+</div>
+<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

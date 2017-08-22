@@ -1,0 +1,321 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+::-webkit-input-placeholder { /* WebKit browsers */ 
+color: darkgray; 
+} 
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+color: darkgray; 
+} 
+::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+color: darkgray; 
+} 
+:-ms-input-placeholder { /* Internet Explorer 10+ */ 
+color: darkgray; 
+} 
+/*pid修改弹出框*/
+.modifyPIDBg{
+	position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    z-index: 101;
+}
+.modifyPIDBg>div {
+	position: relative;
+    width: 90%;
+    max-width: 400px;
+    margin: 4em auto;
+    padding: 4em 0;
+    background: #FFF;
+    border-radius: .25em .25em .4em .4em;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: rotateX(60deg);
+    -moz-transform: rotateX(60deg);
+    -ms-transform: rotateX(60deg);
+    -o-transform: rotateX(60deg);
+    transform: rotateX(60deg);
+  /* Force Hardware Acceleration in WebKit */
+    -webkit-backface-visibility: hidden;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+.modifyPIDBg.md-show {
+	opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+.modifyPIDBg.md-show>div {
+	-webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    transition-duration: 1s;
+}
+.pidContent{
+	margin-bottom: 1rem;
+}
+.titleName{
+	width: 20%;
+	min-width: 5rem;
+}
+.pidContent input{
+	border: 1px solid #ccc;
+    border-radius: .3rem;
+    padding-left: 1rem;
+    color: #666;
+}
+#prompt{
+	color: red;
+	display: block;
+}
+.PIDBtn{
+	border: none;
+    border-radius: 0.2rem;
+    color: white;
+    background: #00C1B3;
+    width: 30%;
+    padding: 0.3rem 0;
+}
+#cancelBtn{
+	background: #bbb;
+}
+/*微信二维码*/
+
+#WeChat-code-bg {
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(100, 100, 100, 0.7);
+	z-index: 101;
+	text-align: center;
+}
+
+#WeChat-code-bg>div {
+	position: relative
+}
+
+#WeChat-code-img {
+	margin-top: 5%;
+	display: none;
+	height: 512px
+}
+
+#WeChat-code-close {
+	position: absolute;
+	display: none;
+	margin-top: 4%;
+	margin-left: -1%;
+}
+/*固定导航栏*/
+.fixed-nav-bar{
+	width:100%;
+    background-color: #f7f8fa;
+    border-bottom: 1px solid #eee;
+    box-shadow: 1px 4px 10px #eee;
+    position: fixed;
+    z-index: 100;
+}
+.fixed-nav-bar>div{
+	width: 1100px;
+    margin: 0 auto;
+    height: 50px;
+}
+.fixed-nav-searchbox{
+	display:inline-block;
+	position: relative;
+	top: 0px;
+	width: 270px;
+	padding: 4px 10px;
+	font-size: 14px;
+	background: #f7f8fa;
+	border: 1px solid #e7eaf1;
+	border-radius: 3px;
+	box-sizing: border-box;
+	transition: background .2s,border .2s;
+}
+.nav-chose{
+	text-align: center;
+	margin-right: 10px;
+	display:inline-block;
+}
+.nav-chose p{
+	color: darkgrey;
+	font-size: 18px;
+	padding: 0 10px;
+	margin-top: 12px;
+	display: inline-block;
+}
+.nav-chose p:hover{
+	color: #8bd68e;
+}
+.nav-chose a:hover{
+	text-decoration: none;
+}
+.nav-chose .nav-chose-little{
+	font-size: 15px;
+	margin-left: -4px;
+}
+#keywords{
+	color: #545454;
+	border: none;
+	height: 30px;
+	width: 250px;
+}
+#search_a_tag{
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	position: absolute;
+	top: 4px;
+	right: 0;
+	text-align: center;
+}
+#search_a_tag>span{
+	color: darkgrey;
+	font-size: 16px;
+}
+.userLogin p,.userLogin span{
+	font-size: 1.5rem;
+}
+#menuDiv{
+	position: relative;
+	left: 1rem;
+}
+#menuDiv>span{
+	font-size: 2rem;
+	color: darkgrey;
+	margin-top: 1rem;
+}
+#menuUl{
+	display: none;
+	width:10rem;
+	position: absolute;
+	top: 3rem;
+	left: -2.5rem;
+	list-style-type: none;
+	background: white;
+	box-shadow: 0.5rem 0.5rem 1rem #777;
+}
+#menuUl>li{
+	color: darkgray;
+	cursor: pointer;
+	padding: 1rem 1.5rem;
+}
+#menuUl>li:hover{
+	background-color: #5fcec6;
+	color: white;
+}
+/*内容开始*/
+.content-bg-start{
+	padding-top: 50px;
+	width: 100%;
+}
+.content-bg-start>div{
+	position:relative;
+	margin: 15px auto 0;
+	width: 1100px;
+	border: 1px solid #eee;
+	box-shadow: 3px 4px 10px #eee;
+	border-radius: 5px;
+	background-color: white;
+}
+.ul-content{
+	list-style-type: none;
+	margin: 15px;
+	padding: 0;
+	height: 50px;
+}
+.ul-content>li{
+	float: left;
+}
+.ul-content a{
+	color: darkgray;
+	padding: 8px;
+    font-size: 20px;
+    border-bottom: 4px solid white;
+    margin-right: 20px;
+}
+.ul-content .ul-li-choose{
+	color: #01A705;
+	border-bottom: 4px solid #01A705;
+}
+.ul-content a:hover{
+	color: #01A705;
+	text-decoration: none;
+}
+.div-content{
+    margin: 20px;
+}
+.div-content .content-input{
+	padding: 5px;
+    font-size: 15px;
+    color: #444;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+}
+/*个人首页*/
+.div-content>div{
+	display: inline-block;
+    font-size: 20px;
+    margin: 0px 30px 20px 0px;
+}
+.div-content>div>img{
+    margin-right: 10px;
+}
+/*资料设置*/
+.form{
+	font-size: 18px;
+}
+.form>div{
+    margin-bottom: 15px;
+}
+.form label{
+    width: 100px;
+    color: #333;
+}
+.sub-btn{
+	border: none;
+    background-color: #19827A;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+.sub-btn:hover{
+    background-color: #00C1B3;
+}
+.red{
+	color: red;
+	font-size: 15px;
+}
+table tr th{
+	text-align: center;
+}
+#personal-center-add{
+	width: 28px;
+    cursor: pointer;
+}
+/*修改密码*/
+
+/*修改pid*/

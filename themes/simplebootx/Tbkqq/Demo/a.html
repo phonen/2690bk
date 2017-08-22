@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+	</head>
+	<body>
+		<form>
+			<input type="text" name="id" id="a"/>
+			<input type="button" value="测试" id="b"/>
+		</form>
+		<script>
+			$("#b").click(function(){
+				$.ajax({
+					type:'get',
+					url:'g=tbkqq&m=demo&a=a&id='+$("#a").val(),
+					success:function(e){console.log(e)}
+				})
+			})
+		</script>
+	</body>
+</html>

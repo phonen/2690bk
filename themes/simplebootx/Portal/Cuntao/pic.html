@@ -1,0 +1,323 @@
+    <tc_include file="public_head_file"/>
+	<link rel="shortcut icon" href="favicon.ico">
+	<script type="text/javascript" src="js/clipboard.min.js"></script>
+	<script src="js/dtk_head.js"></script>
+	<link href="css/slide.css" rel="stylesheet" type="text/css" />
+	<link href="css/quan_index.css" rel="stylesheet" type="text/css" />
+	<style>
+		#video_help{
+			position:fixed;
+			width:100%;
+			height:100%;
+			z-index:100;
+			top: 0;
+			background:rgba(100,100,100,0.8);
+		}
+		#video_help>div{
+			margin:auto;
+			width:750px;
+			margin-top:5%;
+		}
+		$video_help>div>div{
+			margin:auto;
+			margin-top:10%;
+		}
+	</style>
+	</head>
+<tc_include file="public_div_file"/>
+	<!--视频教程-->
+	<div id="video_help" style="display:none;">
+		<div>
+			<div>
+				<video width="750px" height="100%" controls="controls" id="video">
+					<source src="http://www.2690.cn/video/drawing_help.mp4" type="video/mp4">
+				</video>
+			</div>
+			<div class="" style="background:white;position: relative;color: #656565;">下载视频请右键点击“视频另存为(V)...”</div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			//导航选中高亮
+			$('.nav-list ul').children().eq(4).addClass('cur');
+			$("#video_help").click(function(){
+				video_close();
+			});
+			$("#close_video").click(function(){
+				video_close();
+			});
+			
+			$("#videohelp").click(function(){
+				video_play();
+			});
+			//视频播放
+			function video_play(){
+				$("#video_help").show();
+				$("body").css("overflow","hidden");
+				$("#video")[0].play();
+			}
+			//视频关闭
+			function video_close(){
+				$("#video_help").hide();
+				$("body").css("overflow","");
+			}
+		})
+	</script>
+	
+	<!--广告位----开始-->
+	<div class="banner-attention">
+		<a href="#" target="_blank"><img src="images/drawingbanner.png" alt=""> </a>
+	</div>
+	<!--广告位----结束-->
+	<!--内容区----开始-->
+	<div class="main">
+		<div class="main-top">
+			<div class="goods-choice" style="display:none;"> <span class="main-top-tit">已选条件&nbsp;&gt;&nbsp;</span>
+				<div class="goods-choice-main clearfix">
+					<div class="choice-item"> <span class="choice-num">找到 <b>21456</b> 款商品</span> </div>
+					<div class="choice-right ">
+						<a class="clear-choice" href="#" onclick="remove_choice_item(&quot;all&quot;);return false;"><i></i>清除所有条件</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wrapper">
+			<!--一键制图主页-->
+			<style>
+				#w_pic_form {
+					box-shadow: 0 4px 15px rgba(14, 57, 77, 0.17);
+					padding: 30px 20px;
+					border: 1px solid #e3f6ff;
+					border-radius: 5px;
+					background-color: #fff;
+					width: 337px;
+					font-size: 14px;
+					display: inline-block;
+				}
+				
+				#w_pic_form input {
+					margin: 5px 0px;
+				}
+				
+				.w_input {
+					width: 90%;
+					font-family: FontAwesome;
+					font-style: normal;
+					height: 20px;
+					padding: 10px 18px;
+					background-color: $fff;
+					background-image: none;
+					border: 1px solid #ccc;
+					border-radius: 0;
+					box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+					transition: border-color .15s;
+				}
+				
+				.w_input_num {
+					height: 20px;
+					border: 1px solid #ccc;
+					border-radius: 0;
+					box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+					padding: 5px 0;
+					width: 100px;
+				}
+				
+				.uppic {
+					color: #fff;
+					background-color: #1cb94e;
+					outline: none;
+					font-size: 14px;
+					height: auto;
+					font-weight: 400;
+					padding: 5px 20px;
+					text-transform: uppercase;
+					border: none;
+				}
+				
+				.uppic:hover {
+					background-color: #1ca347;
+				}
+				
+				#end_pic {
+					background: #eee;
+					height: 330px;
+					width: 500px;
+					display: inline-block;
+					padding: 30px 20px;
+					float: right;
+					border: 1px solid #CCC;
+				}
+				
+				#show_pic_img {
+					height: 20px;
+				}
+				
+				#show_pic {
+					display: inline-block;
+					margin-left: 100px;
+				}
+				
+				.subimg {
+					color: #fff;
+					background-color: #ccc;
+					padding: 5px 15px;
+					font-weight: 400;
+					border: none;
+				}
+				
+				.subimg:hover {
+					background-color: #666;
+				}
+			</style>
+			<div style="margin: 20px 45px 45px;min-height: 460px;">
+				<form action="#" method="post" enctype="multipart/form-data" id="w_pic_form">
+					<label>商品连接或者id：</label><input type="text" id="price" name="num_iid" class="w_input" /><label></label><label id="price_err"></label><br>
+					<label>券后价：&nbsp&nbsp&nbsp&nbsp</label><input type="number" min="0" id="coupon_price" name="coupon_price" class="w_input_num" /><label>&nbsp元</label><label id="coupon_price_err"></label><br>
+					<label>原&nbsp价：&nbsp&nbsp&nbsp&nbsp</label><input type="number" min="0" id="old_price" class="w_input_num" /><label>&nbsp元</label><label id="old_price_err"></label><br>
+					<label>商品标题：</label><input type="text" placeholder="商品标题" id="title" name="dtitle" class="w_input" /><label id="title_err"></label><br>
+					<label>优惠券链接：</label><input type="text" placeholder="连接地址" id="click_url" name="quanurl" class="w_input" /><label id="chick_url__err"></label><br>
+					<!--<label>商品文案内容：</label><input type="text" placeholder="商品文案" id="end_time" name="intro" class="w_input" /><label id="end_time_err"></label><br>-->
+					<input type="button" value="生成图片" id="sub" class="uppic" />
+					<input type="button" value="复制图片" id="fuzhi" class="uppic" />
+					<input type="button" value="视频教程" id="videohelp" class="uppic" />
+					<span id="mes_span"></span>
+				</form>
+				<div id="end_pic">
+					<img id="show_pic" />
+				</div>
+			</div>
+			<script>
+				//预览图片
+				$(function() {
+					//图片预览
+					$('#pic').change(function(e) {
+							$('#show_pic_img').show();
+							var file = e.target.files[0];
+							var fr = new FileReader(); //h5新方法
+							fr.onload = function(e) {
+								$('#show_pic_img').attr('src', e.target.result);
+							}
+							fr.readAsDataURL(file); //预览图片
+						})
+						//上传图片按钮
+					$('#subimg').click(function() {
+							$('#pic').trigger('click');
+						})
+						//转义
+					function zhuanyi(ab) {
+						var str = ab;
+						str = str.replace(/\+/g, "%2B");
+						str = str.replace(/\//g, "%2F");
+						str = str.replace(/\?/g, "%3F");
+						str = str.replace(/\%/g, "%25");
+						str = str.replace(/\&/g, "%26");
+						str = str.replace(/\=/g, "%3D");
+						str = str.replace(/\#/g, "%23");
+						str = str.replace(/\:/g, "%3A");
+						return str;
+					}
+					//ajax提交生成预览图
+					$('#sub').click(function() {
+							//判断是否信息全在
+							if(checkinput()) {
+								
+								var quanurl = $('#click_url').val();
+								var $quanurl = zhuanyi(quanurl);
+								var num_iid = zhuanyi($('#price').val());
+								var data = "&dtitle=" + $('#title').val() + "&price=" + $('#old_price').val() + "&quanurl=" + $quanurl + "&num_iid=" + num_iid + "&coupon_price=" + $('#coupon_price').val() + "&intro=" + $('#end_time').val() <php>if($uid = sp_get_current_userid()) {echo "+ '&id=$uid'";} </php>;
+								$('#show_pic').attr('src', 'images/download.gif').css('height', '330px');
+								$.ajax({
+									type: 'get',
+									url: 'http://www.2690.cn/?m=img&a=create_erwei' + data,
+									data: data,
+									success: function(eq) {
+										//清空图像
+										if($("#end_pic").find("img").length>0){
+											$("#end_pic").find("img").attr("src","");
+										}
+									
+										if(eq == 0) {
+											$('#price_err').text('商品链接错误或商品没有优惠券，请重试').css('color', 'red');
+										} else {
+											$('#price_err').text('');
+											$('#show_pic').attr('src', '?m=img&a=create_erwei' + data).css('height', '330px');
+										}
+										clear_text();
+									},
+									error: function(e) {
+										console.log(e);
+									}
+								});
+
+							} else {
+								console.log('表单填写不完整');
+							}
+						})
+					function clear_text(){
+						$('#title_err').text('');
+						$('#click_url_err').text('');
+						$('#coupon_price_err').text('');
+						$('#old_price_err').text('');
+						$('#end_time_err').text('');
+					}
+						//判断输入内容是否存在
+					function checkinput() {
+						if($('#title').val() == '') {
+							$('#title_err').text('不能为空').css('color', 'red');
+							return 0;
+						}
+						if($('#click_url').val() == '') {
+							$('#click_url_err').text('不能为空').css('color', 'red');
+							return 0;
+						}
+						if($('#price').val() == '') {
+							$('#price_err').text('不能为空').css('color', 'red');
+							return 0;
+						}
+						if($('#coupon_price').val() == '') {
+							$('#coupon_price_err').text('不能为空').css('color', 'red');
+							return 0;
+						}
+						if($('#old_price').val() == '') {
+							$('#old_price_err').text('不能为空').css('color', 'red');
+							return 0;
+						}
+						if($('#end_time').val() == '') {
+							$('#end_time_err').text('不能为空').css('color', 'red');
+							return 0;
+						}
+						return 1;
+					}
+					//设置一键复制
+					var copyFunction = function(copy) {
+						var clipboard = new Clipboard('#fuzhi', {
+							target: function() {
+								return copy;
+							}
+						});
+
+						clipboard.on('success', function(e) {
+							console.log('版本成功');
+							$("#mes_span").text("复制成功").css("color", "#1ca347");
+							e.clearSelection();
+						});
+
+						clipboard.on('error', function(e) {
+							console.log('版本低');
+							$("#mes_span").text("复制失败").css("color", "red");
+							e.clearSelection();
+						});
+
+					}
+					$('#fuzhi').click(function(e) {
+						var copy = $("#end_pic")[0];
+						copyFunction(copy);
+
+					});
+				})
+			</script>
+		</div>
+	</div>
+	<!--内容区----结束-->
+	<script src="js/visit_num.js"></script>
+	<tc_include file="public_foot_file"/>

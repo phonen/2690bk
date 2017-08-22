@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="Keywords" content="www.2690.cn">
+		<meta name="Description" content="www.2690.cn">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>使用流程-www.2690.cn</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/about.css">
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/dtk_head.js"></script>
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+	      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+		<style type="text/css">
+			.caidan{
+				border: 1px solid #ccc;
+			}
+			.caidan a:link {
+				color: #333333;
+				text-decoration: none;
+			}
+			
+			.caidan a:visited {
+				color: #333333;
+			}
+			
+			.caidan a:hover {
+				color: #DC492D;
+				text-decoration: none;
+			}
+			.xianshi{
+				border: 1px solid #ccc;
+			}
+			.fl_bg {
+				width: 100%;
+				height: 60px;
+				border-bottom: dotted #CCCCCC 1px;
+				line-height: 60px;
+				text-align: center;
+			}
+			
+			.fl_bg_on {
+				width: 100%;
+				height: 60px;
+				border-bottom: dotted #CCCCCC 1px;
+				line-height: 60px;
+				text-align: center;
+			}
+			
+			.help_info p {
+				margin-top: 20px;
+			}
+			
+			#contain ol>li {
+				font-size: 20px;
+				margin-top: 30px;
+			}
+			
+			.content-none img {
+				display: block;
+				margin: 20px 0;
+				max-width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="WeChat-code-bg">
+			<div>
+				<img id="WeChat-code-img" style="display: none;" src=""/>
+				<img id="WeChat-code-close" style="display: none;" src="images/close.png"/>
+			</div>
+		</div>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				    </button>
+					<a class="navbar-brand" href="http://www.2690.cn"><img style="margin-top: -15px;" src="images/personal-logo.png"/></a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="hiddenLi">
+							<a href="?a=qlist_ctgy">村淘商品</a>
+						</li>
+						<li class="hiddenLi">
+							<a href="?a=qlist">全网商品</a>
+						</li>
+						<li class="hiddenLi">
+							<a href="?a=jvhuasuan">聚划算</a>
+						</li>
+						<li class="hiddenLi">
+							<a href="?a=taoqianggou">淘抢购</a>
+						</li>
+						<li class="hiddenLi">
+							<a href="?a=pic">一键制图</a>
+						</li>
+						<li class="dropdown fivePart" style="display: none;">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">商品选择 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="?a=qlist_ctgy">村淘商品</a>
+								</li>
+								<li>
+									<a href="?a=qlist">全网商品</a>
+								</li>
+								<li>
+									<a href="?a=jvhuasuan">聚划算</a>
+								</li>
+								<li>
+									<a href="?a=taoqianggou">淘抢购</a>
+								</li>
+								<li role="separator" class="divider"></li>
+								<li>
+									<a href="?a=pic">一键制图</a>
+								</li>
+							</ul>
+						</li>
+						<script>
+							$(function(){
+								$(window).resize(function() {
+								    var width = $(this).width();
+								    if( 749<width && width<1184 ){
+										$('.fivePart').show();
+										$('.hiddenLi').css("display","none");
+									}else{
+										$('.hiddenLi').show();
+										$('.fivePart').css("display","none");
+									}
+								});
+							})
+						</script>
+					</ul>
+					<div class="search"> 	
+						<div class="select-area"> 
+							<span class="sear-select">
+								标题 <i></i> 
+							</span> 
+							<div id="xuan" class="hide sear-option"> 
+								<span class="cur" data-value="keyword">标题</span>
+								<span data-value="keyword_miaoshu">标题和文案</span> 
+								<span data-value="spid">商品ID</span> 
+							</div> 
+						</div>
+						<div class="search-input">
+							<input id="keywords" name="keywords" placeholder="请输入搜索内容" value="" onkeydown="FSubmit(event.keyCode||event.which);" type="text"> 
+						</div> 
+						<a id="search_a_tag" href="" class="search-submit" onclick="if($.trim(document.getElementById('keywords').value) == ''){return false;}this.href='?a=search'+'&amp;kw='+encodeURIComponent(document.getElementById('keywords').value)+'&amp;xuan='+$('#xuan .cur').data('value');">
+							<p>搜索</p>
+						</a> 
+					</div>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更多 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="/?a=about">关于我们</a>
+								</li>
+								<li>
+									<a href="/?a=help_test">使用帮助</a>
+								</li>
+								<li>
+									<a class="WeChat-code">加入微信</a>
+								</li>
+								<li role="separator" class="divider"></li>
+								<if condition="$user.user_login eq ''">
+									<li><a href="?a=login">登录</a></li>
+									<li><a href="?a=login_reg">注册</a></li>
+									<else /> 
+									<li><a href="?a=changepwd">{$user.user_login}</a></li>
+									<li><a href="?g=user&m=login&a=logout">退出</a></li>
+								</if>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+		<div style="width:1200px; margin: -21px auto 0;overflow:hidden;"><img src="images/help_banner.png"></div>
+		<div style="width:1200px; margin:auto; margin-bottom:20px; margin-top:10px; overflow:hidden; font-family:&#39;微软雅黑&#39;;">
+			<table width="100%" height="344" border="0" cellpadding="0" cellspacing="1" style="background:#D7DEE2">
+				<tbody>
+					<tr>
+						<td width="15%" bgcolor="#FFFFFF" valign="top" style="text-align:left; font-size:16px;" class="caidan">
+							<div style="background:#ddd; font-size:26px; color:#309432; line-height:60px; height:60px; text-align:center;font-weight:bold;">使用帮助</div>
+							<!--<div class="fl_bg">
+								<a href="?a=help_test">使用须知</a>
+							</div>-->
+							<div class="fl_bg_on">
+								<a href="?a=use_flow" style="color:#DC492D;">使用流程</a><span style="width:30px; height:30px; margin-left:20px;"><img src="images/jt.png"></span>
+							</div>
+							<div class="fl_bg">
+								<a href='?a=common_problem'>常见问题</a>
+							</div>
+						</td>
+						<td width="85%" bgcolor="#FFFFFF" valign="top" class="xianshi">
+							<div style="border-bottom:dotted #CCCCCC 1px; width:90%; margin:auto;margin-top:20px; text-align:center; font-size:16px; line-height:30px; padding-bottom:10px; font-weight:bold; color:#333333">PC端、移动端使用流程
+								<br><span style="font-size:12px; color:#999999; font-weight:normal;">更新时间：2017/5/16 15:00:00 &nbsp; &nbsp; &nbsp; 浏览：6651</span>
+							</div>
+							<div style="width:90%; line-height:25px; margin: 20px auto 40px; text-align:left; color:red;text-align: center; font-size:30px;" class="help_info">
+								<p><strong>PC端使用介绍</strong></p>
+								<img style="width: 60%;" src="images/use-help.png"/>
+								<p><strong>移动端使用介绍</strong></p>
+								<img style="width: 60%;" src="images/use-help-phone.png"/>
+								<p style="font-family:'微软雅黑','sans-serif';">微信端敬请期待</p>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<footer class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="text-align: center;">
+						<div class="qrCode">
+							<img src="images/WeChat-code1.png" />
+							<p>村淘优惠券公众号</p>
+						</div>
+						<div class="qrCode">
+							<img src="images/WeChat-code2.jpg" />
+							<p>村淘圈公众号</p>
+						</div>
+					</div>
+					<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+						<div class="link-a">
+							<a href="?a=help_test" class="sty-hover">使用帮助</a><span>|</span>
+							<a href="?a=business_cooperation" class="sty-hover">商家合作</a><span>|</span>
+							<a href="?a=feedback" class="sty-hover">问题反馈</a><span>|</span>
+							<a class="sty-hover">友情链接</a>
+						</div>
+						<div class="link-span">
+							<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261869629'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261869629%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+							<span>© CopyRight 2011-2017 www.2690.cn 闽ICP备16037554号-1 </span><span class="disHide">|</span>
+							<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=35010302000312" target="_blank" class="disBlock sty-hover"style="padding: 0;"><img src="images/beianbgs.png" width="24" height="24" /> 闽公网安备 35010302000312号</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+	<script src="js/visit_num.js"></script>
+	<script src="js/dtk_head.js"></script>
+    <script>
+		if(window.parent !== window.self) {
+			document.write = '';
+			window.parent.location.href = window.self.location.href;
+			setTimeout(function() {
+				document.body.innerHTML = '';
+			}, 0);
+		}
+		var viewHost = window.location.href.split(".")[1];
+		$(function() {
+			$(".show-all").click(function() {
+				$(this).parent().parent().parent().children().eq(1).css('display', 'none');
+				$(this).parent().parent().parent().children().eq(2).css('display', 'block');
+			});
+			$("input[value='收起']").click(function() {
+				$(this).parent().parent().children().eq(1).css('display', 'block');
+				$(this).parent().parent().children().eq(2).css('display', 'none');
+			})
+			$('i').mouseover(function(){
+				$(this).css('color','#008800');
+			})
+			$('i').mouseout(function(){
+				$(this).css('color','#70c55a');
+			})
+		})
+		function is_exit(url, words) {
+			if(confirm(words))
+				window.location = url;
+		}
+	</script>
+</html>

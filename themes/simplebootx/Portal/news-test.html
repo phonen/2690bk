@@ -1,0 +1,57 @@
+﻿<tc_include file="public_head_file"/>
+<title>村淘村-{$post_title}</title>
+<div class="helpnews">
+	<div class="helpnews_txt">
+		<div class="helpnews_txt_top">
+			<h1>{$post_title}</h1> {$post_date} 作者 {$user_login|default=$user_nicename}</div>
+		<div class="helpnews_txt_cont">
+			{$post_content}
+		</div>
+	</div>
+	<div class="helpnews_feilei">
+
+		<if condition="!empty($prev)">
+			<a href="{:leuu('article/index',array('id'=>$prev['tid'],'cid'=>$prev['term_id']))}" class="btn btn-primary pull-left">上一篇：{$prev.post_title}</a>
+		</if>
+		<if condition="!empty($next)">
+			<a href="{:leuu('article/index',array('id'=>$next['tid'],'cid'=>$next['term_id']))}" class="btn btn-warning pull-right" style="float:right;">下一篇：{$next.post_title}</a>
+		</if>
+		<script type="text/javascript" src="__TMPL__Public/js/qrcode.min.js"></script>
+		<div id="qrcode" style="width: 375px;margin:0 auto;height:196px;">
+			<img src="http://www.2690.cn/images/news_weixin.jpg" width="100%" height="100%" />
+		</div>
+		<!--
+				<script type="text/javascript">
+                var qrcode = new QRCode(document.getElementById("qrcode"), {
+                width : 100,
+                height : 100
+                });
+                function makeCode () {		
+                //qrcode.makeCode("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+				qrcode.makeCode("http://www.2690.cn/images/news_weixin.jpg");
+                }
+                makeCode();
+                </script>
+				-->
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript">
+	var jiathis_config = {
+		siteNum: 3,
+		sm: "weixin,qzone,tsina",
+		url: "http://www.2690.cn",
+		summary: {$post_content},
+		title: {$post_title},
+		boldNum: 3,
+		showClose: true,
+		shortUrl: true,
+		hideMore: false
+	}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jiathis_r.js?btn=r1.gif&move=1" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+<script src="js/dtk_head.js"></script>
+<script src="js/visit_num.js"></script>
+<tc_include file="public_foot_file"/>

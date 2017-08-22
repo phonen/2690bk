@@ -1,0 +1,618 @@
+html {
+	font-size: 10px;
+}
+body{
+	font-family: "微软雅黑";
+	min-width: 1200px;
+}
+nav{
+	min-width: 1200px;
+}
+/*微信二维码*/
+#WeChat-code-bg {
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(100, 100, 100, 0.7);
+	z-index: 100;
+	text-align: center;
+}
+
+#WeChat-code-bg>div {
+	position: relative
+}
+
+#WeChat-code-img {
+	margin-top: 5%;
+	display: none;
+	height: 512px
+}
+
+#WeChat-code-close {
+	position: absolute;
+	display: none;
+	margin-top: 4%;
+	margin-left: -1%;
+}
+#cnzz_stat_icon_1261869629 img{
+	display: none;
+}
+.fonRow{
+    margin-top: 5rem;
+    padding: 3rem 0;
+    font-size: 1.5rem;
+    line-height: 2.3rem;
+}
+.search{
+	overflow: hidden;
+    position: relative;
+	display: inline-block;
+	margin-top: 0.5rem;
+    font-size: 1rem;
+    border: 0.1rem solid #e3e4e3;
+    line-height: 3rem;
+    width: 23rem;
+    height: 3rem;
+    background-color: white;
+}
+.select-area{
+	position: absolute;
+    left: 4px;
+}
+.search-input{
+	position: absolute;
+    /*left: 4rem;*/
+}
+#search_a_tag>p{
+	position: absolute;
+    right: 5px;
+}
+#keywords{
+	width: 15rem;
+    border: none;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    line-height: 2rem;
+}
+.smallTitleDiv{
+	position: relative;
+	top: -3rem;
+	left: 22%;
+	margin-bottom: 3rem;
+}
+.smallTitleDiv>h1{
+	padding: 0 1rem;
+	width: 6rem;
+	position: absolute;
+	top: 0;
+	left: 1rem;
+	text-align: center;
+	font-size: 2.3rem;
+}
+.smallTitleDiv>p{
+	border: 2px solid;
+	position: absolute;
+	top: 2.5rem;
+	left: 0;
+	width: 8rem;
+	height: 1.8rem;
+}
+#smallTitleDiv>h1{
+	width: 10rem;
+}
+#smallTitleDiv>p{
+	width: 12rem;
+}
+#smallTitleImg{
+	width: 12rem;
+	margin-bottom: 4rem;
+}
+.siteCharacteristicsMargin{
+	margin-right: 1.5rem;
+	margin-left: 0.5rem;
+}
+.siteCharacteristics{
+	padding: 3rem;
+	background: white;
+	color: #199a29;
+	height: 26rem;
+	width: 17rem;
+}
+.siteCharacteristics>p{
+	font-size: 1rem;
+}
+.siteCharacteristics>h1{
+	font-size: 1.8rem;
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
+.qrCode{
+	display: inline-block;
+	width: 8rem;
+}
+.qrCode img{
+	width: 8rem;
+}
+.qrCode p{
+	margin-top: 8px;
+	font-size: 1.2rem;
+}
+.link-a{
+	text-align: center;
+	margin: 2.3rem 0 1rem 0;
+}
+.sty-hover{
+	color: white;
+    text-decoration: none;
+    padding: 0 2rem;
+}
+.sty-hover:hover{
+	color: #56c756;
+	text-decoration: none;
+}
+.link-span{
+	text-align: center;
+}
+.disHide{
+	display: none;
+}
+.disBlock{
+	display: block;
+}
+footer{
+	background-color: #333;
+	color: #888;
+	padding: 2rem 0 1rem 0;
+	font-size: 1.5rem;
+}
+@media (min-width: 1024px){
+	body{font-size: 18px}
+	.fonRow{
+	    font-size: 1.8rem;
+	    line-height: 2.25rem;
+	    padding: 3.5rem;
+	}
+	.search{
+	    font-size: 1.5rem;
+	}
+	#keywords{
+	    font-size: 1.8rem;
+	}
+	.smallTitleDiv{
+		left: 22%;
+		margin-bottom: 4rem;
+	}
+	.smallTitleDiv>h1{
+		width: 8rem;
+		font-size: 3.3rem;
+	}
+	.smallTitleDiv>p{
+		width: 11rem;
+		height: 2.5rem;
+		top: 2.8rem;
+		left: -0.5rem;
+	}
+	#smallTitleDiv>h1{
+		width: 13rem;
+	}
+	#smallTitleDiv>p{
+		width: 16rem;
+	}
+	#smallTitleImg{
+		width: 16rem;
+		margin-bottom: 4rem;
+	}
+	.siteCharacteristicsMargin{
+		margin-right: 3rem;
+		margin-left: -0.5rem;
+	}
+	.siteCharacteristics{
+		padding: 3rem;
+		height: 25rem;
+		width: 20rem;
+	}
+	.siteCharacteristics>p{
+		font-size: 1rem;
+	}
+	.siteCharacteristics>h1{
+		font-size: 1.8rem;
+		margin-bottom: 1.5rem;
+	}
+	.qrCode{
+		width: 8rem;
+	}
+	.qrCode p{
+		margin-top: 8px;
+		font-size: 1.2rem;
+	}
+	.disHide{
+		display: none;
+	}
+	.disBlock{
+		display: block;
+	}
+} /*>=1024的设备*/
+@media (min-width: 1100px) {
+	body{font-size: 20px}
+	.fonRow{
+	    font-size: 2.3rem;
+	    line-height: 2.7rem;
+	    padding: 4.5rem 0;
+	}
+	.search{
+	    font-size: 1.5rem;
+	}
+	#keywords{
+	    font-size: 1.8rem;
+	}
+	.smallTitleDiv{
+		left: 22%;
+		margin-bottom: 4rem;
+	}
+	.smallTitleDiv>h1{
+		width: 10rem;
+		font-size: 4rem;
+	}
+	.smallTitleDiv>p{
+		width: 14rem;
+		height: 3rem;
+		top: 2.8rem;
+		left: -1rem;
+	}
+	#smallTitleDiv>h1{
+		width: 16rem;
+	}
+	#smallTitleDiv>p{
+		width: 20rem;
+	}
+	#smallTitleImg{
+		width: 20rem;
+		margin-bottom: 4rem;
+	}
+	.siteCharacteristicsMargin{
+		margin-right: 5rem;
+	}
+	.siteCharacteristics{
+		padding: 3rem;
+		height: 30rem;
+		width: 20rem;
+	}
+	.siteCharacteristics>p{
+		font-size: 1.5rem;
+	}
+	.siteCharacteristics>h1{
+		font-size: 2.3rem;
+		margin-bottom: 1.5rem;
+	}
+	.qrCode{
+		width: 8rem;
+	}
+	.qrCode p{
+		margin-top: 8px;
+		font-size: 1.2rem;
+	}
+	.disHide,.disBlock{
+		display: inline-block;
+	}
+} /*>=1024的设备*/
+@media (min-width: 1280px) {
+	body{font-size: 22px;}
+	.fonRow{
+	    font-size: 2.8rem;
+	    line-height: 3.2rem;
+	    padding: 5rem 0;
+	}
+	.search{
+	    font-size: 1.5rem;
+	}
+	#keywords{
+	    font-size: 1.8rem;
+	}
+	.smallTitleDiv{
+		left: 22%;
+		margin-bottom: 5.4rem;
+	}
+	.smallTitleDiv>h1{
+		width: 12rem;
+		font-size: 5rem;
+	}
+	.smallTitleDiv>p{
+		width: 16rem;
+		height: 4rem;
+		top: 2.8rem;
+		left: -1rem;
+	}
+	#smallTitleDiv>h1{
+		width: 20rem;
+	}
+	#smallTitleDiv>p{
+		width: 24rem;
+	}
+	#smallTitleImg{
+		width: 24rem;
+		margin-bottom: 4rem;
+	}
+	.siteCharacteristicsMargin{
+		margin-right: 4rem;
+		margin-left: 0rem;
+	}
+	.siteCharacteristics{
+		padding: 3rem;
+		height: 31rem;
+		width: 25rem;
+	}
+	.siteCharacteristics>p{
+		font-size: 2rem;
+	}
+	.siteCharacteristics>h1{
+		font-size: 2.8rem;
+		margin-bottom: 1.5rem;
+	}
+	.qrCode{
+		width: 10rem;
+	}
+	.qrCode p{
+		margin-top: 8px;
+		font-size: 1.5rem;
+	}
+	.disHide,.disBlock{
+		display: inline-block;
+	}
+} 
+@media (min-width: 1366px) {
+	body{font-size: 24px;}
+	.fonRow{
+	    font-size: 3rem;
+	    line-height: 3.4rem;
+	    padding: 4.5rem 0;
+	}
+	.search{
+	    font-size: 1.5rem;
+	}
+	#keywords{
+	    font-size: 1.8rem;
+	}
+	.smallTitleDiv{
+		left: 22%;
+		margin-bottom: 5.4rem;
+	}
+	.smallTitleDiv>h1{
+		width: 12rem;
+		font-size: 5rem;
+	}
+	.smallTitleDiv>p{
+		width: 16rem;
+		height: 3rem;
+		top: 3.8rem;
+		left: -1rem;
+	}
+	#smallTitleDiv>h1{
+		width: 20rem;
+	}
+	#smallTitleDiv>p{
+		width: 24rem;
+	}
+	#smallTitleImg{
+		width: 24rem;
+		margin-bottom: 4rem;
+	}
+	.siteCharacteristicsMargin{
+		margin-right: 2.5rem;
+		margin-left: 0.5rem;
+	}
+	.siteCharacteristics{
+		padding: 4rem;
+		height: 33rem;
+		width: 28rem;
+	}
+	.siteCharacteristics>p{
+		font-size: 2rem;
+	}
+	.siteCharacteristics>h1{
+		font-size: 3rem;
+		margin-bottom: 1.5rem;
+	}
+	.qrCode{
+		width: 10rem;
+	}
+	.qrCode p{
+		margin-top: 8px;
+		font-size: 1.5rem;
+	}
+	.disHide,.disBlock{
+		display: inline-block;
+	}
+}  
+@media (min-width: 1440px) {
+	body{font-size: 24px !important;}
+	.fonRow{
+	    font-size: 3rem;
+	    line-height: 3.7rem;
+	    padding: 5.5rem 0;
+	}
+	.search{
+	    font-size: 1.5rem;
+	}
+	#keywords{
+	    font-size: 1.8rem;
+	}
+	.smallTitleDiv{
+		left: 22%;
+		margin-bottom: 5.5rem;
+	}
+	.smallTitleDiv>h1{
+		width: 12rem;
+		font-size: 5rem;
+	}
+	.smallTitleDiv>p{
+		width: 16rem;
+		height: 3.5rem;
+		top: 3.8rem;
+		left: -1rem;
+	}
+	#smallTitleDiv>h1{
+		width: 20rem;
+	}
+	#smallTitleDiv>p{
+		width: 24rem;
+	}
+	#smallTitleImg{
+		width: 24rem;
+		margin-bottom: 4rem;
+	}
+	.siteCharacteristicsMargin{
+		margin-right: 3.5rem;
+		margin-left: 0.5rem;
+	}
+	.siteCharacteristics{
+		padding: 4rem;
+		height: 34rem;
+		width: 28rem;
+	}
+	.siteCharacteristics>p{
+		font-size: 2.1rem;
+	}
+	.siteCharacteristics>h1{
+		font-size: 3rem;
+		margin-bottom: 1.5rem;
+	}
+	.qrCode{
+		width: 10rem;
+	}
+	.qrCode p{
+		margin-top: 8px;
+		font-size: 1.5rem;
+	}
+	.disHide,.disBlock{
+		display: inline-block;
+	}
+} 
+@media (min-width: 1680px) {
+	body{font-size: 28px;}
+	.fonRow{
+	    font-size: 3.6rem;
+	    line-height: 4rem;
+	    padding: 6rem 0;
+	}
+	.search{
+	    font-size: 1.5rem;
+	}
+	#keywords{
+	    font-size: 1.8rem;
+	}
+	.smallTitleDiv{
+		left: 22%;
+		margin-bottom: 8rem;
+	}
+	.smallTitleDiv>h1{
+		width: 14rem;
+		font-size: 6rem;
+	}
+	.smallTitleDiv>p{
+		width: 18rem;
+		height: 3.5rem;
+		top: 4.8rem;
+		left: -1rem;
+	}
+	#smallTitleDiv>h1{
+		width: 24rem;
+	}
+	#smallTitleDiv>p{
+		width: 28rem;
+	}
+	#smallTitleImg{
+		width: 28rem;
+		margin-bottom: 4rem;
+	}
+	.siteCharacteristicsMargin{
+		margin-right: 3.5rem;
+		margin-left: 2rem;
+	}
+	.siteCharacteristics{
+		padding: 4rem;
+		height: 35rem;
+		width: 29rem;
+	}
+	.siteCharacteristics>p{
+		font-size: 2.2rem;
+	}
+	.siteCharacteristics>h1{
+		font-size: 3.6rem;
+		margin-bottom: 1.5rem;
+	}
+	.qrCode{
+		width: 10rem;
+	}
+	.qrCode p{
+		margin-top: 8px;
+		font-size: 1.5rem;
+	}
+	.disHide,.disBlock{
+		display: inline-block;
+	}
+} 
+@media (min-width: 1920px) {
+	body{font-size: 33px;}
+	.fonRow{
+	    font-size: 3.6rem;
+	    line-height: 4.3rem;
+	    padding: 7rem 0;
+	}
+	.search{
+	    font-size: 1.5rem;
+	}
+	#keywords{
+	    font-size: 1.8rem;
+	}
+	.smallTitleDiv{
+		left: 22%;
+		margin-bottom: 9rem;
+	}
+	.smallTitleDiv>h1{
+		width: 15rem;
+		font-size: 6rem;
+	}
+	.smallTitleDiv>p{
+		width: 21rem;
+		height: 3.5rem;
+		top: 4.8rem;
+		left: -2rem;
+	}
+	#smallTitleDiv>h1{
+		width: 24rem;
+	}
+	#smallTitleDiv>p{
+		width: 28rem;
+	}
+	#smallTitleImg{
+		width: 28rem;
+		margin-bottom: 4rem;
+	}
+	.siteCharacteristicsMargin{
+		margin-right: 7rem;
+		margin-left: 1rem;
+	}
+	.siteCharacteristics{
+		padding: 4rem;
+		height: 34rem;
+		width: 32rem;
+	}
+	.siteCharacteristics>p{
+		font-size: 2.2rem;
+	}
+	.siteCharacteristics>h1{
+		font-size: 3.6rem;
+		margin-bottom: 1.5rem;
+	}
+	.qrCode{
+		width: 10rem;
+	}
+	.qrCode p{
+		margin-top: 8px;
+		font-size: 1.5rem;
+	}
+	.disHide,.disBlock{
+		display: inline-block;
+	}
+}

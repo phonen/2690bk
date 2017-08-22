@@ -1,0 +1,357 @@
+<tc_include file="public_head_file"/>
+	<link href="css/slide.css" rel="stylesheet" type="text/css" />
+	<link href="css/quan_index.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/lrtk.js"></script>
+	<script type="text/javascript">
+		//  window.TB={"Global":{"version":"2.1","versionName":"3.5.5","v":{},"util":{},"fn":{},"config":{"fn-core":{},"fn-login-info":{},"fn-tmsg":{},"fn-mini-cart":{},"fn-site-map":{},"fn-webww":{},"fn-tracker":{},"fn-check-b2b-user":{},"fn-check-bad-seller":{},"fn-login":{},"fn-suggest":{},"fn-super-bowl":{},"fn-weekend":{},"fn-Guang":{},"fn-tbar":{},"fn-accessibility":{},"fn-pad":{},"fn-browser-update":{}},"ui":{},"isLogin":true,"isIE6":false,"isMobile":false,"isDaily":false,"isHTTPS":true,"host":".taobao.com"}};
+//
+//  window.TB.Global.util.getNick=function(){ return "sadf"};
+
+	</script>
+	</head>
+<body>
+<!--网站头部----开始-->
+<!--微信二维码-->
+<script>
+	$(function(){
+		$("body").css({"min-width":"1000px",
+	 					"_width":expression((document.documentElement.clientWidth||document.body.clientWidth)>1000?"1000px":"")
+		})
+	})
+</script>
+<div id="WeChat-code-bg">
+	<div>
+		<img id="WeChat-code-img" style="display: none;" src=""/>
+		<img id="WeChat-code-close" style="display: none;" src="images/close.png"/>
+	</div>
+</div>
+<div class="dtk-head clearfix">
+	<div class="head-top">
+		<div class="head-top-main">
+			<div class="head-top-left clearfix">
+				<span class="dtk-info fl">专注单品，极致转化！</span>
+				<div id="header_login" class="fl">
+					<div class="login-register">
+						<if condition="$user.user_login eq ''">
+							<a href="?a=login" class="login">登录</a> |
+							<a href="?a=login_reg" class="register">注册</a>
+							<else /> {$user.user_login}
+							<a href="?a=changepwd" class="login">个人中心</a> |
+							<a href="?g=user&m=login&a=logout" class="register">退出</a>
+						</if>
+					</div>
+				</div>
+				<div class="topday" id="ip_count">日访客人数：<span style="color:#07840a;"></span>人</div>
+			</div>
+			<div class="head-top-right">
+				<a href="/?a=about" target="_blank">关于我们</a>|
+				<a href="?a=help_test" target="_blank">使用帮助</a>|
+				<a class="WeChat-code" style="cursor: pointer;">加入微信</a>
+			</div>
+		</div>
+	</div>
+	<div class="head-search">
+		<div class="logo fl">
+			<a href="?a=qlist_ctgy"><span></span></a>
+		</div>
+		<div class="search fl">
+			<div class="select-area">
+				<span class="sear-select">
+标题 <i></i>
+</span>
+				<div id="xuan" class="hide sear-option">
+					<span class="cur" data-value="keyword">标题</span>
+					<span data-value="keyword_miaoshu">标题和文案</span>
+					<span data-value="spid">商品ID</span>
+				</div>
+			</div>
+			<div class="search-input" style="padding-left: 63px;box-sizing: content-box;">
+				<input id="keywords" name="keywords" placeholder="请输入搜索内容" value="{$formget.kw}" onkeydown="FSubmit(event.keyCode||event.which);" type="text">
+			</div>
+			<a id="search_a_tag" href="" class="search-submit fr" onclick="if($.trim(document.getElementById('keywords').value) == ''){return false;}this.href='?a=search'+'&kw='+encodeURIComponent(document.getElementById('keywords').value)+'&amp;xuan='+$('#xuan .cur').data('value');"><span></span></a>
+		</div>
+		<div class="head-search-right fr"></div>
+	</div>
+
+	<!--导航----开始-->
+	<div class="head-nav">
+		<div class="nav-main">
+			<div class="nav-list clearfix">
+				<ul>
+					<li>
+						<a href="?a=qlist_ctgy">村淘商品</a>
+					</li>
+					<li>
+						<a href="?a=qlist">全网商品</a>
+					</li>
+					<li>
+						<a href="?a=jvhuasuan">聚划算</a>
+					</li>
+					<li>
+						<a href="?a=taoqianggou">淘抢购</a>
+					</li>
+					<li>
+						<a href="?a=pic">一键制图</a>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	<!--导航----结束-->
+
+</div>
+
+<!--网站头部----结束-->
+
+<div class="side-bar" style="bottom: 30%;">
+	<div class="side-bar-list">
+		<!--意见反馈-->
+		<a href="?a=feedback" style="cursor: pointer;">
+			<div class="side-bar-feedback side-bar-item">
+				<img title="意见反馈" src="images/label-right-email.png" />
+			</div>
+		</a>
+		<!--微信二维码-->
+		<a style="cursor: pointer;">
+			<div class="side-bar-favorite side-bar-item WeChat-code">
+				<img title="点击关注微信" src="images/label-right-wechat.png" />
+			</div>
+		</a>
+		<!--返回顶部-->
+		<a href="javascript:void(0)" class="scrollTop">
+			<div class="side-bar-top side-bar-item">
+				<img title="返回顶部" src="images/label-right-returntop.png" />
+			</div>
+		</a>
+	</div>
+</div>
+	<script>
+		function is_exit(url, words) {
+			if(confirm(words))
+				window.location = url;
+		}
+		//导航选中高亮
+			$('.nav-list ul').children().eq(0).addClass('cur');
+		//海报倒计时5秒
+//		$(function(){
+//			$('body').css('overflow', 'hidden');
+//			$("#Poster-bg-img").css('height',$(window).height());
+//			$('#Poster-bg-close').click(function() {
+//				$('body').css('overflow', 'visible');
+//			})
+//		})
+//		function timedCount() {
+//				var tim = document.getElementById("timers");
+//				var time = parseInt(tim.innerHTML);
+//				document.getElementById("timers").innerHTML = time;
+//
+//				if(t != null && time == 1) {
+//					clearTimeout(t);
+//					document.getElementById("timers").innerHTML = '';
+//					//删除自身
+//					document.getElementById("Poster-bg").parentNode.removeChild(document.getElementById("Poster-bg"));
+//					$('body').css('overflow', 'visible');
+//					return;
+//				}
+//				time--;
+//				tim.innerHTML = time;
+//				t = setTimeout("timedCount()", 1000)
+//			}
+//			var t = setTimeout("timedCount()", 1000);
+//			function PosterClose(){
+//				document.getElementById("Poster-bg").parentNode.removeChild(document.getElementById("Poster-bg"));
+//			}
+	</script>
+	
+	<!--海报-->
+	<!--
+	<div id="bigbanner" style="margin:0 auto;position:fixed;width:100%;height:100%;padding-bottom:20%;z-index:100;text-align:center;overflow:hidden;background:rgba(100,100,100,0.8);">
+		<img src="images/bigbanner.png" width="100%"/>
+	</div>
+	<script>
+		$(function(){
+		setTimeout(
+			'$("#bigbanner").slideToggle(2000)'
+		,2000);
+			
+		});
+	</script>
+	-->
+	<!--<div id="Poster-bg" >
+		<div>
+			<div style="font-size: 80px;font-weight: bold;color: white;position: absolute;left: 50%;text-shadow: 4px 2px 5px #000;" id="timers">5</div>
+			<img id="Poster-bg-img" src="images/poster.png"/>
+			<img id="Poster-bg-close" onclick="PosterClose()" src="images/close.png"/>
+		</div>
+	</div>-->
+		<!--广告位----开始-->
+	<div id="playBox">
+		<div class="pre"></div>
+		<div class="next"></div>
+		<div class="smalltitle">
+			<ul>
+				<li class="thistitle"></li>
+				<li></li>
+				<!--<li></li>
+				<li></li>-->
+			</ul>
+		</div>
+		<ul class="oUlplay">
+			<!--<li><img src="images/banner4.png" /></li>
+			<li><img src="images/banner5.png" /></li>-->
+			<li><img src="images/banner1.png" /></li>
+			<li><img src="images/banner2.png" /></li>
+		</ul>
+	</div>
+
+	<!--广告位----结束-->
+
+	<!--内容区----开始-->
+
+	<div class="main">
+		<div class="main-top">
+			<div class="goods-choice" style="display:none;">
+				<span class="main-top-tit">已选条件&nbsp;&gt;&nbsp;</span>
+				<div class="goods-choice-main clearfix">
+					<div class="choice-item">
+						<span class="choice-num">找到 <b>21456</b> 款商品</span>
+					</div>
+					<div class="choice-right ">
+						<a class="clear-choice" href="#" onclick="remove_choice_item(&quot;all&quot;);return false;"><i></i>清除所有条件</a>
+					</div>
+				</div>
+			</div>
+
+			<!-----需要内容筛选分类调用-->
+
+			<!----商品分类-->
+			<div class="goods-type-filter ">
+				<div class="goods-type">
+					<span class="main-top-tit">商品分类：</span>
+					<div class="goods-type-main">
+						<volist name="sortname" id="sort">
+						<span class="cw" cid={$sort.type_id} num="{$shoptype.0.count}"><a href="?a=qlist_ctgy&cid={$sort.type_id}">{$sort.type_name}<b>({$shoptype[$sort['type_id']]['count']})</b></a></span>
+					</volist>
+					</div>
+				</div>
+				<script>
+					//hover动态效果
+					$('span.cw').click(function() {
+							$(this).addClass('cur').siblings().removeClass('cur');
+						})
+						//判断分类显示hover效果
+					if('{$cid}') {
+						$('span.cw[cid="{$cid}"]').addClass('cur').siblings().removeClass('cur');
+					}
+					$('span.cw').each(function() {
+						$(this).click(function() {
+							if($(this).attr('num') == 0) {
+								return false;
+							}
+						})
+					})
+				</script>
+				
+				<div class="goods-pages">
+					<div class="goods-pages-fil">
+						<span data-px="zh" class="pxclick cur" lei="zonghe"><a class="" href="?a=qlist_ctgy&sort=zonghe&cid={$cid}&kw={$formget.kw}">综合</a></span>
+						<span data-px="zx" class="pxclick " lei="new"><i class="sf_new"></i><a class="" href="?a=qlist_ctgy&sort=new&cid={$cid}&kw={$formget.kw}">最新</a></span>
+						<span data-px="jgup" class="pxclick " lei="price"><a class="" href="?a=qlist_ctgy&sort=price&cid={$cid}&kw={$formget.kw}">价格</a></span>
+					</div>
+					<script>
+						//hover动态效果
+						$('span.pxclick').click(function() {
+								$(this).addClass('cur').siblings().removeClass('cur');
+							})
+							//判断分类显示hover效果
+						if('{$lei}') {
+							$('span.pxclick[lei="{$lei}"]').addClass('cur').siblings().removeClass('cur');
+						}
+					</script>
+				</div>
+			</div>
+			<div class="wrapper">
+				<div class="goods-list clearfix">
+
+					<!--内容区商品列表--需要做参数调用------开始-->
+					<volist name="lists['items']" id="vo" mod="5">
+						<div id="goods-items_{$vo.id}" data_goodsid="{$vo.num_iid}" class="goods-item ">
+							<div class="goods-item-content">
+								<div class="goods-img">
+									<a href="https://cunlist.taobao.com/?q={$vo.num_iid}" target="_blank">
+										<img class="lazy" src="images/download.gif" data-original="{$vo.pic_url}_230x230.jpg">
+									</a>
+											<if condition="($vo['cun'] gt 10)">
+												<span style='width:50px;height:50px;position:absolute;top:0;left:0;background:url(../images/hot.png)no-repeat;z-index:2;'></span>
+											</if>
+											<span id="quan_add_u_{$vo.id}" data-gid="{$vo.id}" class="fl quan_add_u go_info" onclick='return false;' data-page='quanPage'>
+<p></p><span></span>
+											</span>
+											<div class="goods-img-line"></div>
+											<div class="copy_text fr">复制文案</div>
+								</div>
+								<div class="goods-info">
+									<span class="goods-tit">
+<a href="https://cunlist.taobao.com/?q={$vo.num_iid}" target="_blank">
+    {$vo.title} </a>
+</span>
+									<div class="goods-slider" title="优惠券已领取 {$vo.Quan_receive} 张">
+										<span class="slider"><em data-width="72.89%"></em></span>
+									</div>
+									<div class="goods-qjy">
+										<div class="goods-price"><span>券后价</span>
+											<p><b><i class="rmb-style">￥</i>{$vo.coupon_price}</b></p>
+										</div>
+									</div>
+									<div class="goods-sale clearfix">
+										<div class="goods-quan fl">
+											<p>券<b><i class="rmb-style">￥</i>{$vo['price']-$vo['coupon_price']}</b></p>
+										</div>
+										<span class="fl">销量<b>{$vo.volume}</b></span>
+										<div class="tag clearfix">
+											<i class="tag-tmall"></i> </div>
+									</div>
+									<if condition="(0)">
+										<div class="type"><span class="margin-num">优惠券剩余：<b>{$vo.quan_surplus}</b>/{$vo['quan_surplus']+$vo['quan_receive']}</span></div>
+									</if>
+									<if condition="($quanxian eq 1)">
+										<div class="goods-author"><span>发布人</span><span class="goods_team_name">{$vo.uname}</span></div>
+									</if>
+								</div>
+							</div>
+						</div>
+					</volist>
+
+					<!--内容区商品列表----结束-->
+
+				</div>
+				<div class="pagination">
+					<ul>{$lists['page']}</ul>
+				</div>
+			</div>
+		</div>
+
+		<!--内容区----结束-->
+
+		<script>
+			var page_type = 'index';
+		</script>
+		
+	</div>
+	<div style="left: 0px; top: 0px; position: absolute; width: 29px; height: 27px; border: medium none; margin: 0px; padding: 0px; z-index: 2147483647; display: none;" class="sbi_search" id="sbi_camera_button"></div>
+	<script src="js/lazyload.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+			$("img.lazy").lazyload();
+		});
+	</script>
+	<script src="js/dtk_head.js"></script>
+	<script type="text/javascript" src="js/goods_page.js"></script>
+	<script type="text/javascript" src="js/layer.js"></script>
+	<script type="text/javascript" src="js/u_func.js"></script>
+	<script type="text/javascript" src="js/istui.js"></script>
+	<script type="text/javascript" src="js/count_qlist.js"></script>
+	<script type="text/javascript" src="js/clipboard.min.js"></script>
+	<script src="js/visit_num.js"></script>
+<tc_include file="public_foot_file"/>

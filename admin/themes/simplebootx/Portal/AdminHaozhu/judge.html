@@ -1,0 +1,500 @@
+<admintpl file="header" />
+<style>
+	.table tr th {
+		text-align: center;
+	}
+	.red_color{
+		color: red;
+	}
+	tr td img{
+		width: 600px;
+	}
+	textarea{
+		 width:600px;
+		 height:100px;
+	}
+	html {
+		font-size: 10px
+	}
+	table tr td{
+		font-size: 1.2rem !important;
+	}
+	[class*="span"]{
+		margin-left: 0;
+	}
+	@media (min-width: 1024px) {
+		body {
+			font-size: 15px
+		}
+		table tr td{
+			font-size: 1.5rem !important;
+		}
+	}
+	
+	@media (min-width: 1440px) {
+		body {
+			font-size: 20px !important;
+		}
+		table tr td{
+			font-size: 2rem !important;
+		}
+		textarea,tr td img{
+			width: 30%;
+		}
+		tr th{
+			width: 20%;
+		}
+	}
+</style>
+</head>
+
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('AdminHaozhu/items')}">商品列表</a></li>
+			<li class="active">
+				<a href="javascript:;" target="_self">商品审核</a>
+			</li>
+		</ul>
+		<form action="{:U('AdminHaozhu/judge_post')}" method="post" class="form-horizontal js-ajax-forms" enctype="multipart/form-data">
+			<div class="span12" style="width: 98%;">
+				<table class="table table-bordered">
+					<tr>
+						<th width="80">放单人</th>
+						<td>
+							<div>{$user['name']}</div>
+							<input type="hidden" name="judge_uid" value="{$posts.uid}" />
+						</td>
+					</tr>
+					<tr>
+						<th>放单人联系电话</th>
+						<td>
+							<div>{$user.phone}</div>
+						</td>
+					</tr>
+					<tr>
+						<th>放单人联系方式</th>
+						<td>
+							<div>{$user.contact_type}</div>
+						</td>
+					</tr>
+					<tr>
+						<th>放单人联系号码</th>
+						<td>
+							<div>{$user.contact}</div>
+						</td>
+					</tr>
+					<tr>
+						<th>活动类型</th>
+						<td>
+							<div>{$posts.active_type}</div>
+						</td>
+					</tr>
+					<tr>
+						<th>产品链接</th>
+						<td>
+							<div><a href="https://item.taobao.com/item.htm?id={$posts.num_iid}" target="_blank">https://item.taobao.com/item.htm?id={$posts.num_iid}</a></div>
+							<input type="hidden" value="{$posts.num_iid}" name="num_iid"/>
+						</td>
+					</tr>
+					<tr>
+						<th>优惠券链接</th>
+						<td>
+							<div><a href="{$posts.quan_url}" target="_blank">{$posts.quan_url}</a></div>
+						</td>
+					</tr>
+					<tr>
+						<th>优惠券数量</th>
+						<td>
+							<div>{$posts.quan_count}</div>
+						</td>
+					</tr>
+					<tr>
+						<th>产品短标题</th>
+						<td>
+							<div>{$posts.item_dtitle}</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th>商家名称</th>
+						<td>
+							<div>{$posts.vendor_name}</div>
+						</td>
+					</tr>
+					<tr>
+						<th>商家联系方式</th>
+						<td>
+							<div>
+								<if condition="$posts['vendor_contact']">
+									{$posts.vendor_contact}
+								<else/>
+									未填写
+								</if>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>店铺级别</th>
+						<td>
+							<div>{$posts.vendor_lever}</div>
+						</td>
+					</tr>
+					<tr>
+						<th>券后价</th>
+						<td>
+							<div><php>echo $posts['price']-$posts['quan'];</php>￥</div>
+						</td>
+					</tr>
+					<tr>
+						<th>推广活动成交量</th>
+						<td>
+							<div>{$posts.add_count}</div>
+						</td>
+					</tr>
+					<tr>
+						<th>淘客佣金</th>
+						<td>
+							<div>
+								<if condition="$posts['taoke_rate']">
+									{$posts.taoke_rate}%
+								<else/>
+									未填写
+								</if>
+							</div>
+						</td>
+					</tr>
+					<!-- <tr>
+						<th>村淘佣金</th>
+						<td>
+							<div>{$posts.commite_rate}%</div>
+						</td>
+					</tr> -->
+					<tr>
+						<th>服务费</th>
+						<td>
+							<div>{$posts.service_charge}￥/单</div>
+						</td>
+					</tr>
+					<tr>
+						<th>推广时间</th>
+						<td>
+							<div>{$posts.action_starttime}至{$posts.action_endtime}</div>
+						</td>
+					</tr>
+					<!-- <tr>
+						<th>阿里妈妈地址</th>
+						<td>
+							<div>{$posts.almm_url}</div>
+						</td>
+					</tr> -->
+					<tr>
+						<th>文案描述</th>
+						<td>
+							<div>{$posts.info}</div>
+						</td>
+					</tr>
+					<tr>
+						<th>店铺截图</th>
+						<td>
+							<div>
+							<if condition="empty($posts['vendor_pic'])">
+									<span class="red_color">未提交</span>
+								<else/>
+									<img src=
+										<php>
+										echo sp_get_asset_upload_path($posts['vendor_pic']);
+										</php>
+									>
+								</if>
+							</div>
+						</td>
+					</tr>
+					<!-- <tr>
+						<th>淘客佣金截图</th>
+						<td>
+							<div>
+							<if condition="empty($posts['taoke_pic'])">
+									<span class="red_color">未提交</span>
+								<else/>
+									<img src=
+										<php>
+										echo sp_get_asset_upload_path($posts['taoke_pic']);
+										</php>
+									>
+								</if>
+							</div>
+						</td>
+					</tr> -->
+					<tr>
+						<th>优惠券截图</th>
+						<td>
+							<div>
+							<if condition="empty($posts['quan_pic'])">
+									<span class="red_color">未提交</span>
+								<else/>
+									<img src=
+										<php>
+										echo sp_get_asset_upload_path($posts['quan_pic']);
+										</php>
+									>
+								</if>
+							</div>
+						</td>
+					</tr>
+					<!-- <tr>
+						<th>村淘佣金截图</th>
+						<td>
+							<div>
+							<if condition="empty($posts['commit_pic'])">
+									<span class="red_color">未提交</span>
+								<else/>
+									<img src=
+									<php>
+									echo sp_get_asset_upload_path($posts['commit_pic']);
+									</php>
+									>
+								</if>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>购买截图</th>
+						<td>
+							<div>
+								<if condition="empty($posts['pay_pic'])">
+									<span class="red_color">未提交</span>
+								<else/>
+									<img src=
+										<php>
+										echo sp_get_asset_upload_path($posts['pay_pic']);
+										</php>
+									>
+								</if>
+							</div>
+						</td>
+					</tr> -->
+
+					<tr>
+						<th>审核人</th>
+						<td>
+							<div>
+								<if condition="empty($posts['judge_user'])">
+									<span class="red_color">未审核</span>
+								<else/>
+									{$posts.judge_user}
+								</if>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>审核结果</th>
+						<td>
+							<div>
+								<if condition="$posts['status'] eq 1">
+									<select name="judge_status" id="judge_end">
+										<option value="1" selected="selected">未审核</option>
+										<option value="2">驳回</option>
+										<option value="3">审核通过</option>
+									</select>
+								<else/>
+									<select name="judge_status" id="judge_end">
+										<option value="2">驳回</option>
+										<option value="3">审核通过</option>
+									<script>
+										$("#judge_end>option[value='{$posts.status}']").attr('selected','selected');
+									</script>
+									</select>
+								</if>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>前审核意见</th>
+						<td>
+							<div>
+								<if condition="empty($posts['contain_judge'])">
+										<span class="red_color">未审核</span>
+									<else/>
+										{$posts.contain_judge}
+								</if>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>审核意见</th>
+						<td>
+							<div>
+								<textarea name="contain_judge"></textarea>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>			
+			<div>				
+				<button class="btn btn-primary" type="submit">提交</button>				
+				<a class="btn" href="{:U('AdminHaozhu/items')}">返回</a>			
+			</div>
+		</form>
+	</div>
+	
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">注意事项</h4>
+				</div>
+				<div class="modal-body">
+					注意身体注意身体
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+	<script type="text/javascript">
+		//编辑器路径定义
+		var editorURL = GV.DIMAUB;
+	</script>
+	<script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.all.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".js-ajax-close-btn").on('click', function(e) {
+				e.preventDefault();
+				Wind.use("artDialog", function() {
+					art.dialog({
+						id : "question",
+						icon : "question",
+						fixed : true,
+						lock : true,
+						background : "#CCCCCC",
+						opacity : 0,
+						content : "您确定需要关闭当前页面嘛？",
+						ok : function() {
+							setCookie("refersh_time", 1);
+							window.close();
+							return true;
+						}
+					});
+				});
+			});
+			/////---------------------
+			Wind.use('validate', 'ajaxForm', 'artDialog', function() {
+				//javascript
+
+
+				var form = $('form.js-ajax-forms');
+				//ie处理placeholder提交问题
+				if ($.browser.msie) {
+					form.find('[placeholder]').each(function() {
+						var input = $(this);
+						if (input.val() == input.attr('placeholder')) {
+							input.val('');
+						}
+					});
+				}
+
+				var formloading = false;
+				//表单验证开始
+				form.validate({
+					//是否在获取焦点时验证
+					onfocusout : false,
+					//是否在敲击键盘时验证
+					onkeyup : false,
+					//当鼠标掉级时验证
+					onclick : false,
+					//验证错误
+					showErrors : function(errorMap, errorArr) {
+						//errorMap {'name':'错误信息'}
+						//errorArr [{'message':'错误信息',element:({})}]
+						try {
+							$(errorArr[0].element).focus();
+							art.dialog({
+								id : 'error',
+								icon : 'error',
+								lock : true,
+								fixed : true,
+								background : "#CCCCCC",
+								opacity : 0,
+								content : errorArr[0].message,
+								cancelVal : '确定',
+								cancel : function() {
+									$(errorArr[0].element).focus();
+								}
+							});
+						} catch (err) {
+						}
+					},
+					//验证规则
+					rules : {
+						'item[itemurl]' : {
+							required : 1
+						},
+						'item[memo]' : {
+							editorcontent : true
+						}
+					},
+					//验证未通过提示消息
+					messages : {
+						'item[num_iid]' : {
+							required : '请输入商品id'
+						},
+						'item[intro]' : {
+							editorcontent : '内容不能为空'
+						}
+					},
+					//给未通过验证的元素加效果,闪烁等
+					highlight : false,
+					//是否在获取焦点时验证
+					onfocusout : false,
+					//验证通过，提交表单
+					submitHandler : function(forms) {
+						if (formloading)
+							return;
+						$(forms).ajaxSubmit({
+							url : form.attr('action'), //按钮上是否自定义提交地址(多按钮情况)
+							dataType : 'json',
+							beforeSubmit : function(arr, $form, options) {
+								formloading = true;
+							},
+							success : function(data, statusText, xhr, $form) {
+								formloading = false;
+								if (data.status) {
+									setCookie("refersh_time", 1);
+									//添加成功
+									Wind.use("artDialog", function() {
+										art.dialog({
+											id : "succeed",
+											icon : "succeed",
+											fixed : true,
+											lock : true,
+											background : "#CCCCCC",
+											opacity : 0,
+											content : data.info,
+											button : [ {
+												name : '返回列表页',
+												callback : function() {
+													location = "{:U('AdminHaozhu/items')}";
+													return true;
+												}
+											} ]
+										});
+									});
+								} else {
+									isalert(data.info);
+								}
+							}
+						});
+					}
+				});
+			});
+			////-------------------------
+		});
+	</script>
+</body>
+
+</html>

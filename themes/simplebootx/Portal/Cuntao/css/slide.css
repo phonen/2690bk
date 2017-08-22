@@ -1,0 +1,88 @@
+@charset "utf-8";
+img {
+	border: 0;
+}
+.ck-slide ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.ck-slide {
+	position: relative;
+	overflow: hidden;
+}
+.ck-slide ul.ck-slide-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	margin: 0;
+	padding: 0;
+}
+.ck-slide ul.ck-slide-wrapper li {
+	position: absolute; margin-top:0px;
+}
+.ck-slide ul.ck-slide-wrapper li a{
+	/*a鏍囩鏄鍐呭厓绱狅紝瀹介珮瀵筧鏍囩涓嶈捣浣滅敤锛岃繖閲屽繀椤绘坊鍔爈ine-height:0px;display:black锛屽惁鍒欏瀭鐩存粴鍔�<li>涔嬮棿浼氬嚭鐜伴棿闅�*/
+	line-height:0px;
+	display:block;
+}
+.ck-slide .ck-prev, .ck-slide .ck-next {
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+	width: 35px;
+	height: 70px;
+	margin-top: -35px;
+	border-radius: 3px;
+	opacity: 0;
+	background: red;
+	text-indent: -9999px;
+	background-repeat: no-repeat;
+	transition: opacity .2s linear 0s;
+}
+.ck-slide .ck-prev {
+	left: 5px;
+	background: url(/img/arrow-left.png) #000 50% no-repeat;
+}
+.ck-slide .ck-next {
+	right: 5px;
+	background: url(/img/arrow-right.png) #000 50% no-repeat;
+}
+.ck-slidebox {
+	position: absolute;
+	left: 50%;
+	bottom: 10px;
+	z-index: 30;
+}
+.ck-slidebox ul {
+	height: 20px;
+	padding: 0 4px;
+	border-radius: 8px;
+	background: rgba(0,0,0,0.2);
+}
+.ck-slidebox ul li {
+	float: left;
+	height: 12px;
+	margin: 4px 4px;
+}
+.ck-slidebox ul li em {
+	display: block;
+	width: 12px;
+	height: 12px;
+	border-radius: 100%;
+	background-color: #fff;
+	text-indent: -9999px;
+	cursor: pointer;
+}
+.ck-slidebox ul li.current em {
+	background-color: #C0C0C0;
+}
+.ck-slidebox ul li em:hover {
+	background-color: #fe6500;
+}
+/*
+鏈唬鐮佺敱js浠ｇ爜鏀堕泦骞剁紪杈戞暣鐞�;
+灏婇噸浠栦汉鍔冲姩鎴愭灉;
+杞浇璇蜂繚鐣檍s浠ｇ爜閾炬帴 - www.jsdaima.com
+*/

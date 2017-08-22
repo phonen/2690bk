@@ -1,0 +1,309 @@
+<admintpl file="header" />
+
+</head>
+
+<body>
+
+	<div class="wrap js-check-wrap">
+
+		<ul class="nav nav-tabs">
+
+			<li class="active"><a href="{:U('AdminHaozhu/items')}">商品列表</a></li>
+
+		</ul>
+
+		<form class="well form-search" method="post" action="{:U('AdminHaozhu/items')}">
+
+			分类： 
+
+			<select class="select_2" name="status" id="status">
+
+				<option value='0'>全部</option>
+				<option value='1'>审核未通过</option>
+				<option value='2'>审核通过</option>
+			</select> &nbsp;&nbsp;
+			<select class="select_2" name="top_status" id="top_status">
+
+				<option value='0'>全部</option>
+				<option value='1'>未顶置</option>
+				<option value='2'>顶置</option>
+
+			</select> &nbsp;&nbsp;
+			<select class="select_2" name="server_status" id="server_status">
+
+				<option value='0'>全部</option>
+				<option value='1'>未结算服务费</option>
+				<option value='2'>已结算服务费</option>
+
+			</select> &nbsp;&nbsp;
+
+			<label>提交日期：</label>
+			<input type="date" name="timedate" id="timedate"/>
+
+			<script>
+				$("#status>option[value='{$post.status}']").attr('selected','selected');
+				$("#top_status>option[value='{$post.top_status}']").attr('selected','selected');
+				$("#server_status>option[value='{$post.server_status}']").attr('selected','selected');
+				$("#timedate").val("{$post.timedate}");
+			</script>
+			关键字： 
+
+			<input type="text" name="kw" style="width: 200px;" value="{$post.kw}" placeholder="请输入关键字...">
+
+			<input type="submit" class="btn btn-primary" value="搜索" />
+
+		</form>
+
+
+		<table class="table table-hover table-bordered table-list">
+
+			<thead>
+
+				<tr>
+
+					<th>商品id</th>
+
+					<th>商品名称</th>
+
+					<th>商品图片</th>
+
+					<th>放单人</th>
+
+					<th width="50">佣金%</th>
+
+					<th width="80">上传时间</th>
+
+					<th width="80">审核时间</th>
+
+					<th width="80">审核结果</th>
+
+					<th width="50">顶置</th>
+
+					<th width="80">结算佣金</th>
+
+					<th width="80">审核人</th>
+
+					<th width="100">操作</th>
+
+				</tr>
+
+			</thead>
+
+			<php>
+
+			$status=array("3"=>"审核通过","2"=>"审核未通过","1"=>"未审核");
+
+			$top_status=array("2"=>"已置顶","1"=>"未置顶");
+
+			$server_status=array("2"=>"已结算","1"=>"未结算");
+
+			
+			
+			</php>
+
+			<foreach name="posts" item="vo">
+			<php>
+				$vo['judge_right']=0;
+				if($vo['judge_name']){
+					$vo['judge_right'] = 1;
+				}
+			</php>
+
+			<tr>
+
+				<td><a href="{:U('portal/adminhaozhu/edit',array('id'=>$vo['num_iid']))}" target="_blank"> <span>{$vo.num_iid}</span></a></td>
+
+				<td>{$vo.item_dtitle}</td>
+
+				<td><img src="{$vo.pic_url}_150x150.jpg"/></td>
+
+				<td>{$vo.uname}</td>
+
+				<td>{$vo.taoke_rate}</td>
+
+				<td>{$vo.time_add}</td>
+
+				<td><if condition="$vo['judge_right']">{$vo.judge_time}<else/>未审核</if></td>
+
+				<td><if condition="$vo['judge_right']">{$status[$vo['status']]}<else/>未审核</if></td>
+
+				<td>{$top_status[$vo['top_status']]}</td>
+
+				<td>
+				<if condition="$vo['server_status'] eq 1">
+				{$server_status[$vo['server_status']]}
+				<else/>
+				{$vo.server_price_count}￥
+				</if>
+				</td>
+
+				<td><if condition="$vo['judge_right']">{$vo.judge_name}<else/>未审核</if></td>
+
+				<td>
+					<a href="{:U('portal/AdminHaozhu/dsh_post',array('id'=>$vo['num_iid']))}" target='_self'>删除</a> |
+					<a href="{:U('portal/AdminHaozhu/settle',array('id'=>$vo['num_iid']))}" target='_self'>结算</a> |
+					<a href="{:U('portal/AdminHaozhu/judge',array('id'=>$vo['num_iid']))}" target='_self'>审核</a> | 
+					<if condition="$vo['top_status'] eq 1">
+						<a href="{:U('portal/AdminHaozhu/overhead',array('id'=>$vo['num_iid']))}" class="js-ajax-dialog-btn" data-msg="顶置该商品?">顶置</a>
+					<else/>
+						<a href="{:U('portal/AdminHaozhu/unoverhead',array('id'=>$vo['num_iid']))}" class="js-ajax-dialog-btn" data-msg="取消顶置该商品?">取消顶置</a>
+					</if>
+				</td>
+
+			</tr>
+
+			</foreach>
+
+			</table>
+
+		<div class="pagination">{$Page}</div>
+
+	</div>
+
+	<script src="__PUBLIC__/js/common.js"></script>
+
+	<script type="text/javascript">
+		$(function() {
+			$(".js-ajax-close-btn").on('click', function(e) {
+				e.preventDefault();
+				Wind.use("artDialog", function() {
+					art.dialog({
+						id : "question",
+						icon : "question",
+						fixed : true,
+						lock : true,
+						background : "#CCCCCC",
+						opacity : 0,
+						content : "您确定需要关闭当前页面嘛？",
+						ok : function() {
+							setCookie("refersh_time", 1);
+							window.close();
+							return true;
+						}
+					});
+				});
+			});
+			/////---------------------
+			Wind.use('validate', 'ajaxForm', 'artDialog', function() {
+				//javascript
+
+
+				var form = $('form.js-ajax-forms');
+				//ie处理placeholder提交问题
+				if ($.browser.msie) {
+					form.find('[placeholder]').each(function() {
+						var input = $(this);
+						if (input.val() == input.attr('placeholder')) {
+							input.val('');
+						}
+					});
+				}
+
+				var formloading = false;
+				//表单验证开始
+				form.validate({
+					//是否在获取焦点时验证
+					onfocusout : false,
+					//是否在敲击键盘时验证
+					onkeyup : false,
+					//当鼠标掉级时验证
+					onclick : false,
+					//验证错误
+					showErrors : function(errorMap, errorArr) {
+						//errorMap {'name':'错误信息'}
+						//errorArr [{'message':'错误信息',element:({})}]
+						try {
+							$(errorArr[0].element).focus();
+							art.dialog({
+								id : 'error',
+								icon : 'error',
+								lock : true,
+								fixed : true,
+								background : "#CCCCCC",
+								opacity : 0,
+								content : errorArr[0].message,
+								cancelVal : '确定',
+								cancel : function() {
+									$(errorArr[0].element).focus();
+								}
+							});
+						} catch (err) {
+						}
+					},
+					//验证规则
+					rules : {
+						'item[itemurl]' : {
+							required : 1
+						},
+						'item[memo]' : {
+							editorcontent : true
+						}
+					},
+					//验证未通过提示消息
+					messages : {
+						'item[num_iid]' : {
+							required : '请输入商品id'
+						},
+						'item[intro]' : {
+							editorcontent : '内容不能为空'
+						}
+					},
+					//给未通过验证的元素加效果,闪烁等
+					highlight : false,
+					//是否在获取焦点时验证
+					onfocusout : false,
+					//验证通过，提交表单
+					submitHandler : function(forms) {
+						if (formloading)
+							return;
+						$(forms).ajaxSubmit({
+							url : form.attr('action'), //按钮上是否自定义提交地址(多按钮情况)
+							dataType : 'json',
+							beforeSubmit : function(arr, $form, options) {
+								formloading = true;
+							},
+							success : function(data, statusText, xhr, $form) {
+								formloading = false;
+								if (data.status) {
+									setCookie("refersh_time", 1);
+									//添加成功
+									Wind.use("artDialog", function() {
+										art.dialog({
+											id : "succeed",
+											icon : "succeed",
+											fixed : true,
+											lock : true,
+											background : "#CCCCCC",
+											opacity : 0,
+											content : data.info,
+											button : [ {
+												name : '继续添加？',
+												callback : function() {
+													reloadPage(window);
+													return true;
+												},
+												focus : true
+											}, {
+												name : '返回列表页',
+												callback : function() {
+													location = "{:U('AdminHaozhu/items')}";
+													return true;
+												}
+											} ]
+										});
+									});
+								} else {
+									isalert(data.info);
+								}
+							}
+						});
+					}
+				});
+			});
+			////-------------------------
+		});
+	</script>
+
+</body>
+
+</html>

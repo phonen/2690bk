@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>2690跳转提示</title>
+		<tc_include file="Public/head" />
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			body {
+				background: #fff;
+				font-family: '微软雅黑';
+				color: #333;
+				font-size: 16px;
+				padding-top: 0;
+			}
+			
+			.system-message {
+				padding: 0px;
+				text-align: center;
+			}
+			
+			.system-message h1 {
+				font-size: 100px;
+				font-weight: normal;
+				line-height: 120px;
+				margin-bottom: 12px;
+				text-align: center;
+			}
+			
+			.system-message .jump {
+				padding-top: 10px
+			}
+			
+			.system-message .success,
+			.system-message .error {
+				line-height: 1.8em;
+				font-size: 36px
+			}
+			
+			.system-message .detail {
+				font-size: 12px;
+				line-height: 20px;
+				display: none
+			}
+			
+			.mes {
+				background-image: url(images/mes/404.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 50%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="system-message">
+			<present name="message">
+				<h1>帅气的操作</h1>
+				<p class="success">
+					<?php echo($message); ?>
+				</p>
+				<else/>
+				<div style="height: 15%;"></div>
+				<p class="error">
+					<?php echo($error); ?>
+				</p>
+				<script>
+				$(function(){
+					$('div[class="system-message"]').css('height',parseInt($(window).height())-10);
+					$("body").addClass("mes");
+				})
+				</script>
+			</present>
+			<p class="detail"></p>
+			<p class="jump">
+				<b id="wait"><?php echo($waitSecond); ?></b>秒后自动跳转<br />
+				若无反应，请点击此处跳转：<a id="href" href="<?php echo($jumpUrl); ?>">跳转</a> 
+			</p>
+		</div>
+		<script type="text/javascript">
+			(function() {
+				var wait = document.getElementById('wait'),
+					href = document.getElementById('href').href;
+				var interval = setInterval(function() {
+					var time = --wait.innerHTML;
+					if(time <= 0) {
+						location.href = href;
+						clearInterval(interval);
+					};
+				}, 1000);
+			})();
+	
+		</script>
+
+	</body>
+
+</html>
